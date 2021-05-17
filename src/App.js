@@ -3,10 +3,12 @@ import { Header } from "./Header/Header";
 import { Main } from "./Main/Main";
 import { View } from "./View/View";
 import { Form } from "./Form/Form";
+import { ModalContainer } from "./Modal/ModalContainer";
 
 function App() {
   return (
     <Router className="App">
+      <ModalContainer />
       <Header />
       <Route path="/main">
         <Main />

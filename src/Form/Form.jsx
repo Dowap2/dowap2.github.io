@@ -1,12 +1,12 @@
 import React from "react";
 import { TextEditer } from "./TextEditer";
-import { FormButton } from "./FormButton";
+import { FormButtonContainer } from "./FormButtonContainer";
 
 export function Form() {
   return (
     <div>
       <TextEditer />
-      <FormButton />
+      <FormButtonContainer />
     </div>
   );
 }

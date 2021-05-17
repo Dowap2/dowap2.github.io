@@ -4,7 +4,7 @@ export function FormButton(props) {
   return (
     <div>
       <button>complete</button>
-      <button>cancel</button>
+      <button onClick={e => props.onChange(true)}>cancel</button>
     </div>
   );
 }
