@@ -9,7 +9,6 @@ const ClosingScreen = styled.div`
   background: #000;
   width: 100%;
   height: 100%;
-  opacity: 0.5;
   z-index: 1;
 `;
 const ModalContent = styled.div`
@@ -22,11 +21,9 @@ const ModalContent = styled.div`
 export function Modal(props) {
   const modalState = useSelector(state => state.modalState.modalState);
   return (
-    <ClosingScreen display={modalState} onClick={e => props.onChange(false)}>
-      <ModalContent>
-        <button>confirm</button>
-        <button>cancel</button>
-      </ModalContent>
-    </ClosingScreen>
+    <ClosingScreen
+      display={modalState}
+      onClick={e => props.onChange(false)}
+    ></ClosingScreen>
   );
 }
