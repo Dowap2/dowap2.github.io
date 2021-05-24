@@ -8,7 +8,7 @@ import { ModalContainer } from "./Modal/ModalContainer";
 function App() {
   return (
     <Router className="App">
-      <ModalContainer />
+      {/* <ModalContainer />
       <Header />
       <Route path="/main">
         <Main />
@@ -18,7 +18,7 @@ function App() {
       </Route>
       <Route path="/write">
         <Form />
-      </Route>
+      </Route> */}
     </Router>
   );
 }
