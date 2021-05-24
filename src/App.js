@@ -23,4 +23,20 @@ function App() {
   );
 }
 
+const ImageProcessing = img => {
+  //이미지 처리과정
+};
+
+const ServerCommunication = () => {
+  //서버호출
+};
+
+const End = () => {
+  //끝
+};
+
+ImageProcessing();
+ServerCommunication();
+End();
+
 export default App;
