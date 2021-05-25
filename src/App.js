@@ -70,4 +70,24 @@ add(1, function(result) {
 // 8
 // 16 end
 
+function getData() {
+  return new Promise(function(resolve, reject) {
+    var data = 100;
+    if (data === Number) {
+      resolve(data);
+    } else {
+      reject(new Error("Data is not Number"));
+    }
+  });
+}
+
+// reject()의 결과 값 Error를 err에 받음
+getData()
+  .then(function(resolvedData) {
+    console.log(resolvedData); // 100
+  })
+  .catch(function(err) {
+    console.log(err); // Error: Request is failed
+  });
+
 export default App;

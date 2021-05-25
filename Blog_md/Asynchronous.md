@@ -60,7 +60,7 @@ function printFinish() {
 printNumber(1, printFinish);
 ```
 
-###### 콜백지옥
+#### 콜백지옥
 
 ```
 function add(num, callback) {
@@ -85,3 +85,42 @@ add(1, function(result) {
 ```
 
 이처럼 콜백안에 콜백이 호출되는 콜백지옥이 생길 수 있으니 유의해야합니다.
+
+#### 해결방법은 Promise?
+
+[Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise) 객체는 비동기 작업이 맞이할 미래의 완료 또는 실패와 그 결과 값을 나타냅니다.
+
+Promise는 3가지의 상태를 가지고있습니다.
+대기(pending): 이행하거나 거부되지 않은 초기 상태.
+이행(fulfilled): 연산이 성공적으로 완료됨.
+거부(rejected): 연산이 실패함.
+
+먼저 new Promise() 와 같이 호출하게 되면 대기 상태가 됩니다.
+new Promise를 선언할 때 콜백함수를 선언할 수 있습니다. 콜백함수의 인자는 resolve와 reject입니다.
+
+이행 상태가 되면 then()을 이용하여 결과를 확인할 수 있습니다. error가 발생한다면 거부 상태가 되며 catch()에서 에러처리를 할 수 있습니다.
+
+```
+function getData() {
+  return new Promise(function(resolve, reject) {
+    const data = 1;
+    if (typeof data == "number") {
+      resolve(data);
+    } else {
+      reject(new Error("Data is not Number"));
+    }
+  });
+}
+
+getData()
+  .then(function(resolvedData) {
+    console.log(resolvedData); // 1
+  })
+  .catch(function(err) {
+    console.log(err); //Data is not Number
+  });
+
+getData();
+```
+
+위 코드처럼 데이터의 타입이 number라면 then()이 실행되며 아닌경우 catch에서 에러를 호출 할 수 있습니다.
