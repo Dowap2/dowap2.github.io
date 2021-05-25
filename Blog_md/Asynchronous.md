@@ -46,3 +46,42 @@ Callback 함수는 다른 함수의 매개변수로 함수를 전달하고, 함�
 이때문에 비동기 처리방식으로 활용됩니다.
 
 하지만 가독성이 매우 떨어지고 에러처리시 모든 콜백에서 각각 에러핸들링을 해야합니다.
+
+```
+function printNumber(num, callback) {
+  console.log(num);
+  callback();
+}
+
+function printFinish() {
+  console.log("Finish");
+}
+
+printNumber(1, printFinish);
+```
+
+###### 콜백지옥
+
+```
+function add(num, callback) {
+  let sum = x + x;
+  console.log(sum);
+  callback(sum);
+}
+
+add(1, function(result) {
+  add(result, function(result) {
+    add(result, function(result) {
+      console.log(result, "end");
+    });
+  });
+});
+
+//output
+// 2
+// 4
+// 8
+// 16 end
+```
+
+이처럼 콜백안에 콜백이 호출되는 콜백지옥이 생길 수 있으니 유의해야합니다.

@@ -39,4 +39,35 @@ ImageProcessing();
 ServerCommunication();
 End();
 
+function printNumber(num, callback) {
+  console.log(num);
+  callback();
+}
+
+function printFinish() {
+  console.log("Finish");
+}
+
+printNumber(1, printFinish);
+
+function add(num, callback) {
+  let sum = x + x;
+  console.log(sum);
+  callback(sum);
+}
+
+add(1, function(result) {
+  add(result, function(result) {
+    add(result, function(result) {
+      console.log(result, "end");
+    });
+  });
+});
+
+//output
+// 2
+// 4
+// 8
+// 16 end
+
 export default App;
