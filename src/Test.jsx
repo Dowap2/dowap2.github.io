@@ -1,3 +1,5 @@
+import React from "react";
+
 function getData() {
   return new Promise(function(resolve, reject) {
     var data = 1;
@@ -28,3 +30,14 @@ const Promise3 = new Promise(resolve => {
 Promise.all([Promise1, Promise2, Promise3]).then(([first, second, third]) => {
   console.log(first, second, third);
 });
+
+export const TestRef = () => {
+  const [value, setValue] = React.useState(0);
+  const valueRef = React.useRef();
+  return (
+    <div>
+      <button onClick={e => setValue(value + 1)}>{value}</button>
+      <button onClick={e => (valueRef += 1)}>{valueRef}</button>
+    </div>
+  );
+};
