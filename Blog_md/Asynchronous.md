@@ -124,3 +124,20 @@ getData();
 ```
 
 위 코드처럼 데이터의 타입이 number라면 then()이 실행되며 아닌경우 catch에서 에러를 호출 할 수 있습니다.
+
+###### Promise.all
+
+Promise.all은 여러 프로미스의 결과를 집계할 때 유용하게 사용할 수 있습니다.
+주어진 프로미스 중 하나라도 거부하면, 다른 프로미스의 이행 여부에 상관없이 첫 번째 거부 이유를 사용해 거부합니다. [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+
+```
+const Promise1 = Promise.resolve("first");
+const Promise2 = "second";
+const Promise3 = new Promise(resolve => {
+  resolve("third");
+});
+
+Promise.all([Promise1, Promise2, Promise3]).then(([first, second, third]) => {
+  console.log(first, second, third);
+});
+```

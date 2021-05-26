@@ -18,3 +18,13 @@ getData()
   });
 
 getData();
+
+const Promise1 = Promise.resolve("first");
+const Promise2 = "second";
+const Promise3 = new Promise(resolve => {
+  resolve("third");
+});
+
+Promise.all([Promise1, Promise2, Promise3]).then(([first, second, third]) => {
+  console.log(first, second, third);
+});
