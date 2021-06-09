@@ -69,3 +69,20 @@ import {sayHi as hi, sayBye as bye} from './say.js'
 
 두번째와 같은 경우 export default를 지원하는데 이를 사용하면 해당 모듈에 개체가 하나만 있다는 것을 알 수 있습니다.
 이러한 경우 import를 하는 경우 중괄호를 사용하지않고 import할 수 있습니다.
+
+```
+export default const Name = (name) => {
+    console.log(name)
+}
+```
+
+```
+import Name from "./Name";
+
+
+function TestJs() {
+  Name("john");
+}
+
+TestJs()
+```
