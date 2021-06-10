@@ -5,8 +5,11 @@ import { Main } from "./Main/Main";
 import { View } from "./View/View";
 import { Form } from "./Form/Form";
 import { ModalContainer } from "./Modal/ModalContainer";
+import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 function App() {
+  const intl = useIntl();
   return (
     <div className="App">
       {/* <ModalContainer />
@@ -21,6 +24,7 @@ function App() {
         <Form />
       </Route> */}
       <TestRef />
+      {intl.formatMessage({ id: "main" })}
     </div>
   );
 }
@@ -36,15 +40,15 @@ const TestRef = () => {
 };
 
 // const ImageProcessing = img => {
-//   //이미지 처리과정
+//   //?��미�?? 처리과정
 // };
 
 // const ServerCommunication = () => {
-//   //서버호출
+//   //?��버호�?
 // };
 
 // const End = () => {
-//   //끝
+//   //?��
 // };
 
 // ImageProcessing();
