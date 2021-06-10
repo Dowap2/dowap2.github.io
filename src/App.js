@@ -1,11 +1,10 @@
 import React from "react";
 // import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Header } from "./Header/Header";
-import { Main } from "./Main/Main";
-import { View } from "./View/View";
-import { Form } from "./Form/Form";
-import { ModalContainer } from "./Modal/ModalContainer";
-import { FormattedMessage } from "react-intl";
+// import { Header } from "./Header/Header";
+// import { Main } from "./Main/Main";
+// import { View } from "./View/View";
+// import { Form } from "./Form/Form";
+// import { ModalContainer } from "./Modal/ModalContainer";
 import { useIntl } from "react-intl";
 
 function App() {

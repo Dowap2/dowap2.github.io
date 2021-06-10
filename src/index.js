@@ -15,3 +15,18 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+moment.updateLocale("ko", {
+  format: {
+    //해당 언어 포맷
+  }
+});
+moment.locale("ko");
+
+return;
+moment.updateLocale("en", {
+  format: {
+    //해당 언어 포맷
+  }
+});
+moment.locale("en");
