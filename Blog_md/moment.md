@@ -29,12 +29,14 @@ moment의 locale 기본 설정은 en입니다.
 moment.updateLocale("ko", {
   format: {
     //해당 언어 포맷
+    //ex) llll : hhhh mm dd
   }
 });
 moment.locale("ko");
 moment.updateLocale("en", {
   format: {
     //해당 언어 포맷
+    //ex) llll : hhhh mm dd
   }
 });
 moment.locale("en");
