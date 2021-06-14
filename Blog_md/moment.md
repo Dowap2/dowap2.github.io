@@ -24,3 +24,20 @@ moment().foramt('LTS') / h:mm:ss A
 moment.locale 사용방법
 
 moment의 locale 기본 설정은 en입니다.
+
+```
+const language = useSelector(state => state.languageState.state.language);
+const [date, setDate] = useState(moment().format("llll"));
+
+useEffect(() => {
+    language === "en" ? moment.locale("en") : moment.locale("ko");
+  }, [language]);
+
+  setInterval(() => {
+    setDate(moment().format("llll"));
+  }, 60000);
+
+  console.log(date)
+```
+
+language가 변경되면 변경된 값에 따라 날짜의 포맷이 변경됩니다.
