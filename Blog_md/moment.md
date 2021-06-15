@@ -9,16 +9,29 @@ import {moment} from "moment"
 const time = moment()
 console.log(time) //현재 날짜 값
 
-moment().format('YYYY YY Y') //결과 2021 21 2019 y는 년도를 나타냄
-moment().format('MMMM MMM MM M') //결과 June Jun 06 6 m는 달을 나타냄
-moment().format('DD D Do') // 10 10 10th d는 일을 나타냄
+moment.locale("ko");         // ko
+moment().format('LT');   // 오후 8:35
+moment().format('LTS');  // 오후 8:35:50
+moment().format('L');    // 2021.06.15.
+moment().format('l');    // 2021.06.15.
+moment().format('LL');   // 2021년 6월 15일
+moment().format('ll');   // 2021년 6월 15일
+moment().format('LLL');  // 2021년 6월 15일 오후 8:35
+moment().format('lll');  // 2021년 6월 15일 오후 8:35
+moment().format('LLLL'); // 2021년 6월 15일 화요일 오후 8:35
+moment().format('llll'); // 2021년 6월 15일 화요일 오후 8:35
 
-moment().foramt('L') // MM/DD/YYYY
-moment().foramt('LL') // MMMM DD, YYYY
-moment().foramt('LLL') // MMMM DD, YYYY h:mm A
-moment().foramt('LLLL') // dddd, MMMM DD, YYYY h:mm A
-moment().foramt('LT') // h:mm A
-moment().foramt('LTS') / h:mm:ss A
+moment.locale("en");         // en
+moment().format('LT');   // 8:36 PM
+moment().format('LTS');  // 8:36:22 PM
+moment().format('L');    // 06/15/2021
+moment().format('l');    // 6/15/2021
+moment().format('LL');   // June 15, 2021
+moment().format('ll');   // Jun 15, 2021
+moment().format('LLL');  // June 15, 2021 8:36 PM
+moment().format('lll');  // Jun 15, 2021 8:36 PM
+moment().format('LLLL'); // Tuesday, June 15, 2021 8:36 PM
+moment().format('llll'); // Tue, Jun 15, 2021 8:36 PM
 ```
 
 moment.locale 사용방법
@@ -41,3 +54,11 @@ useEffect(() => {
 ```
 
 language가 변경되면 변경된 값에 따라 날짜의 포맷이 변경됩니다.
+
+단 moment.locale("ko")를 사용해서 한국어 날짜 포맷을 사용하기위해서는
+
+```
+import "moment/locale/ko";
+```
+
+위 처럼 import를 해야합니다.
