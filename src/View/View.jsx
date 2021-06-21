@@ -15,14 +15,10 @@ export function View(props) {
 
   const exampleMarkdown = `
   #title
-  ##∫Œ¡¶
-  ###∫Œ∫Œ¡¶
-
-  **±Ω∞‘**
+  ## Î∂ÄÏ†ú
   `;
   return (
     <div>
-      <Markdown>{exampleMarkdown}</Markdown>
       <Markdown>{postMarkdown}</Markdown>
       <button onClick={e => console.log(postMarkdown)}>click</button>
     </div>

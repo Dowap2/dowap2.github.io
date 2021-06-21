@@ -1,25 +1,25 @@
-Moment.js´Â ³¯Â¥ °ü·Ã ¶óÀÌºê·¯¸®ÀÔ´Ï´Ù.
-³¯Â¥ Çü½ÄÀÇ µ¥ÀÌÅÍ¸¦ ÆÄ½Ì, À¯È¿¼º Ã¼Å©, Á¶ÀÛ, È­¸é¿¡ Ãâ·ÂÀ» ½±°Ô ÇÒ ¼ö ÀÖµµ·Ï µµ¿ÍÁÖ´Â ¶óÀÌºê·¯¸®ÀÔ´Ï´Ù.
+Moment.jsëŠ” ë‚ ì§œ ê´€ë ¨ ë¼ì´ë¸ŒëŸ¬ë¦¬ìž…ë‹ˆë‹¤.
+ë‚ ì§œ í˜•ì‹ì˜ ë°ì´í„°ë¥¼ íŒŒì‹±, ìœ íš¨ì„± ì²´í¬, ì¡°ìž‘, í™”ë©´ì— ì¶œë ¥ì„ ì‰½ê²Œ í•  ìˆ˜ ìžˆë„ë¡ ë„ì™€ì£¼ëŠ” ë¼ì´ë¸ŒëŸ¬ë¦¬ìž…ë‹ˆë‹¤.
 
-»ç¿ë¿¹½Ã
+ì‚¬ìš©ì˜ˆì‹œ
 
 ```
 import {moment} from "moment"
 
 const time = moment()
-console.log(time) //ÇöÀç ³¯Â¥ °ª
+console.log(time) //í˜„ìž¬ ë‚ ì§œ ê°’
 
 moment.locale("ko");         // ko
-moment().format('LT');   // ¿ÀÈÄ 8:35
-moment().format('LTS');  // ¿ÀÈÄ 8:35:50
+moment().format('LT');   // ì˜¤í›„ 8:35
+moment().format('LTS');  // ì˜¤í›„ 8:35:50
 moment().format('L');    // 2021.06.15.
 moment().format('l');    // 2021.06.15.
-moment().format('LL');   // 2021³â 6¿ù 15ÀÏ
-moment().format('ll');   // 2021³â 6¿ù 15ÀÏ
-moment().format('LLL');  // 2021³â 6¿ù 15ÀÏ ¿ÀÈÄ 8:35
-moment().format('lll');  // 2021³â 6¿ù 15ÀÏ ¿ÀÈÄ 8:35
-moment().format('LLLL'); // 2021³â 6¿ù 15ÀÏ È­¿äÀÏ ¿ÀÈÄ 8:35
-moment().format('llll'); // 2021³â 6¿ù 15ÀÏ È­¿äÀÏ ¿ÀÈÄ 8:35
+moment().format('LL');   // 2021ë…„ 6ì›” 15ì¼
+moment().format('ll');   // 2021ë…„ 6ì›” 15ì¼
+moment().format('LLL');  // 2021ë…„ 6ì›” 15ì¼ ì˜¤í›„ 8:35
+moment().format('lll');  // 2021ë…„ 6ì›” 15ì¼ ì˜¤í›„ 8:35
+moment().format('LLLL'); // 2021ë…„ 6ì›” 15ì¼ í™”ìš”ì¼ ì˜¤í›„ 8:35
+moment().format('llll'); // 2021ë…„ 6ì›” 15ì¼ í™”ìš”ì¼ ì˜¤í›„ 8:35
 
 moment.locale("en");         // en
 moment().format('LT');   // 8:36 PM
@@ -34,9 +34,9 @@ moment().format('LLLL'); // Tuesday, June 15, 2021 8:36 PM
 moment().format('llll'); // Tue, Jun 15, 2021 8:36 PM
 ```
 
-moment.locale »ç¿ë¹æ¹ý
+moment.locale ì‚¬ìš©ë°©ë²•
 
-momentÀÇ locale ±âº» ¼³Á¤Àº enÀÔ´Ï´Ù.
+momentì˜ locale ê¸°ë³¸ ì„¤ì •ì€ enìž…ë‹ˆë‹¤.
 
 ```
 const language = useSelector(state => state.languageState.state.language);
@@ -53,12 +53,12 @@ useEffect(() => {
   console.log(date)
 ```
 
-language°¡ º¯°æµÇ¸é º¯°æµÈ °ª¿¡ µû¶ó ³¯Â¥ÀÇ Æ÷¸ËÀÌ º¯°æµË´Ï´Ù.
+languageê°€ ë³€ê²½ë˜ë©´ ë³€ê²½ëœ ê°’ì— ë”°ë¼ ë‚ ì§œì˜ í¬ë§·ì´ ë³€ê²½ë©ë‹ˆë‹¤.
 
-´Ü moment.locale("ko")¸¦ »ç¿ëÇØ¼­ ÇÑ±¹¾î ³¯Â¥ Æ÷¸ËÀ» »ç¿ëÇÏ±âÀ§ÇØ¼­´Â
+ë‹¨ moment.locale("ko")ë¥¼ ì‚¬ìš©í•´ì„œ í•œêµ­ì–´ ë‚ ì§œ í¬ë§·ì„ ì‚¬ìš©í•˜ê¸°ìœ„í•´ì„œëŠ”
 
 ```
 import "moment/locale/ko";
 ```
 
-À§ Ã³·³ import¸¦ ÇØ¾ßÇÕ´Ï´Ù.
+ìœ„ ì²˜ëŸ¼ importë¥¼ í•´ì•¼í•©ë‹ˆë‹¤.
