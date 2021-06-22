@@ -1,26 +1,41 @@
 import React, { useState, useEffect } from "react";
 import Markdown from "markdown-to-jsx";
-import theTextFile from "../Blog_md/moment.md";
+
+const importAll = r => r.keys().map(r);
+const markdownFiles = importAll(require.context("../posts", false, /\.md$/));
 
 export function View(props) {
-  const [postMarkdown, setPostMarkdown] = useState("");
+  const [postMarkdown, setPostMarkdown] = useState([]);
 
   useEffect(() => {
-    fetch(theTextFile)
-      .then(response => response.text())
-      .then(text => {
-        setPostMarkdown(text);
+    async function SetMarkdownUrl() {
+      const posts = await Promise.all(
+        markdownFiles.map(file => file.default)
+      ).catch(err => console.error(err));
+
+      const post = await SetMarkdown(posts);
+      setPostMarkdown(post);
+    }
+
+    function SetMarkdown(url) {
+      return new Promise(function(res, rej) {
+        const post = url.map(url =>
+          fetch(url)
+            .then(res => res.text())
+            .then(data => {
+              res(data);
+            })
+        );
       });
+    }
+
+    SetMarkdownUrl();
   }, []);
 
-  const exampleMarkdown = `
-  #title
-  ## 부제
-  `;
   return (
     <div>
       <Markdown>{postMarkdown}</Markdown>
-      <button onClick={e => console.log(postMarkdown)}>click</button>
+      <button onClick={e => console.log(postMarkdown)}></button>
     </div>
   );
 }
