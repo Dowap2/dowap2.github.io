@@ -17,16 +17,18 @@ export function View(props) {
       setPostMarkdown(post);
     }
 
-    function SetMarkdown(url) {
-      return new Promise(function(res, rej) {
-        const post = url.map(url =>
+    async function SetMarkdown(url) {
+      const postArray = await Promise.all(
+        url.map(url =>
           fetch(url)
             .then(res => res.text())
             .then(data => {
-              res(data);
+              return data;
             })
-        );
-      });
+        )
+      ).catch(err => console.error(err));
+
+      return postArray;
     }
 
     SetMarkdownUrl();
@@ -34,7 +36,11 @@ export function View(props) {
 
   return (
     <div>
-      <Markdown>{postMarkdown}</Markdown>
+      <Markdown>
+        {postMarkdown[props.index] === undefined
+          ? "글을 찾을 수 없습니다"
+          : postMarkdown[props.index]}
+      </Markdown>
       <button onClick={e => console.log(postMarkdown)}></button>
     </div>
   );
