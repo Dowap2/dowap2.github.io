@@ -6,7 +6,7 @@ import { View } from "./View/View";
 
 function App() {
   return (
-    <Router className="App">
+    <Router className="App" basename="/">
       <Header />
       <div>
         <Route path="/main" component={List} />
