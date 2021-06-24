@@ -4,7 +4,8 @@ import Markdown from "markdown-to-jsx";
 const importAll = r => r.keys().map(r);
 const markdownFiles = importAll(require.context("../posts", false, /\.md$/));
 
-export function View(props) {
+export function View({ match }) {
+  const index = match.params.index;
   const [postMarkdown, setPostMarkdown] = useState([]);
 
   useEffect(() => {
@@ -37,9 +38,9 @@ export function View(props) {
   return (
     <div>
       <Markdown>
-        {postMarkdown[props.index] === undefined
+        {postMarkdown[index] === undefined
           ? "글을 찾을 수 없습니다"
-          : postMarkdown[props.index]}
+          : postMarkdown[index]}
       </Markdown>
       <button onClick={e => console.log(postMarkdown)}></button>
     </div>

@@ -5,7 +5,6 @@ export function Header(props) {
   return (
     <div>
       <Link to="/main">logo</Link>
-      <Link to="/view">view</Link>
     </div>
   );
 }
