@@ -13,4 +13,4 @@
 2. 비동기처리
 3. 깔끔한 웹 컴포넌트 설계
 
-https://dowap2.github.io/main
+https://dowap2.github.io
