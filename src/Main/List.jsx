@@ -28,8 +28,8 @@ const markdownFiles = importAll(
 let index = 0;
 const ListItem = markdownFiles.map(listTitle => {
   const item = (
-    <Link to={`/view/${index}`} style={linkStyle}>
-      <ListItemComponent key={index}>
+    <Link to={`/view/${index}`} style={linkStyle} key={index}>
+      <ListItemComponent>
         <ListTitleComponent>{listTitle}</ListTitleComponent>
       </ListItemComponent>
     </Link>

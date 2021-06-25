@@ -45,7 +45,7 @@ export function View({ match }) {
     <ViewComponent>
       <Markdown>
         {postMarkdown[index] === undefined
-          ? "글을 찾을 수 없습니다"
+          ? "글이 존재하지않습니다."
           : postMarkdown[index]}
       </Markdown>
     </ViewComponent>

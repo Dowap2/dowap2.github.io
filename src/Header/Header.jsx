@@ -5,7 +5,6 @@ const linkStyle = {
   color: "black",
   textDecoration: "none"
 };
-
 const HeaderComponent = styled.div`
   width: 100%;
   height: 40px;
@@ -22,7 +21,7 @@ export function Header(props) {
     <HeaderComponent>
       <Wrapper>
         <Link to="/main" style={linkStyle}>
-          logo
+          Main
         </Link>
       </Wrapper>
     </HeaderComponent>
