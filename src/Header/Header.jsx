@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+const linkStyle = {
+  color: "black",
+  textDecoration: "none"
+};
+
 const HeaderComponent = styled.div`
   width: 100%;
   height: 40px;
@@ -16,7 +21,9 @@ export function Header(props) {
   return (
     <HeaderComponent>
       <Wrapper>
-        <Link to="/main">logo</Link>
+        <Link to="/main" style={linkStyle}>
+          logo
+        </Link>
       </Wrapper>
     </HeaderComponent>
   );
