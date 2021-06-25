@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useIntl } from "react-intl";
 
 const linkStyle = {
   color: "black",
@@ -17,11 +18,12 @@ const Wrapper = styled.div`
 `;
 
 export function Header(props) {
+  const intl = useIntl();
   return (
     <HeaderComponent>
       <Wrapper>
         <Link to="/" style={linkStyle}>
-          Main
+          {intl.formatMessage({ id: "header.title" })}
         </Link>
       </Wrapper>
     </HeaderComponent>

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import modalState from "./modalState";
+import languageState from "./languageState";
 
 export default combineReducers({
-  modalState
+  languageState
 });

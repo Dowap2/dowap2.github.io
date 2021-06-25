@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Header } from "./Header/Header";
 import { List } from "./Main/List";
 import { View } from "./View/View";
+import FooterContainer from "./Footer/FooterContainer";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route exact path="/" component={List} />
         <Route path="/view/:index" component={View} />
       </div>
+      <FooterContainer />
     </Router>
   );
 }
