@@ -9,7 +9,7 @@ function App() {
     <Router className="App" basename="/">
       <Header />
       <div>
-        <Route path="/main" component={List} />
+        <Route exact path="/" component={List} />
         <Route path="/view/:index" component={View} />
       </div>
     </Router>

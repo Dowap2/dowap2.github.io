@@ -20,7 +20,7 @@ export function Header(props) {
   return (
     <HeaderComponent>
       <Wrapper>
-        <Link to="/main" style={linkStyle}>
+        <Link to="/" style={linkStyle}>
           Main
         </Link>
       </Wrapper>
