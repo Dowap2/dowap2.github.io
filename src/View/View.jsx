@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 import Markdown from "markdown-to-jsx";
 
 const importAll = r => r.keys().map(r);
 const markdownFiles = importAll(require.context("../posts", false, /\.md$/));
+
+const ViewComponent = styled.div`
+  width: 980px;
+  margin: auto;
+`;
 
 export function View({ match }) {
   const index = match.params.index;
@@ -36,13 +42,12 @@ export function View({ match }) {
   }, []);
 
   return (
-    <div>
+    <ViewComponent>
       <Markdown>
         {postMarkdown[index] === undefined
           ? "글을 찾을 수 없습니다"
           : postMarkdown[index]}
       </Markdown>
-      <button onClick={e => console.log(postMarkdown)}></button>
-    </div>
+    </ViewComponent>
   );
 }

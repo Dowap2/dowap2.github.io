@@ -1,4 +1,4 @@
-import React from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const importAll = r => r.keys().map(r);
@@ -17,7 +17,11 @@ const ListItem = markdownFiles.map(listTitle => {
   return item;
 });
 
+const ListComponent = styled.ul`
+  width: 980px;
+  margin: auto;
+`;
+
 export function List(props) {
-  console.log(markdownFiles);
-  return <ul>{ListItem}</ul>;
+  return <ListComponent>{ListItem}</ListComponent>;
 }
