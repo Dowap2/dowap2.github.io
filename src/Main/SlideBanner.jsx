@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Banner } from "./Banner";
+import { useIntl } from "react-intl";
 
 const BannerComponent = styled.div`
   width: 100%;
@@ -15,6 +16,7 @@ const BannerList = styled.div`
 `;
 
 export function SlideBanner() {
+  const intl = useIntl();
   const [index, setIndex] = useState(0);
   const transform = `translate3d(-${(index % 6) * 100}vw, 0, 0);`;
   const prevFunc = () => {
@@ -34,14 +36,18 @@ export function SlideBanner() {
   return (
     <BannerComponent>
       <BannerList transform={transform}>
-        <Banner text={"1"} />
-        <Banner text={"2"} />
-        <Banner text={"3"} />
-        <Banner text={"4"} />
-        <Banner text={"5"} />
+        <Banner text={"1"} color={"#f5f5f5"} />
+        <Banner text={"2"} color={"#fdcd44"} />
+        <Banner text={"3"} color={"#a5b5fc"} />
+        <Banner text={"4"} color={"#d3f5f5"} />
+        <Banner text={"5"} color={"#fcd5f5"} />
       </BannerList>
-      <button onClick={prevFunc}>prev</button>
-      <button onClick={nextFunc}>next</button>
+      <button onClick={prevFunc}>
+        {intl.formatMessage({ id: "banner.prev.btn" })}
+      </button>
+      <button onClick={nextFunc}>
+        {intl.formatMessage({ id: "banner.next.btn" })}
+      </button>
     </BannerComponent>
   );
 }
