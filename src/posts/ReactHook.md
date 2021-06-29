@@ -70,3 +70,87 @@ const TestRef = () => {
 위 예제에서는 첫번째 버튼을 누르면 값이 올라가고 렌더링이 되기때문에 바로 볼 수 있습니다.
 하지만 두번째 버튼을 누르게 되면 값은 올라가지만 렌더링이 되지않기때문에 바로 볼 수 없습니다.
 첫번째 버튼을 누르는 등 다른 변경으로 인해 렌더링이 되면 값이 올라간 두번째 버튼을 보실 수 있습니다.
+
+### 사용자 Hook
+
+두개의 함수에서 서로 같은 로직을 공유하고자할 때 이를 다른 함수로 분리합니다.
+사용자 Hook은 use로 시작하는 함수입니다.
+
+```
+function useFriendStatus(friendID) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  // ...
+
+  return isOnline;
+}
+```
+
+위 처럼 정의하고
+
+```
+function FriendStatus(props) {
+  const isOnline = useFriendStatus(props.friend.id);
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}
+```
+
+위와 같이 사용하면됩니다.
+
+사용자 정의 Hook은 React의 특별한 기능이라기보다 기본적으로 Hook의 디자인을 따르는 관습
+사용자 정의 훅은 무조건 use로 시작해야하는데 이 이유는 특정함수 안에서 hook을 호출하는지 알지 못하기 때문에 규칙 위반을 체크할 수 없게되기때문입니다.
+
+### useContext
+
+useContext는 context객체를 받아 그 값을 반환하는 hook입니다.
+context의 현재 값은 트리 안에서 이 Hook을 호출하는 컴포넌트에 가장 가까이에 있는 <MyContext.Provider>의 value prop에 의해 결정됩니다.
+
+맞는 사용: useContext(MyContext)
+틀린 사용: useContext(MyContext.Consumer)
+틀린 사용: useContext(MyContext.Provider)
+
+context에 전달하는 것은 context 객체 그 자체여야합니다.
+
+useContext는 context가 변경되면 항상 렌더링됩니다.
+
+```
+const themes = {
+  light: {
+    foreground: "#000000",
+    background: "#eeeeee"
+  },
+  dark: {
+    foreground: "#ffffff",
+    background: "#222222"
+  }
+};
+
+const ThemeContext = React.createContext(themes.light);
+
+function App() {
+  return (
+    <ThemeContext.Provider value={themes.dark}>
+      <ThemedButton />
+    </ThemeContext.Provider>
+  );
+}
+```
+
+context provider 생성
+
+```
+function ThemedButton() {
+  const theme = useContext(ThemeContext);
+  return (
+    <button style={{ background: theme.background, color: theme.foreground }}>
+      I am styled by theme context!
+    </button>
+  );
+}
+```
+
+button style에 적용
