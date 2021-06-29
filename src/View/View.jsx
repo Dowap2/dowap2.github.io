@@ -10,6 +10,15 @@ const ViewComponent = styled.div`
   margin: auto;
 `;
 
+const CodeComponent = styled.div`
+  background: #f5f5f5;
+  padding: 10px;
+`;
+const PComponent = styled.div`
+  font-size: 18px;
+  line-height: 30px;
+`;
+
 export function View({ match }) {
   const index = match.params.index;
   const [postMarkdown, setPostMarkdown] = useState([]);
@@ -41,9 +50,27 @@ export function View({ match }) {
     SetMarkdownUrl();
   }, []);
 
+  const Code = ({ children, ...props }) => (
+    <CodeComponent {...props}>{children}</CodeComponent>
+  );
+  const P = ({ children, ...props }) => (
+    <PComponent {...props}>{children}</PComponent>
+  );
+
   return (
     <ViewComponent>
-      <Markdown>
+      <Markdown
+        options={{
+          overrides: {
+            code: {
+              component: Code
+            },
+            p: {
+              component: P
+            }
+          }
+        }}
+      >
         {postMarkdown[index] === undefined
           ? "글이 존재하지않습니다."
           : postMarkdown[index]}
