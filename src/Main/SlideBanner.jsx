@@ -7,6 +7,7 @@ const BannerComponent = styled.div`
   width: 100%;
   height: 240px;
   background: black;
+  overflow-x: hidden;
 `;
 const BannerList = styled.div`
   width: 500vw;
@@ -34,20 +35,22 @@ export function SlideBanner() {
     }
   };
   return (
-    <BannerComponent>
-      <BannerList transform={transform}>
-        <Banner text={"1"} color={"#f5f5f5"} />
-        <Banner text={"2"} color={"#fdcd44"} />
-        <Banner text={"3"} color={"#a5b5fc"} />
-        <Banner text={"4"} color={"#d3f5f5"} />
-        <Banner text={"5"} color={"#fcd5f5"} />
-      </BannerList>
+    <div>
+      <BannerComponent>
+        <BannerList transform={transform}>
+          <Banner text={"1"} color={"#f5f5f5"} />
+          <Banner text={"2"} color={"#fdcd44"} />
+          <Banner text={"3"} color={"#a5b5fc"} />
+          <Banner text={"4"} color={"#d3f5f5"} />
+          <Banner text={"5"} color={"#fcd5f5"} />
+        </BannerList>
+      </BannerComponent>
       <button onClick={prevFunc}>
         {intl.formatMessage({ id: "banner.prev.btn" })}
       </button>
       <button onClick={nextFunc}>
         {intl.formatMessage({ id: "banner.next.btn" })}
       </button>
-    </BannerComponent>
+    </div>
   );
 }

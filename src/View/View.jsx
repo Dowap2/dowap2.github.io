@@ -19,8 +19,8 @@ const PComponent = styled.div`
   line-height: 30px;
 `;
 
-export function View({ match }) {
-  const index = match.params.index;
+export function View(props) {
+  const index = props.match.params.index;
   const [postMarkdown, setPostMarkdown] = useState([]);
 
   useEffect(() => {
