@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const CommentComponent = styled.div`
@@ -8,14 +8,30 @@ const CommentComponent = styled.div`
 
 export function Comment(props) {
   const [comment, setComment] = useState("");
+  const [commentList, setCommentList] = useState([]);
+  const [commentListItem, setCommentListItem] = useState([]);
+
+  const Confirm = () => {
+    setCommentList(commentList.concat([comment]));
+    setComment("");
+  };
+
+  useEffect(() => {
+    setCommentListItem(
+      commentList.map(list => {
+        return <div>{list}</div>;
+      })
+    );
+  }, [commentList]);
   return (
     <CommentComponent>
+      {commentListItem}
       <input
         type="text"
         value={comment}
         onChange={e => setComment(e.target.value)}
       />
-      <button>ok</button>
+      <button onClick={Confirm}>confirm</button>
     </CommentComponent>
   );
 }
