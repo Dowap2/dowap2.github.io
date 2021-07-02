@@ -38,7 +38,12 @@ export function SlideBanner() {
     <div>
       <BannerComponent>
         <BannerList transform={transform}>
-          <Banner text={"1"} color={"#f5f5f5"} />
+          <Banner
+            text={
+              "프로덕트에 애정을 가지고 발전시키는 것을 좋아하는 오경태 입니다."
+            }
+            color={"#f5f5f5"}
+          />
           <Banner text={"2"} color={"#fdcd44"} />
           <Banner text={"3"} color={"#a5b5fc"} />
           <Banner text={"4"} color={"#d3f5f5"} />

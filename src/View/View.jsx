@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Markdown from "markdown-to-jsx";
-
-const importAll = r => r.keys().map(r);
-const markdownFiles = importAll(require.context("../posts", false, /\.md$/));
+import { useSelector } from "react-redux";
 
 const ViewComponent = styled.div`
   width: 980px;
@@ -20,6 +18,9 @@ const PComponent = styled.div`
 `;
 
 export function View(props) {
+  const markdownFiles = useSelector(
+    state => state.mdFileState.state.markdownFiles
+  );
   const index = props.match.params.index;
   const [postMarkdown, setPostMarkdown] = useState([]);
 
