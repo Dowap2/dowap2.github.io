@@ -21,6 +21,8 @@ const ListItemComponent = styled.div`
   border-radius: 5px;
   box-shadow: rgb(0 0 0 / 4%) 0px 4px 16px 0px;
   background: #fff;
+  display: flex;
+  flex-direction: column;
 `;
 const ListTitleComponent = styled.p`
   width: 100%;
@@ -28,8 +30,10 @@ const ListTitleComponent = styled.p`
   border-bottom: 1px solid #f5f5f5;
   font-size: 16px;
 `;
-const ListPreview = styled.div`
+const ListPreview = styled.p`
   padding: 10px;
+  font-weight: lighter;
+  font-size: 14px;
 `;
 
 export function List(props) {
@@ -57,7 +61,7 @@ export function List(props) {
           fetch(url)
             .then(res => res.text())
             .then(data => {
-              const preview = data.slice(0, 100);
+              const preview = data.slice(0, 150);
               return preview;
             })
         )
