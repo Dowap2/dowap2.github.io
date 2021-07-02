@@ -4,11 +4,13 @@ const BannerItem = styled.div`
   width: 100vw;
   height: 240px;
   color: #000;
-  background: ${props => props.background};
-  display: table;
+  background-image: ${props => `url(${props.background})`};
+  background-size: contain;
+  display: flex;
   float: left;
+  text-align: center;
 `;
 
 export function Banner(props) {
-  return <BannerItem background={props.color}>{props.text}</BannerItem>;
+  return <BannerItem background={props.url}></BannerItem>;
 }

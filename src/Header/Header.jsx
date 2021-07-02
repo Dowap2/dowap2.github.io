@@ -11,6 +11,7 @@ const HeaderComponent = styled.div`
   height: 40px;
   display: flex;
   background: #ffffff;
+  border: 1px solid #f5f5f5;
 `;
 const Wrapper = styled.div`
   width: 980px;
