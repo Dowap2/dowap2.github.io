@@ -4,7 +4,6 @@ const FooterComponent = styled.div`
   width: 100%;
   height: 80px;
   background: #f5f5f5;
-  margin-top: 30px;
 `;
 const Wrapper = styled.div`
   width: 980px;

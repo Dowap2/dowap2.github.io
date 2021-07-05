@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
+const ListBackground = styled.div`
+  background: #f8f9fa;
+  padding-bottom: 40px;
+`;
 const linkStyle = {
   color: "black",
   textDecoration: "none"
@@ -90,6 +94,9 @@ export function List(props) {
       );
     };
   }, []);
-
-  return <ListComponent>{ListItem}</ListComponent>;
+  return (
+    <ListBackground>
+      <ListComponent>{ListItem}</ListComponent>
+    </ListBackground>
+  );
 }
