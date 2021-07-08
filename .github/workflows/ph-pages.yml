@@ -21,7 +21,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - run: yarn ci
       - run: yarn run predeploy
 
       - name: Deploy
