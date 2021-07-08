@@ -9,5 +9,6 @@ jobs:
     - uses: actions/checkout@v2.1.0
     - name: yarn build and deploy
       run: |
+        yarn upgrade
         yarn run build
         yarn deploy
