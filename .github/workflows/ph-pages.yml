@@ -10,5 +10,4 @@ jobs:
     - name: yarn build and deploy
       run: |
         yarn upgrade
-        yarn run build
-        yarn deploy
+        yarn predeploy
