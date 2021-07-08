@@ -6,5 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-
-      - run: yarn run predeploy
+    - name: yarn build and deploy
+      run: |
+        yarn run build
+        yarn deploy
