@@ -1,0 +1,14 @@
+name: github pages
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2.1.0
+    - name: yarn build and deploy
+      run: |
+        yarn upgrade
+        yarn run build
+        yarn deploy
