@@ -1,6 +1,11 @@
-const foo = { a: 1, b: 2 };
-const bar = { a: 1, b: 2 };
+console.log("hi");
+function findUserAndCallBack(bye) {
+  setTimeout(function() {
+    console.log("bye");
+    bye();
+  }, 100);
+}
 
-console.log(JSON.stringify(foo));
-console.log(JSON.stringify(bar));
-console.log(JSON.stringify(foo) === JSON.stringify(bar));
+findUserAndCallBack(function() {
+  console.log("hi");
+});
