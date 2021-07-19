@@ -1,11 +1,11 @@
-import { List } from "./List";
 import { SlideBanner } from "./SlideBanner";
+import { Layout } from "./Layout";
 
 export function MainComponent(props) {
   return (
     <div>
       <SlideBanner />
-      <List />
+      <Layout />
     </div>
   );
 }
