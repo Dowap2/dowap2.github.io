@@ -59,3 +59,56 @@ Any(모든타입)
 Void(변수에는 null과 undefined만 가능 함수에 할당시 반환값없는 함수를 의미)
 
 Never(끝까지 실행되지않는다는 의미)
+
+#### type vs interface
+
+타입 별칭과 인터페이스의 가장 큰 차이점은 타입의 확장 가능 / 불가능 여부에 따라 갈리게 됩니다.
+인터페이스는 확장이 가능하고 타입 별칭은 확장이 불가능합니다.
+
+좋은 소프트웨어는 언제나 확장에 용이해야한다는 원칙에 따라 확장이 가능한 interface로 선언하는 것을 추천합니다.
+
+```
+// 일반 사용예제
+interface ExampleType {
+    name: string
+    age: number
+}
+
+const example: ExampleType = {
+    name: "oh",
+    age: 21
+}
+
+type Example2Type {
+    name: string
+    age: number
+}
+
+const example: Example2Type = {
+    name: "oh",
+    age: 21
+}
+
+// 확장 방법
+
+interface ExampleType {
+    name: string
+    age: number
+}
+
+interface ExampleType extends AddType {
+    phone: number
+}
+
+type ExampleType2 {
+    name: string
+    age: number
+}
+
+type AddType = ExampleType & {
+    phone: number
+}
+
+```
+
+Type을 확장하기 위해서는 새로운 타입에 기존의 타입을 추가하는 방식으로 해야한다.
