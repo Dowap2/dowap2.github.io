@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 const ListBackground = styled.div`
-  background: #f8f9fa;
+  width: 100%;
   padding-bottom: 40px;
 `;
 const linkStyle = {
@@ -12,8 +12,7 @@ const linkStyle = {
   textDecoration: "none"
 };
 const ListComponent = styled.ul`
-  width: 980px;
-  margin: auto;
+  width: 100%;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -29,7 +28,8 @@ const ListItemComponent = styled.div`
   flex-direction: column;
 `;
 const ListTitleComponent = styled.p`
-  width: 100%;
+  box-sizing: border-box;
+  width: 300px;
   padding: 15px;
   border-bottom: 1px solid #f5f5f5;
   font-size: 16px;
