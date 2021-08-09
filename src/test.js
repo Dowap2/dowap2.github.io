@@ -1,11 +1,10 @@
-console.log("hi");
-function findUserAndCallBack(bye) {
-  setTimeout(function() {
-    console.log("bye");
-    bye();
-  }, 100);
+function basicFunc() {
+  console.log(1);
 }
+function higherFunc(input) {
+  console.log(2);
+  return input;
+}
+const Execution = higherFunc(basicFunc);
 
-findUserAndCallBack(function() {
-  console.log("hi");
-});
+Execution();
