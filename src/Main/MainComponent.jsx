@@ -6,7 +6,7 @@ const MainBackground = styled.div`
   background: #f8f9fa;
 `;
 
-export function MainComponent(props) {
+export function MainComponent() {
   return (
     <MainBackground>
       <SlideBanner />
