@@ -31,7 +31,7 @@ const ListTitleComponent = styled.p`
   box-sizing: border-box;
   width: 300px;
   padding: 15px;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid #2770f5;
   font-size: 16px;
 `;
 const ListPreview = styled.p`

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Banner } from "./Banner";
-import { useIntl } from "react-intl";
 import BannerImg1 from "../Img/BannerImg/BannerImg1.png";
 import BannerImg2 from "../Img/BannerImg/BannerImg2.png";
 import BannerImg3 from "../Img/BannerImg/BannerImg3.png";
