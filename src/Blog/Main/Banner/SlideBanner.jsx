@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Banner } from "./Banner";
-import BannerImg1 from "../Img/BannerImg/BannerImg1.png";
-import BannerImg2 from "../Img/BannerImg/BannerImg2.png";
-import BannerImg3 from "../Img/BannerImg/BannerImg3.png";
+import BannerImg1 from "../../Img/BannerImg/BannerImg1.png";
+import BannerImg2 from "../../Img/BannerImg/BannerImg2.png";
+import BannerImg3 from "../../Img/BannerImg/BannerImg3.png";
 
 const BannerComponent = styled.div`
   width: 100%;

@@ -40,10 +40,12 @@ const ListPreview = styled.p`
   font-size: 14px;
 `;
 
-export function List(props) {
+export function List() {
   const markdownFiles = useSelector(
     state => state.mdFileState.state.markdownFiles
   );
+  console.log(markdownFiles);
+  console.log(1);
   const markdownTitle = markdownFiles.map(
     file => file.default.slice(14).split(".")[0]
   );

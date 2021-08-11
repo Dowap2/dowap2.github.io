@@ -1,4 +1,4 @@
-import { List } from "./List";
+import { MainComponent } from "./Main/MainComponent";
 import styled from "styled-components";
 
 const LayoutComponent = styled.div`
@@ -13,7 +13,7 @@ const LayoutComponent = styled.div`
 export function Layout() {
   return (
     <LayoutComponent>
-      <List />
+      <MainComponent />
     </LayoutComponent>
   );
 }

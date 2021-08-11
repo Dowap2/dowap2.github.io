@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as languageActions from "../store/modules/languageState";
+import * as languageActions from "../../store/modules/languageState";
 import { Footer } from "./Footer";
 
 const FooterContainer = props => {

@@ -23,7 +23,7 @@ const LogoImg = styled.img`
   height: 36px;
 `;
 
-export function Header(props) {
+export function Header() {
   const intl = useIntl();
   return (
     <HeaderComponent>
