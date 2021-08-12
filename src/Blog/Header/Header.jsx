@@ -1,12 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useIntl } from "react-intl";
-import Logo from "../Img/Logo.png";
+import Logo from "../../Img/Logo.png";
 
-const linkStyle = {
-  color: "black",
-  textDecoration: "none"
-};
 const HeaderComponent = styled.div`
   width: 100%;
   height: 40px;
@@ -24,13 +19,15 @@ const LogoImg = styled.img`
 `;
 
 export function Header() {
-  const intl = useIntl();
   return (
-    <HeaderComponent>
-      <Wrapper>
-        <Link to="/" style={linkStyle}></Link>
-        <LogoImg src={Logo} alt="" />
-      </Wrapper>
-    </HeaderComponent>
+    <div>
+      <HeaderComponent>
+        <Wrapper>
+          <Link to="/">
+            <LogoImg src={Logo} alt="" />
+          </Link>
+        </Wrapper>
+      </HeaderComponent>
+    </div>
   );
 }

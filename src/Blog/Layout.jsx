@@ -1,8 +1,13 @@
 import { MainComponent } from "./Main/MainComponent";
 import styled from "styled-components";
 
+const MainBackground = styled.div`
+  width: 100%;
+  height: 100%;
+  background: #f8f9fa;
+`;
+
 const LayoutComponent = styled.div`
-  display: flex;
   width: 960px;
   margin: auto;
   @media only screen and (max-width: 960px) {
@@ -12,8 +17,10 @@ const LayoutComponent = styled.div`
 
 export function Layout() {
   return (
-    <LayoutComponent>
-      <MainComponent />
-    </LayoutComponent>
+    <MainBackground>
+      <LayoutComponent>
+        <MainComponent />
+      </LayoutComponent>
+    </MainBackground>
   );
 }
