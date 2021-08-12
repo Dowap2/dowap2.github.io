@@ -10,6 +10,7 @@ const MainBackground = styled.div`
 const LayoutComponent = styled.div`
   width: 960px;
   margin: auto;
+  padding: 20px;
   @media only screen and (max-width: 960px) {
     width: 100%;
   }

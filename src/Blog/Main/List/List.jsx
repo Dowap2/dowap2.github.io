@@ -17,8 +17,13 @@ const ListComponent = styled.ul`
   display: flex;
   flex-wrap: wrap;
 `;
+const ListItemSpace = styled.div`
+  width: 320px;
+  height: 320px;
+  display: flex;
+`;
 const ListItemComponent = styled.div`
-  margin: 10px;
+  margin: 20px;
   width: 300px;
   height: 300px;
   border-radius: 5px;
@@ -26,6 +31,11 @@ const ListItemComponent = styled.div`
   background: #fff;
   display: flex;
   flex-direction: column;
+  transition: 0.25s ease-in 0s, transform 0.25s ease-in 0s;
+  &:hover {
+    margin-top: 10px;
+    box-shadow: rgb(0 0 0 / 16%) 0px 4px 16px 0px;
+  }
 `;
 const ListTitleComponent = styled.p`
   box-sizing: border-box;
@@ -84,10 +94,12 @@ export function List() {
         markdownTitle.map(listTitle => {
           const item = (
             <Link to={`/view/${index}`} style={linkStyle} key={index}>
-              <ListItemComponent>
-                <ListTitleComponent>{listTitle}</ListTitleComponent>
-                <ListPreview>{postMarkdown[index]}</ListPreview>
-              </ListItemComponent>
+              <ListItemSpace>
+                <ListItemComponent>
+                  <ListTitleComponent>{listTitle}</ListTitleComponent>
+                  <ListPreview>{postMarkdown[index]}</ListPreview>
+                </ListItemComponent>
+              </ListItemSpace>
             </Link>
           );
           index++;
