@@ -12,10 +12,13 @@ const linkStyle = {
   textDecoration: "none"
 };
 const ListComponent = styled.ul`
-  width: 100%;
+  width: 960px;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 const ListItemSpace = styled.div`
   width: 320px;
@@ -55,7 +58,6 @@ export function List() {
     state => state.mdFileState.state.markdownFiles
   );
   console.log(markdownFiles);
-  console.log(1);
   const markdownTitle = markdownFiles.map(
     file => file.default.slice(14).split(".")[0]
   );

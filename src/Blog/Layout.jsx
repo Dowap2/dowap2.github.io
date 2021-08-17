@@ -13,6 +13,7 @@ const LayoutComponent = styled.div`
   padding: 20px;
   @media only screen and (max-width: 960px) {
     width: 100%;
+    box-sizing: border-box;
   }
 `;
 

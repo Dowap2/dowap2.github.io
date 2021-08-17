@@ -6,8 +6,11 @@ const FooterComponent = styled.div`
   background: #f5f5f5;
 `;
 const Wrapper = styled.div`
-  width: 980px;
+  width: 960px;
   margin: auto;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 const ChangeLanguageComponent = styled.select`
   margin-top: 30px;
