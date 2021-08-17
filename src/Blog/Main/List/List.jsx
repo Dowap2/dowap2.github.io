@@ -24,6 +24,9 @@ const ListItemSpace = styled.div`
   width: 320px;
   height: 320px;
   display: flex;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 const ListItemComponent = styled.div`
   margin: 20px;
@@ -39,6 +42,9 @@ const ListItemComponent = styled.div`
     margin-top: 10px;
     box-shadow: rgb(0 0 0 / 16%) 0px 4px 16px 0px;
   }
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 const ListTitleComponent = styled.p`
   box-sizing: border-box;
@@ -46,11 +52,17 @@ const ListTitleComponent = styled.p`
   padding: 15px;
   border-bottom: 1px solid #2770f5;
   font-size: 16px;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 const ListPreview = styled.p`
   padding: 10px;
   font-weight: lighter;
   font-size: 14px;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 
 export function List() {
