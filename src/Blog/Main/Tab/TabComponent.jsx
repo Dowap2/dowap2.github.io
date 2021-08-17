@@ -9,7 +9,9 @@ const SearchBar = styled.div`
   border-radius: 40px;
   border: 1px solid #2770f5;
   width: ${props => (props.searchState ? "32px" : "400px")};
-  padding: ${props => (props.searchState ? "5px" : "5px")};
+  transition: width 0.5s;
+  padding: 5px;
+  padding-left: ${props => (props.searchState ? "5px" : "20px")};
   height: 32px;
 `;
 const SearchIcon = styled.img`
@@ -38,7 +40,7 @@ export function TabComponent(props) {
         <SearchInput type="text" placeholder="검색" />
         <SearchIcon
           src={Search}
-          alt=""
+          alt="searchIcon"
           searchState={searchState}
           onClick={e => props.onChange(!searchState)}
         />
