@@ -28,8 +28,7 @@ const SearchInput = styled.input`
 `;
 
 export function TabComponent(props) {
-  const searchState = useSelector(state => state.searchState.searchState);
-  console.log(searchState);
+  const searchState = useSelector(state => state.searchState.state.searchState);
   return (
     <div>
       <select name="최신" id="">
@@ -40,7 +39,7 @@ export function TabComponent(props) {
         <SearchInput
           type="text"
           placeholder="검색"
-          onChange={e => console.log(e.target.value)}
+          onChange={e => props.onChangeWord(e.target.value)}
         />
         <SearchIcon
           src={Search}
