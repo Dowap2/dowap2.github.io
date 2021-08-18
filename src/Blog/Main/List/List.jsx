@@ -69,11 +69,13 @@ export function List() {
   const markdownFiles = useSelector(
     state => state.mdFileState.state.markdownFiles
   );
-  console.log(markdownFiles);
   const markdownTitle = markdownFiles.map(
     file => file.default.slice(14).split(".")[0]
   );
   const [ListItem, setListItem] = useState([]);
+  const searchWord = useSelector(
+    state => state.searchState.state.searchKeyword
+  );
 
   useEffect(() => {
     async function SetMarkdownUrl() {
@@ -117,11 +119,11 @@ export function List() {
             </Link>
           );
           index++;
-          return item;
+          return listTitle.indexOf(searchWord) === -1 ? null : item;
         })
       );
     };
-  }, []);
+  }, [searchWord]);
   return (
     <ListBackground>
       <ListComponent>{ListItem}</ListComponent>
