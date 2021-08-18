@@ -37,7 +37,11 @@ export function TabComponent(props) {
         <option value="최신역순">최신역순</option>
       </select>
       <SearchBar searchState={searchState}>
-        <SearchInput type="text" placeholder="검색" />
+        <SearchInput
+          type="text"
+          placeholder="검색"
+          onChange={e => console.log(e.target.value)}
+        />
         <SearchIcon
           src={Search}
           alt="searchIcon"
