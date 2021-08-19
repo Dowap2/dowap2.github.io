@@ -1,6 +1,7 @@
 import Search from "../../../Img/Search.png";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import { useIntl } from "react-intl";
 
 const SearchBar = styled.div`
   display: flex;
@@ -29,16 +30,15 @@ const SearchInput = styled.input`
 
 export function TabComponent(props) {
   const searchState = useSelector(state => state.searchState.state.searchState);
+  const intl = useIntl();
   return (
     <div>
-      <select name="최신" id="">
-        <option value="최신">최신</option>
-        <option value="최신역순">최신역순</option>
-      </select>
       <SearchBar searchState={searchState}>
         <SearchInput
           type="text"
-          placeholder="검색"
+          placeholder={intl.formatMessage({
+            id: "searchInputPlaceholder"
+          })}
           onChange={e => props.onChangeWord(e.target.value)}
         />
         <SearchIcon

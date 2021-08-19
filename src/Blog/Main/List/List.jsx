@@ -43,7 +43,9 @@ const ListItemComponent = styled.div`
     box-shadow: rgb(0 0 0 / 16%) 0px 4px 16px 0px;
   }
   @media only screen and (max-width: 960px) {
-    width: 100%;
+    width: calc(100vw - 40px);
+    margin: 0;
+    margin-top: 20px;
   }
 `;
 const ListTitleComponent = styled.p`
@@ -60,6 +62,7 @@ const ListPreview = styled.p`
   padding: 10px;
   font-weight: lighter;
   font-size: 14px;
+  box-sizing: border-box;
   @media only screen and (max-width: 960px) {
     width: 100%;
   }
@@ -119,7 +122,10 @@ export function List() {
             </Link>
           );
           index++;
-          return listTitle.indexOf(searchWord) === -1 ? null : item;
+          return listTitle.toLowerCase().indexOf(searchWord.toLowerCase()) ===
+            -1
+            ? null
+            : item;
         })
       );
     };
