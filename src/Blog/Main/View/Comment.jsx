@@ -9,11 +9,19 @@ const CommentComponent = styled.div`
   margin: auto;
   border: 1px solid #f1f1f1;
   padding: 20px;
+  box-sizing: border-box;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 
 const CommentInputComponent = styled.div`
   width: 980px;
   margin: auto;
+  box-sizing: border-box;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 
 export function Comment(props) {

@@ -6,15 +6,27 @@ import { useSelector } from "react-redux";
 const ViewComponent = styled.div`
   width: 980px;
   margin: auto;
+  box-sizing: border-box;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 
 const CodeComponent = styled.div`
   background: #f5f5f5;
   padding: 10px;
+  box-sizing: border-box;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 const PComponent = styled.div`
   font-size: 18px;
   line-height: 30px;
+  box-sizing: border-box;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 
 export function View(props) {
