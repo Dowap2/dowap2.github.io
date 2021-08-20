@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Header } from "./Blog/Header/Header";
 import { ViewComponent } from "./Blog/Main/View/ViewComponent";
-import FooterContainer from "./Blog/Footer/FooterContainer";
+import { Footer } from "./Blog/Footer/Footer";
 import { Layout } from "./Blog/Layout";
 import { SlideBanner } from "./Banner/SlideBanner";
 
@@ -15,7 +15,7 @@ function App() {
         <Route exact path="/" component={Layout} />
         <Route path="/view/:index" component={ViewComponent} />
       </div>
-      <FooterContainer />
+      <Footer />
     </Router>
   );
 }

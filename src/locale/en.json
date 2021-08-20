@@ -4,5 +4,8 @@
 
   "header.title": "main",
 
+  "InputLanguage.English": "English",
+  "InputLanguage.Korean": "Korean",
+
   "searchInputPlaceholder": "search"
 }

@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as languageActions from "../../store/modules/languageState";
-import { Footer } from "./Footer";
+import { InputLanguage } from "./InputLanguage";
 
-const FooterContainer = props => {
-  return <Footer onChange={props.language} />;
+const InputLanguageContainer = props => {
+  return <InputLanguage onChange={props.language} />;
 };
 
 const mapStateToProps = state => {
@@ -15,4 +15,7 @@ const mapDispatchToProps = dispatch => ({
   language: language => dispatch(languageActions.ChangeLanguage(language))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FooterContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(InputLanguageContainer);

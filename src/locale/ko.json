@@ -4,5 +4,8 @@
 
   "header.title": "홈",
 
+  "InputLanguage.English": "영어",
+  "InputLanguage.Korean": "한국어",
+
   "searchInputPlaceholder": "검색"
 }

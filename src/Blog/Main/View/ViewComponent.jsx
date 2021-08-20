@@ -3,7 +3,7 @@ import { Comment } from "./Comment";
 import styled from "styled-components";
 
 const LayoutComponent = styled.div`
-  width: 960px;
+  width: 100%;
   padding: 20px;
   box-sizing: border-box;
   @media only screen and (max-width: 960px) {
