@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const CommentInputComponent = styled.div`
@@ -14,19 +15,29 @@ export function CommentInput(props) {
   const [comment, setComment] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const commentState = useSelector(state => state.commentState.state.comment);
   const index = props.index;
 
   const Confirm = () => {
     if (userName === "" || password === "") {
       alert("user, password is null");
     } else {
-      // setCommentList(
-      //   commentList.concat([{ user: userName, comment: comment }])
-      // );
-      props.onChange({ index: [{ user: userName, comment: comment }] });
-      // setComment("");
-      // setUserName("");
-      // setPassword("");
+      const key = index;
+      const obj = {};
+      const commentList =
+        commentState[props.index] === undefined
+          ? [{ user: userName, comment: comment }]
+          : commentState[props.index].concat([
+              {
+                user: userName,
+                comment: comment
+              }
+            ]);
+      obj[key] = commentList;
+      props.onChange(obj);
+      setComment("");
+      setUserName("");
+      setPassword("");
     }
   };
 

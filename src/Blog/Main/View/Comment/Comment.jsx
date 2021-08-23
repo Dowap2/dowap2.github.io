@@ -7,7 +7,7 @@ export function Comment(props) {
   return (
     <div>
       <CommentInputContainer index={index} />
-      <CommentOutput />
+      <CommentOutput index={index} />
     </div>
   );
 }

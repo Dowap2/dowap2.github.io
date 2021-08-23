@@ -16,37 +16,24 @@ const CommentComponent = styled.div`
   }
 `;
 export function CommentOutput(props) {
-  const [comment, setComment] = useState("");
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [commentList, setCommentList] = useState([]);
   const [commentListItem, setCommentListItem] = useState([]);
 
-  const Confirm = () => {
-    if (userName === "" || password === "") {
-      alert("user, password is null");
-    } else {
-      setCommentList(
-        commentList.concat([{ user: userName, comment: comment }])
-      );
-      setComment("");
-      setUserName("");
-      setPassword("");
-    }
-  };
-  const example = useSelector(state => state.commentState.state);
+  const commentState = useSelector(state => state.commentState.state.comment);
+  const commentList = commentState[props.index];
+  console.log(commentState);
 
   useEffect(() => {
-    setCommentListItem(
-      commentList.map(list => {
-        return (
-          <CommentItem>
-            <button onClick={e => console.log(example)}></button>
-            {list.user}: {list.comment}
-          </CommentItem>
-        );
-      })
-    );
+    if (commentList != undefined) {
+      setCommentListItem(
+        commentList.map(list => {
+          return (
+            <CommentItem>
+              {list.user}: {list.comment}
+            </CommentItem>
+          );
+        })
+      );
+    }
   }, [commentList]);
   return <CommentComponent>{commentListItem}</CommentComponent>;
 }
