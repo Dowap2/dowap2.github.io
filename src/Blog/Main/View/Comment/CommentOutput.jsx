@@ -55,31 +55,5 @@ export function Comment(props) {
       })
     );
   }, [commentList]);
-  return (
-    <div>
-      <button onClick={e => console.log(commentList)}></button>
-      <CommentComponent>{commentListItem}</CommentComponent>
-      <CommentInputComponent>
-        <input
-          type="text"
-          placeholder="comment"
-          value={comment}
-          onChange={e => setComment(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="user"
-          value={userName}
-          onChange={e => setUserName(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <button onClick={Confirm}>confirm</button>
-      </CommentInputComponent>
-    </div>
-  );
+  return <CommentComponent>{commentListItem}</CommentComponent>;
 }
