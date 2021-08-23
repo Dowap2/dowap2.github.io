@@ -10,22 +10,23 @@ const CommentInputComponent = styled.div`
   }
 `;
 
-export function Comment(props) {
+export function CommentInput(props) {
   const [comment, setComment] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [commentList, setCommentList] = useState([]);
+  const index = props.index;
 
   const Confirm = () => {
     if (userName === "" || password === "") {
       alert("user, password is null");
     } else {
-      setCommentList(
-        commentList.concat([{ user: userName, comment: comment }])
-      );
-      setComment("");
-      setUserName("");
-      setPassword("");
+      // setCommentList(
+      //   commentList.concat([{ user: userName, comment: comment }])
+      // );
+      props.onChange({ index: [{ user: userName, comment: comment }] });
+      // setComment("");
+      // setUserName("");
+      // setPassword("");
     }
   };
 

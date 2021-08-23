@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const CommentItem = styled.div``;
@@ -14,17 +15,7 @@ const CommentComponent = styled.div`
     width: 100%;
   }
 `;
-
-const CommentInputComponent = styled.div`
-  width: 980px;
-  margin: auto;
-  box-sizing: border-box;
-  @media only screen and (max-width: 960px) {
-    width: 100%;
-  }
-`;
-
-export function Comment(props) {
+export function CommentOutput(props) {
   const [comment, setComment] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -43,12 +34,14 @@ export function Comment(props) {
       setPassword("");
     }
   };
+  const example = useSelector(state => state.commentState.state);
 
   useEffect(() => {
     setCommentListItem(
       commentList.map(list => {
         return (
           <CommentItem>
+            <button onClick={e => console.log(example)}></button>
             {list.user}: {list.comment}
           </CommentItem>
         );

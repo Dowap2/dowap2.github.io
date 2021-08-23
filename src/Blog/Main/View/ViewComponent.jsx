@@ -1,5 +1,5 @@
 import { View } from "./View";
-import { Comment } from "./Comment";
+import { Comment } from "./Comment/Comment";
 import styled from "styled-components";
 
 const LayoutComponent = styled.div`
@@ -16,7 +16,7 @@ export function ViewComponent({ match }) {
     <div>
       <LayoutComponent>
         <View match={match} />
-        <Comment />
+        <Comment match={match} />
       </LayoutComponent>
     </div>
   );
