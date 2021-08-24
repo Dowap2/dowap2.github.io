@@ -20,7 +20,7 @@ export function CommentOutput(props) {
 
   const commentState = useSelector(state => state.commentState.state.comment);
   const commentList = commentState[props.index];
-  console.log(commentState);
+  console.log(commentState[props.index]);
 
   useEffect(() => {
     if (commentList != undefined) {
