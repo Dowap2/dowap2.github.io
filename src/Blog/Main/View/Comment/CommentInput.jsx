@@ -35,10 +35,14 @@ export function CommentInput(props) {
             ]);
       obj[key] = commentList;
       props.onChange(obj);
-      setComment("");
-      setUserName("");
-      setPassword("");
+      ResetInput();
     }
+  };
+
+  const ResetInput = () => {
+    setComment("");
+    setUserName("");
+    setPassword("");
   };
 
   return (
