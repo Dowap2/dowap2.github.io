@@ -5,6 +5,9 @@ import styled from "styled-components";
 const CommentItem = styled.div`
   border-top: 1px solid #f5f5f5;
   padding: 24px 0px;
+  &:first-child {
+    border-top: 0px;
+  }
 `;
 
 const CommentHeader = styled.div`
@@ -65,7 +68,6 @@ export function CommentOutput(props) {
                   <Date>{exampleDate}</Date>
                 </CommentInfo>
               </CommentHeader>
-
               <Comment>{list.comment}</Comment>
             </CommentItem>
           );

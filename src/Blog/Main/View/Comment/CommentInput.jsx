@@ -10,6 +10,44 @@ const CommentInputComponent = styled.div`
     width: 100%;
   }
 `;
+const CommentInputText = styled.input`
+  width: 768px;
+  height: 98px;
+  padding: 16px 16px 24px 16px;
+  box-sizing: border-box;
+  border: 1px solid #f5f5f5;
+  border-radius: 5px;
+  outline: none;
+`;
+
+const CommentInputUserName = styled.input`
+  width: 100px;
+  height: 32px;
+  box-sizing: border-box;
+  border: 1px solid #f5f5f5;
+  border-radius: 5px;
+  outline: none;
+`;
+
+const CommentInputPassword = styled.input`
+  width: 100px;
+  height: 32px;
+  box-sizing: border-box;
+  border: 1px solid #f5f5f5;
+  border-radius: 5px;
+  outline: none;
+`;
+const InfoInput = styled.div`
+  margin-top: 10px;
+`;
+const ConfirmButton = styled.button`
+  width: 100px;
+  height: 32px;
+  border: 0px;
+  border-radius: 5px;
+  color: #ffffff;
+  background: #2770f5;
+`;
 
 export function CommentInput(props) {
   const [comment, setComment] = useState("");
@@ -47,25 +85,27 @@ export function CommentInput(props) {
 
   return (
     <CommentInputComponent>
-      <input
+      <CommentInputText
         type="text"
-        placeholder="comment"
         value={comment}
+        placeholder="댓글을 작성하세요"
         onChange={e => setComment(e.target.value)}
       />
-      <input
-        type="text"
-        placeholder="user"
-        value={userName}
-        onChange={e => setUserName(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
-      <button onClick={Confirm}>confirm</button>
+      <InfoInput>
+        <CommentInputUserName
+          type="text"
+          placeholder="user"
+          value={userName}
+          onChange={e => setUserName(e.target.value)}
+        />
+        <CommentInputPassword
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+        <ConfirmButton onClick={Confirm}>confirm</ConfirmButton>
+      </InfoInput>
     </CommentInputComponent>
   );
 }
