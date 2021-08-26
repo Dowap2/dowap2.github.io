@@ -15,15 +15,15 @@ const CommentComponent = styled.div`
     width: 100%;
   }
 `;
+
 export function CommentOutput(props) {
+  const commentState = useSelector(state => state.commentState.state);
   const [commentListItem, setCommentListItem] = useState([]);
 
-  const commentState = useSelector(state => state.commentState.state.comment);
-  const commentList = commentState[props.index];
-  console.log(commentState[props.index]);
+  const commentList = commentState.comment[props.index];
 
   useEffect(() => {
-    if (commentList != undefined) {
+    if (commentList !== undefined) {
       setCommentListItem(
         commentList.map(list => {
           return (
