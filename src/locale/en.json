@@ -2,6 +2,12 @@
   "banner.prev.btn": "prev",
   "banner.next.btn": "next",
 
+  "Comment.confirm.btn": "Confirm",
+
+  "Comment.inputPassword.placeholder": "password",
+  "Comment.inputText.placeholder": "text",
+  "Comment.inputUsername.placeholder": "name",
+
   "header.title": "main",
 
   "InputLanguage.English": "English",

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useIntl } from "react-intl";
 import styled from "styled-components";
 
 const CommentInputComponent = styled.div`
@@ -55,6 +56,7 @@ export function CommentInput(props) {
   const [password, setPassword] = useState("");
   const commentState = useSelector(state => state.commentState.state.comment);
   const index = props.index;
+  const intl = useIntl();
 
   const Confirm = () => {
     if (userName === "" || password === "") {
@@ -88,23 +90,33 @@ export function CommentInput(props) {
       <CommentInputText
         type="text"
         value={comment}
-        placeholder="댓글을 작성하세요"
+        placeholder={intl.formatMessage({
+          id: "Comment.inputText.placeholder"
+        })}
         onChange={e => setComment(e.target.value)}
       />
       <InfoInput>
         <CommentInputUserName
           type="text"
-          placeholder="user"
+          placeholder={intl.formatMessage({
+            id: "Comment.inputUsername.placeholder"
+          })}
           value={userName}
           onChange={e => setUserName(e.target.value)}
         />
         <CommentInputPassword
           type="password"
-          placeholder="password"
+          placeholder={intl.formatMessage({
+            id: "Comment.inputPassword.placeholder"
+          })}
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <ConfirmButton onClick={Confirm}>confirm</ConfirmButton>
+        <ConfirmButton onClick={Confirm}>
+          {intl.formatMessage({
+            id: "Comment.confirm.btn"
+          })}
+        </ConfirmButton>
       </InfoInput>
     </CommentInputComponent>
   );

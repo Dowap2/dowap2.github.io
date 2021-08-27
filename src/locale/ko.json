@@ -2,6 +2,12 @@
   "banner.prev.btn": "이전",
   "banner.next.btn": "다음",
 
+  "Comment.confirm.btn": "확인",
+
+  "Comment.inputPassword.placeholder": "비밀번호",
+  "Comment.inputText.placeholder": "댓글을 입력하세요",
+  "Comment.inputUsername.placeholder": "닉네임",
+
   "header.title": "홈",
 
   "InputLanguage.English": "영어",
