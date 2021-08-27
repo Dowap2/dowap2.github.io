@@ -64,13 +64,15 @@ export function CommentInput(props) {
     } else {
       const key = index;
       const obj = {};
+      const date = GetDate();
       const commentList =
         commentState[props.index] === undefined
-          ? [{ user: userName, comment: comment }]
+          ? [{ user: userName, comment: comment, date: date }]
           : commentState[props.index].concat([
               {
                 user: userName,
-                comment: comment
+                comment: comment,
+                date: date
               }
             ]);
       obj[key] = commentList;
@@ -83,6 +85,17 @@ export function CommentInput(props) {
     setComment("");
     setUserName("");
     setPassword("");
+  };
+
+  const GetDate = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const day = now.getDay();
+
+    const date = `${year}-${month}-${day}`;
+
+    return date;
   };
 
   return (

@@ -54,18 +54,18 @@ export function CommentOutput(props) {
   const [commentListItem, setCommentListItem] = useState([]);
 
   const commentList = commentState.comment[props.index];
-  const exampleDate = "2018년 11월 29일";
   useEffect(() => {
     if (commentList !== undefined) {
       setCommentListItem(
         commentList.map(list => {
+          console.log(list);
           return (
             <CommentItem>
               <CommentHeader>
                 <CommentProfileImg />
                 <CommentInfo>
                   <Name>{list.user}</Name>
-                  <Date>{exampleDate}</Date>
+                  <Date>{list.date}</Date>
                 </CommentInfo>
               </CommentHeader>
               <Comment>{list.comment}</Comment>
