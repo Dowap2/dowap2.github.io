@@ -58,7 +58,6 @@ export function CommentOutput(props) {
     if (commentList !== undefined) {
       setCommentListItem(
         commentList.map(list => {
-          console.log(list);
           return (
             <CommentItem>
               <CommentHeader>
