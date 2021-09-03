@@ -53,6 +53,8 @@ const ListTitleComponent = styled.p`
   width: 300px;
   height: 20px;
   padding: 0px 15px;
+  margin: 0px;
+  margin-top: 10px;
   font-size: 16px;
   font-weight: 600;
   @media only screen and (max-width: 960px) {
@@ -62,7 +64,7 @@ const ListTitleComponent = styled.p`
 const ListPreview = styled.p`
   box-sizing: border-box;
   padding: 10px;
-  height: 185px;
+  height: 150px;
   margin: 0;
   font-weight: lighter;
   font-size: 14px;
@@ -72,15 +74,11 @@ const ListPreview = styled.p`
   }
 `;
 const Thumbnail = styled.img`
+  box-sizing: border-box;
   width: 100%;
   height: 200px;
   background: #000000;
   border-radius: 5px 5px 0px 0px;
-`;
-const ListFooter = styled.div`
-  width: 100%;
-  height: 15px;
-  border-top: 1px solid #f5f5f5;
 `;
 
 export function List() {
@@ -133,7 +131,6 @@ export function List() {
                   <Thumbnail />
                   <ListTitleComponent>{listTitle}</ListTitleComponent>
                   <ListPreview>{postMarkdown[index]}</ListPreview>
-                  <ListFooter />
                 </ListItemComponent>
               </ListItemSpace>
             </Link>
