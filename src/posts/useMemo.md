@@ -51,4 +51,26 @@ id만 변경되었음에도 getName이 실행이되고 name의 정보는 이전 
 
 const name = useMemo(() => getName(name), [name]); 과 같이 사용합니다.
 
+## useCallback
+
+useCallback은 메모리제이션된 함수를 반환하는 것이 핵심인데
+컴포넌트는 렌더링 될 때마다 내부에 선언되어 있는 변수 혹은 함수를 모두 재선언하게 되는데,
+함수의 상태값이 변경되어 새로운 렌더링이 될 때 상관없는 함수를 재선언하게 된다는 뜻입니다.
+
+그렇기때문에 useCallback은 특정 함수를 새로 선언하지않고 재사용합니다.
+
+```
+/사용예시
+const exampleCallback = useCallback(함수, 배열);
+```
+
+```
+//useCallback을 사용하지않을 때
+const add = () => x + y;
+//사용할 때
+const add = useCallback(() => x + y, [x, y]);
+```
+
+useCallback에 넣어놓은 x,y가 바뀌지않으면 함수는 재선언되지않습니다.
+
 React.memo()로 함수형 컴포넌트 자체를 감싸면 넘겨 받는 props가 변경되지 않았을 때는 상위 컴포넌트가 메모리제이션된 함수형 컴포넌트(이전에 렌더링된 결과)를 사용하게 된다.
