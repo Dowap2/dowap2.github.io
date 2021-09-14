@@ -67,10 +67,12 @@ const exampleCallback = useCallback(함수, 배열);
 ```
 //useCallback을 사용하지않을 때
 const add = () => x + y;
+
 //사용할 때
 const add = useCallback(() => x + y, [x, y]);
 ```
 
 useCallback에 넣어놓은 x,y가 바뀌지않으면 함수는 재선언되지않습니다.
 
-React.memo()로 함수형 컴포넌트 자체를 감싸면 넘겨 받는 props가 변경되지 않았을 때는 상위 컴포넌트가 메모리제이션된 함수형 컴포넌트(이전에 렌더링된 결과)를 사용하게 된다.
+이는 렌더링최적화 즉 성능을 최적화하는데에 도움을 주지만 비싼 계산이 아닌 경우
+꼭 사용을 해야하는 것은 아닌 것 같습니다.
