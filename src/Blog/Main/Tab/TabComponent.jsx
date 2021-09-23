@@ -9,11 +9,15 @@ const SearchBar = styled.div`
   background: #ffffff;
   border-radius: 40px;
   border: 1px solid #2770f5;
-  width: ${props => (props.searchState ? "32px" : "400px")};
+  width: ${props => (props.searchState ? "40px" : "400px")};
   transition: width 0.5s;
   padding: 5px;
   padding-left: ${props => (props.searchState ? "5px" : "20px")};
-  height: 32px;
+  height: 40px;
+  box-sizing: border-box;
+  @media only screen and (max-width: 960px) {
+    width: ${props => (props.searchState ? "40px" : "100%")};
+  }
 `;
 const SearchIcon = styled.img`
   width: 32px;
