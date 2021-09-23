@@ -19,6 +19,9 @@ const CommentInputText = styled.input`
   border: 1px solid #f5f5f5;
   border-radius: 5px;
   outline: none;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 
 const CommentInputUserName = styled.input`

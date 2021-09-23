@@ -16,6 +16,7 @@ const CodeComponent = styled.div`
   background: #f5f5f5;
   padding: 10px;
   box-sizing: border-box;
+  overflow: scroll;
   @media only screen and (max-width: 960px) {
     width: 100%;
   }

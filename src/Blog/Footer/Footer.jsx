@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   width: 960px;
   padding: 20px;
   margin: auto;
+  box-sizing: border-box;
   @media only screen and (max-width: 960px) {
     width: 100%;
   }
