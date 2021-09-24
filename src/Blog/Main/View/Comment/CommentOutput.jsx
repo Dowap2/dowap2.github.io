@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import DeleteComponent from "./DeleteComponent";
 
 const CommentItem = styled.div`
   border-top: 1px solid #f5f5f5;
@@ -49,10 +50,6 @@ const CommentComponent = styled.div`
   }
 `;
 
-const DeleteButton = styled.button``;
-
-const deleteFunc = () => {};
-
 export function CommentOutput(props) {
   const commentState = useSelector(state => state.commentState.state);
   const [commentListItem, setCommentListItem] = useState([]);
@@ -60,8 +57,10 @@ export function CommentOutput(props) {
   const commentList = commentState.comment[props.index];
   useEffect(() => {
     if (commentList !== undefined) {
+      let index = 0;
       setCommentListItem(
         commentList.map(list => {
+          index++;
           return (
             <CommentItem>
               <CommentHeader>
@@ -70,9 +69,7 @@ export function CommentOutput(props) {
                   <Name>{list.user}</Name>
                   <Date>{list.date}</Date>
                 </CommentInfo>
-                <DeleteButton onClick={e => props.onChange(true)}>
-                  삭제
-                </DeleteButton>
+                <DeleteComponent index={index} password={list.password} />
               </CommentHeader>
               <Comment>{list.comment}</Comment>
             </CommentItem>

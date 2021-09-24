@@ -71,12 +71,20 @@ export function CommentInput(props) {
       console.log(date);
       const commentList =
         commentState[props.index] === undefined
-          ? [{ user: userName, comment: comment, date: date }]
+          ? [
+              {
+                user: userName,
+                comment: comment,
+                date: date,
+                password: password
+              }
+            ]
           : commentState[props.index].concat([
               {
                 user: userName,
                 comment: comment,
-                date: date
+                date: date,
+                password: password
               }
             ]);
       obj[key] = commentList;
