@@ -68,6 +68,7 @@ export function CommentInput(props) {
       const key = index;
       const obj = {};
       const date = GetDate();
+      console.log(date);
       const commentList =
         commentState[props.index] === undefined
           ? [{ user: userName, comment: comment, date: date }]
@@ -91,12 +92,7 @@ export function CommentInput(props) {
   };
 
   const GetDate = () => {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth();
-    const day = now.getDay();
-
-    const date = `${year}-${month}-${day}`;
+    const date = new Date().toLocaleString();
 
     return date;
   };
