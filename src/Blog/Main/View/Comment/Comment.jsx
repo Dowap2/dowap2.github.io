@@ -1,5 +1,5 @@
 import CommentInputContainer from "./CommentInputContainer";
-import { CommentOutput } from "./CommentOutput";
+import CommentOutputContainer from "./CommentOutputContainer";
 import styled from "styled-components";
 
 const CommentComponent = styled.div`
@@ -12,7 +12,7 @@ export function Comment(props) {
   return (
     <CommentComponent>
       <CommentInputContainer index={index} />
-      <CommentOutput index={index} />
+      <CommentOutputContainer index={index} />
     </CommentComponent>
   );
 }

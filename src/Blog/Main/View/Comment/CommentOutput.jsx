@@ -51,6 +51,8 @@ const CommentComponent = styled.div`
 
 const DeleteButton = styled.button``;
 
+const deleteFunc = () => {};
+
 export function CommentOutput(props) {
   const commentState = useSelector(state => state.commentState.state);
   const [commentListItem, setCommentListItem] = useState([]);
@@ -68,7 +70,9 @@ export function CommentOutput(props) {
                   <Name>{list.user}</Name>
                   <Date>{list.date}</Date>
                 </CommentInfo>
-                <DeleteButton>삭제</DeleteButton>
+                <DeleteButton onClick={e => props.onChange(true)}>
+                  삭제
+                </DeleteButton>
               </CommentHeader>
               <Comment>{list.comment}</Comment>
             </CommentItem>
