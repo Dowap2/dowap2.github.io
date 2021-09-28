@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import DeleteComponent from "./DeleteComponent";
+import DeleteContainer from "./DeleteContainer";
 
 const CommentItem = styled.div`
   border-top: 1px solid #f5f5f5;
@@ -69,7 +69,11 @@ export function CommentOutput(props) {
                   <Name>{list.user}</Name>
                   <Date>{list.date}</Date>
                 </CommentInfo>
-                <DeleteComponent index={index} password={list.password} />
+                <DeleteContainer
+                  blogNum={props.index}
+                  index={index}
+                  password={list.password}
+                />
               </CommentHeader>
               <Comment>{list.comment}</Comment>
             </CommentItem>

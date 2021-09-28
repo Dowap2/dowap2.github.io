@@ -68,7 +68,6 @@ export function CommentInput(props) {
       const key = index;
       const obj = {};
       const date = GetDate();
-      console.log(date);
       const commentList =
         commentState[props.index] === undefined
           ? [
