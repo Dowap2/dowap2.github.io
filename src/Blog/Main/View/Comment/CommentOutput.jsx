@@ -81,6 +81,6 @@ export function CommentOutput(props) {
         })
       );
     }
-  }, [commentList]);
+  }, [commentList, props.index]);
   return <CommentComponent>{commentListItem}</CommentComponent>;
 }

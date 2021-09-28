@@ -26,9 +26,9 @@ function DeleteComponent(props) {
         value={deletePassword}
         onChange={e => setDeletePassword(e.target.value)}
       ></DeleteInput>
-      <DeleteButton onClick={e => deleteFunc(props.password, props.index - 1)}>
-        삭제{props.index - 1}
-      </DeleteButton>
+      <DeleteButton
+        onClick={e => deleteFunc(props.password, props.index - 1)}
+      ></DeleteButton>
     </div>
   );
 }
