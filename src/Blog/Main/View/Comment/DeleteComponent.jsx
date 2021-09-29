@@ -9,6 +9,7 @@ const DeleteButton = styled.button`
   border: 0;
   border-radius: 5px;
   margin-left: 10px;
+  cursor: pointer;
 `;
 const DeleteInput = styled.input``;
 const DeleteContainer = styled.div`

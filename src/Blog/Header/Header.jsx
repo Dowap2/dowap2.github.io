@@ -25,6 +25,9 @@ const GithubImg = styled.img`
   width: 24px;
   height: 24px;
 `;
+const IconImgComponent = styled.div`
+  padding: 5px;
+`;
 
 export function Header() {
   return (
@@ -39,7 +42,9 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <GithubImg src={Github} alt="git" />
+            <IconImgComponent>
+              <GithubImg src={Github} alt="git" />
+            </IconImgComponent>
           </a>
         </Wrapper>
       </HeaderComponent>
