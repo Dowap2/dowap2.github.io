@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import ChangeViewMode from "./ChangeViewMode";
 
 const ListBackground = styled.div`
   width: 100%;
@@ -146,6 +147,7 @@ export function List() {
   }, [searchWord]);
   return (
     <ListBackground>
+      <ChangeViewMode />
       <ListComponent>{ListItem}</ListComponent>
     </ListBackground>
   );
