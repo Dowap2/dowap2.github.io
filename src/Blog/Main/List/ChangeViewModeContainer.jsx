@@ -4,7 +4,7 @@ import * as commentState from "../../../../store/modules/commentState";
 import ChangeViewMode from "./ChangeViewMode";
 
 const ChangeViewModeContainer = props => {
-  return <ChangeViewMode onClick={props.comment} />;
+  return <ChangeViewMode onChange={props.viewMode} />;
 };
 
 const mapStateToProps = state => {
@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  comment: comment => dispatch(commentState.AddComment(comment))
+  viewMode: viewMode => dispatch(commentState.ChangeViewMode(viewMode))
 });
 
 export default connect(
