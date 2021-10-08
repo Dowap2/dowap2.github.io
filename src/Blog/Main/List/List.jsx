@@ -150,10 +150,7 @@ export function List() {
             markdownTitle.map(listTitle => {
               const item = (
                 <Link to={`/view/${index}`} style={linkStyle} key={index}>
-                  <ListItemSpace>
-                    <ListTitleComponent>{listTitle}</ListTitleComponent>
-                    <ListPreview>{postMarkdown[index]}</ListPreview>
-                  </ListItemSpace>
+                  <ListTitleComponent>{listTitle}</ListTitleComponent>
                 </Link>
               );
               index++;
