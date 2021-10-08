@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as commentState from "../../../../store/modules/commentState";
+import * as viewState from "../../../store/modules/viewState";
 import ChangeViewMode from "./ChangeViewMode";
 
 const ChangeViewModeContainer = props => {
-  return <ChangeViewMode onChange={props.viewMode} />;
+  return <ChangeViewMode onChange={props.changeViewMode} />;
 };
 
 const mapStateToProps = state => {
@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  viewMode: viewMode => dispatch(commentState.ChangeViewMode(viewMode))
+  changeViewMode: mode => dispatch(viewState.ChangeViewMode(mode))
 });
 
 export default connect(

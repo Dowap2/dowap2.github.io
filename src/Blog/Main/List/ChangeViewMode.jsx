@@ -11,10 +11,10 @@ const ChangeViewModeButton = styled.button`
 export default function ChangeViewMode(props) {
   return (
     <ChangeViewModeComponent>
-      <ChangeViewModeButton onClick={e => props.onChange(true)}>
+      <ChangeViewModeButton onClick={e => props.onChange("card")}>
         card view
       </ChangeViewModeButton>
-      <ChangeViewModeButton onClick={e => props.onChange(false)}>
+      <ChangeViewModeButton onClick={e => props.onChange("list")}>
         list view
       </ChangeViewModeButton>
     </ChangeViewModeComponent>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import ChangeViewMode from "./ChangeViewMode";
+import ChangeViewModeContainer from "./ChangeViewModeContainer";
 
 const ListBackground = styled.div`
   width: 100%;
@@ -93,6 +93,7 @@ export function List() {
   const searchWord = useSelector(
     state => state.searchState.state.searchKeyword
   );
+  const viewMode = useSelector(state => state.viewState.state.viewMode);
 
   useEffect(() => {
     async function SetMarkdownUrl() {
@@ -123,31 +124,52 @@ export function List() {
 
     const CreateListItem = postMarkdown => {
       let index = 0;
-      setListItem(
-        markdownTitle.map(listTitle => {
-          const item = (
-            <Link to={`/view/${index}`} style={linkStyle} key={index}>
-              <ListItemSpace>
-                <ListItemComponent>
-                  <Thumbnail />
-                  <ListTitleComponent>{listTitle}</ListTitleComponent>
-                  <ListPreview>{postMarkdown[index]}</ListPreview>
-                </ListItemComponent>
-              </ListItemSpace>
-            </Link>
+      viewMode === "card"
+        ? setListItem(
+            markdownTitle.map(listTitle => {
+              const item = (
+                <Link to={`/view/${index}`} style={linkStyle} key={index}>
+                  <ListItemSpace>
+                    <ListItemComponent>
+                      <Thumbnail />
+                      <ListTitleComponent>{listTitle}</ListTitleComponent>
+                      <ListPreview>{postMarkdown[index]}</ListPreview>
+                    </ListItemComponent>
+                  </ListItemSpace>
+                </Link>
+              );
+              index++;
+              return listTitle
+                .toLowerCase()
+                .indexOf(searchWord.toLowerCase()) === -1
+                ? null
+                : item;
+            })
+          )
+        : setListItem(
+            markdownTitle.map(listTitle => {
+              const item = (
+                <Link to={`/view/${index}`} style={linkStyle} key={index}>
+                  <ListItemSpace>
+                    <ListTitleComponent>{listTitle}</ListTitleComponent>
+                    <ListPreview>{postMarkdown[index]}</ListPreview>
+                  </ListItemSpace>
+                </Link>
+              );
+              index++;
+              return listTitle
+                .toLowerCase()
+                .indexOf(searchWord.toLowerCase()) === -1
+                ? null
+                : item;
+            })
           );
-          index++;
-          return listTitle.toLowerCase().indexOf(searchWord.toLowerCase()) ===
-            -1
-            ? null
-            : item;
-        })
-      );
     };
-  }, [searchWord]);
+  }, [searchWord, viewMode]);
   return (
     <ListBackground>
-      <ChangeViewMode />
+      <button onClick={e => console.log(viewMode)}></button>
+      <ChangeViewModeContainer />
       <ListComponent>{ListItem}</ListComponent>
     </ListBackground>
   );

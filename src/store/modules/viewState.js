@@ -6,13 +6,13 @@ export const ChangeViewMode = createAction(CHANGEVIEWMODE);
 
 const initalState = {
   state: {
-    viewMode: true
+    viewMode: "card"
   }
 };
 
 export default function reducer(state = initalState, action) {
   switch (action.type) {
-    case ChangeViewMode: {
+    case CHANGEVIEWMODE: {
       return {
         state: { viewMode: action.payload }
       };
