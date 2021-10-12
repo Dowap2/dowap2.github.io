@@ -64,13 +64,14 @@ const CardTitleComponent = styled.p`
 `;
 const ListTitleComponent = styled.p`
   box-sizing: border-box;
-  width: 300px;
-  height: 20px;
-  padding: 0px 15px;
-  margin: 0px;
+  width: 960px;
+  height: 60px;
+  padding: 15px 0px;
+  margin: 10px 0px;
   margin-top: 10px;
   font-size: 16px;
   font-weight: 600;
+  border-bottom: 1px solid #f1f1f1;
   @media only screen and (max-width: 960px) {
     width: 100%;
   }
