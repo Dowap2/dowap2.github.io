@@ -21,7 +21,7 @@ const ListComponent = styled.ul`
     width: 100%;
   }
 `;
-const ListItemSpace = styled.div`
+const CardItemSpace = styled.div`
   width: 320px;
   height: 420px;
   display: flex;
@@ -29,7 +29,7 @@ const ListItemSpace = styled.div`
     width: 100%;
   }
 `;
-const ListItemComponent = styled.div`
+const CardItemComponent = styled.div`
   margin: 20px;
   width: 300px;
   height: 400px;
@@ -49,6 +49,19 @@ const ListItemComponent = styled.div`
     margin-top: 20px;
   }
 `;
+const CardTitleComponent = styled.p`
+  box-sizing: border-box;
+  width: 300px;
+  height: 20px;
+  padding: 0px 15px;
+  margin: 0px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
+`;
 const ListTitleComponent = styled.p`
   box-sizing: border-box;
   width: 300px;
@@ -62,7 +75,7 @@ const ListTitleComponent = styled.p`
     width: 100%;
   }
 `;
-const ListPreview = styled.p`
+const CardPreview = styled.p`
   box-sizing: border-box;
   padding: 10px;
   height: 150px;
@@ -129,13 +142,13 @@ export function List() {
             markdownTitle.map(listTitle => {
               const item = (
                 <Link to={`/view/${index}`} style={linkStyle} key={index}>
-                  <ListItemSpace>
-                    <ListItemComponent>
+                  <CardItemSpace>
+                    <CardItemComponent>
                       <Thumbnail />
-                      <ListTitleComponent>{listTitle}</ListTitleComponent>
-                      <ListPreview>{postMarkdown[index]}</ListPreview>
-                    </ListItemComponent>
-                  </ListItemSpace>
+                      <CardTitleComponent>{listTitle}</CardTitleComponent>
+                      <CardPreview>{postMarkdown[index]}</CardPreview>
+                    </CardItemComponent>
+                  </CardItemSpace>
                 </Link>
               );
               index++;
