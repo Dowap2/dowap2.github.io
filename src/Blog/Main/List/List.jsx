@@ -179,7 +179,6 @@ export function List() {
   }, [searchWord, viewMode]);
   return (
     <ListBackground>
-      <button onClick={e => console.log(viewMode)}></button>
       <ChangeViewModeContainer />
       <ListComponent>{ListItem}</ListComponent>
     </ListBackground>

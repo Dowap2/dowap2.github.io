@@ -49,7 +49,6 @@ export function Comment(props) {
   }, [commentList]);
   return (
     <div>
-      <button onClick={e => console.log(commentList)}></button>
       <CommentComponent>{commentListItem}</CommentComponent>
       <CommentInputComponent>
         <input
