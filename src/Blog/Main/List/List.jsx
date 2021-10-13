@@ -95,6 +95,9 @@ const Thumbnail = styled.img`
   background: #000000;
   border-radius: 5px 5px 0px 0px;
 `;
+const StyledLink = styled(Link)`
+  width: 100%;
+`;
 
 export function List() {
   const markdownFiles = useSelector(
@@ -163,9 +166,9 @@ export function List() {
         : setListItem(
             markdownTitle.map(listTitle => {
               const item = (
-                <Link to={`/view/${index}`} style={linkStyle} key={index}>
+                <StyledLink to={`/view/${index}`} style={linkStyle} key={index}>
                   <ListTitleComponent>{listTitle}</ListTitleComponent>
-                </Link>
+                </StyledLink>
               );
               index++;
               return listTitle
