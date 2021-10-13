@@ -35,6 +35,8 @@ const ChangeViewModeButtonAnimationBorder = styled.div`
   width: 120px;
   height: 2px;
   background: #000;
+  margin-left: ${props => (props.viewMode === "card" ? "0px" : "120px")};
+  transition: 0.5s;
 `;
 
 export default function ChangeViewMode(props) {
@@ -55,7 +57,9 @@ export default function ChangeViewMode(props) {
           <ListButtonText viewMode={viewMode}>리스트 뷰</ListButtonText>
         </ChangeViewModeButtonContainer>
       </ChangeViewModeButtonComponent>
-      <ChangeViewModeButtonAnimationBorder></ChangeViewModeButtonAnimationBorder>
+      <ChangeViewModeButtonAnimationBorder
+        viewMode={viewMode}
+      ></ChangeViewModeButtonAnimationBorder>
     </ChangeViewModeComponent>
   );
 }
