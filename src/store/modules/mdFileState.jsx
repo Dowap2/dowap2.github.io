@@ -1,5 +1,6 @@
 const importAll = r => r.keys().map(r);
 const markdownFiles = importAll(require.context("../../posts", false, /\.md$/));
+console.log(markdownFiles);
 
 const initialState = {
   state: {

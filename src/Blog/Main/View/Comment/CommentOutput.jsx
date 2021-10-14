@@ -57,7 +57,6 @@ export function CommentOutput(props) {
   const commentList = commentState.comment[props.index];
   useEffect(() => {
     if (commentList !== undefined) {
-      console.log(12);
       let index = 0;
       setCommentListItem(
         commentList.map(list => {
