@@ -37,7 +37,11 @@ export function TabComponent(props) {
   const intl = useIntl();
   return (
     <div>
-      <SearchBar searchState={searchState}>
+      <SearchBar
+        searchState={searchState}
+        onMouseOver={e => props.onChange(!searchState)}
+        onMouseOut={e => props.onChange(!searchState)}
+      >
         <SearchInput
           type="text"
           placeholder={intl.formatMessage({
@@ -45,12 +49,7 @@ export function TabComponent(props) {
           })}
           onChange={e => props.onChangeWord(e.target.value)}
         />
-        <SearchIcon
-          src={Search}
-          alt="searchIcon"
-          searchState={searchState}
-          onClick={e => props.onChange(!searchState)}
-        />
+        <SearchIcon src={Search} alt="searchIcon" searchState={searchState} />
       </SearchBar>
     </div>
   );
