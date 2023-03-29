@@ -49,7 +49,7 @@ export function TabComponent(props) {
           src={Search}
           alt="searchIcon"
           searchState={searchState}
-          onClick={e => props.onChange(!searchState)}
+          onMouseOver={e => props.onChange(!searchState)}
         />
       </SearchBar>
     </div>
