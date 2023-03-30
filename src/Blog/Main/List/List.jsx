@@ -92,8 +92,7 @@ const Thumbnail = styled.img`
   box-sizing: border-box;
   width: 100%;
   height: 200px;
-  background: #000000;
-  border-radius: 5px 5px 0px 0px;
+  background: #f5f5f5;
 `;
 const StyledLink = styled(Link)`
   width: 100%;
