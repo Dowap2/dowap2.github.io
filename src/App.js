@@ -1,19 +1,25 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Header } from "./Blog/Header/Header";
 import { ViewComponent } from "./Blog/Main/View/ViewComponent";
 import { Footer } from "./Blog/Footer/Footer";
 import { Layout } from "./Blog/Layout";
 import { SlideBanner } from "./Banner/SlideBanner";
+import { IntroduceMain } from "./Blog/Introduce/IntroduceMain";
 
 function App() {
   return (
     <Router className="App" basename="/">
       <Header />
-      <Route exact path="/" component={SlideBanner} />
+      <Routes>
+        <Route exact path="/blog" element={<SlideBanner />}></Route>
+      </Routes>
       <div>
-        <Route exact path="/" component={Layout} />
-        <Route path="/view/:index" component={ViewComponent} />
+        <Routes>
+          <Route exact path="/" element={<IntroduceMain />} />
+          <Route exact path="/blog" element={<Layout />} />
+          <Route path="/view/:index" element={<ViewComponent />} />
+        </Routes>
       </div>
       <Footer />
     </Router>

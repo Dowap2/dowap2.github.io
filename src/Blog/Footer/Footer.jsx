@@ -5,7 +5,7 @@ const FooterComponent = styled.div`
   width: 100%;
   height: 80px;
   background: #ffffff;
-  border-top: 1px solid #2770f5;
+  border-top: 1px solid #616161;
 `;
 const Wrapper = styled.div`
   width: 960px;
