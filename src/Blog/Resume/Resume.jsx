@@ -18,7 +18,9 @@ const ResumeSemiTitle = styled.div`
 `;
 const ResumeTitle = styled.div`
   font-family: "Nanum Gothic", sans-serif;
-  font-size: 32px;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 5px;
 `;
 const Background = styled.div`
   width: 40%;
@@ -30,6 +32,22 @@ const IDPhoto = styled.img`
   width: 300px;
   border: 1px solid #f5f5f5;
 `;
+const Separation = styled.div`
+  width: 100%;
+  margin-top: 0px;
+  border-bottom: 5px solid #3c3c58;
+`;
+const IntroduceTitleComponent = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+`;
+const Contact = styled.ul`
+  font-family: "Nanum Gothic", sans-serif;
+`;
+const ContactList = styled.li`
+  margin-top: 5px;
+`;
 
 export function Resume() {
   return (
@@ -39,19 +57,20 @@ export function Resume() {
           <IDPhoto src={Ohgyeongtae} alt="" />
         </Background>
         <Introduce>
-          <div>
+          <IntroduceTitleComponent>
             <ResumeSemiTitle>
               무엇이든 구현하고 빠른 실행으로 성공시키는 프론트엔드 엔지니어가
               되고자하는
             </ResumeSemiTitle>
             <ResumeTitle>오경태</ResumeTitle>
-          </div>
-          <ul>
-            <li>Phone : 010-6374-8944</li>
-            <li>E-mail : dowapdowari@gmail.com</li>
-            <li>Github : https://github.com/Dowap2/</li>
-            <li>BLOG : https://dowap2.github.io/</li>
-          </ul>
+            <Separation />
+          </IntroduceTitleComponent>
+          <Contact>
+            <ContactList>Phone : 010-6374-8944</ContactList>
+            <ContactList>E-mail : dowapdowari@gmail.com</ContactList>
+            <ContactList>Github : https://github.com/Dowap2/</ContactList>
+            <ContactList>BLOG : https://dowap2.github.io/</ContactList>
+          </Contact>
         </Introduce>
       </Page>
       <Page>HELLO</Page>

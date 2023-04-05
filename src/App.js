@@ -9,6 +9,14 @@ import { IntroduceMain } from "./Blog/Introduce/IntroduceMain";
 import { Resume } from "./Blog/Resume/Resume";
 
 function App() {
+  window.addEventListener(
+    "wheel",
+    function(e) {
+      e.preventDefault();
+    },
+    { passive: true }
+  );
+
   return (
     <Router className="App" basename="/">
       <Header />
