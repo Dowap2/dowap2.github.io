@@ -6,6 +6,7 @@ import { Footer } from "./Blog/Footer/Footer";
 import { Layout } from "./Blog/Layout";
 import { SlideBanner } from "./Banner/SlideBanner";
 import { IntroduceMain } from "./Blog/Introduce/IntroduceMain";
+import { Resume } from "./Blog/Resume/Resume";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/" element={<IntroduceMain />} />
           <Route exact path="/blog" element={<Layout />} />
           <Route path="/view/:index" element={<ViewComponent />} />
+          <Route path="/resume" element={<Resume />} />
         </Routes>
       </div>
       <Footer />

@@ -4,6 +4,7 @@ import copyPhone from "../../Img/copyPhone.png";
 import copyEmail from "../../Img/copyEmail.png";
 import copyGithub from "../../Img/copyGithub.png";
 import ogu3 from "../../Img/ogu3.png";
+import ogu4 from "../../Img/ogu4.png";
 import { Link } from "react-router-dom";
 
 const IndroduceContainer = styled.div`
@@ -38,6 +39,15 @@ const Separation = styled.div`
   margin-top: 60px;
   border-bottom: 1px solid #d3d3d3;
 `;
+const MenuLayout = styled.div`
+  width: 100%;
+  display: flex;
+`;
+const MenuItemContainer = styled.div`
+  width: 200px;
+  height: 300px;
+  margin: auto;
+`;
 
 export function IntroduceMain() {
   const copyClipboard = text => {
@@ -70,10 +80,20 @@ export function IntroduceMain() {
         ></Icon>
       </CopyIcon>
       <Separation />
-      <Link to="/blog">
-        <MainImg src={ogu3} />
-        <div>리뉴얼 중 입니다 블로그는 여기를 클릭해주세요</div>
-      </Link>
+      <MenuLayout>
+        <MenuItemContainer>
+          <Link to="/blog">
+            <MainImg src={ogu3} />
+            <div>blog</div>
+          </Link>
+        </MenuItemContainer>
+        <MenuItemContainer>
+          <Link to="/resume">
+            <MainImg src={ogu4} />
+            <div>about me</div>
+          </Link>
+        </MenuItemContainer>
+      </MenuLayout>
     </IndroduceContainer>
   );
 }
