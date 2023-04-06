@@ -7,16 +7,10 @@ import { Layout } from "./Blog/Layout";
 import { SlideBanner } from "./Banner/SlideBanner";
 import { IntroduceMain } from "./Blog/Introduce/IntroduceMain";
 import { Resume } from "./Blog/Resume/Resume";
+import { useParams } from "react-router-dom";
 
 function App() {
-  window.addEventListener(
-    "wheel",
-    function(e) {
-      e.preventDefault();
-    },
-    { passive: true }
-  );
-
+  const { index } = useParams();
   return (
     <Router className="App" basename="/">
       <Header />

@@ -48,7 +48,14 @@ const MenuItemContainer = styled.div`
   height: 300px;
   margin: auto;
 `;
-
+const ColumSeparation = styled.div`
+  margin-top: 60px;
+  height: 300px;
+  border-left: 1px solid #d3d3d3;
+`;
+const LinkTitle = styled.div`
+  text-decoration: none;
+`;
 export function IntroduceMain() {
   const copyClipboard = text => {
     console.log(text);
@@ -84,13 +91,14 @@ export function IntroduceMain() {
         <MenuItemContainer>
           <Link to="/blog">
             <MainImg src={ogu3} />
-            <div>blog</div>
+            <LinkTitle>blog</LinkTitle>
           </Link>
         </MenuItemContainer>
+        <ColumSeparation />
         <MenuItemContainer>
           <Link to="/resume">
             <MainImg src={ogu4} />
-            <div>about me</div>
+            <LinkTitle>about me</LinkTitle>
           </Link>
         </MenuItemContainer>
       </MenuLayout>

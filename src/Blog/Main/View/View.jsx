@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Markdown from "markdown-to-jsx";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const ViewComponent = styled.div`
   width: 980px;
@@ -34,7 +35,8 @@ export function View(props) {
   const markdownFiles = useSelector(
     state => state.mdFileState.state.markdownFiles
   );
-  const index = props.match.params.index;
+  console.log(props);
+  const { index } = useParams();
   const [postMarkdown, setPostMarkdown] = useState([]);
 
   useEffect(() => {
