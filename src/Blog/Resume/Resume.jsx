@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Ohgyeongtae from "../../Img/Ohgyeongtae.jpeg";
+import ResumeFile from "../../ResumeFile/ResumeFile.pdf";
+import PortfoiloFile from "../../ResumeFile/PortfolioFile.pdf";
 
 const ResumeComponent = styled.div``;
 const Page = styled.div`
@@ -74,6 +76,12 @@ export function Resume() {
         </Introduce>
       </Page>
       <Page>HELLO</Page>
+      <a href={ResumeFile} download="오경태 이력서">
+        <button type="button">이력서 다운로드</button>
+      </a>
+      <a href={PortfoiloFile} download="오경태 포트폴리오">
+        <button type="button">포트폴리오 다운로드</button>
+      </a>
     </ResumeComponent>
   );
 }

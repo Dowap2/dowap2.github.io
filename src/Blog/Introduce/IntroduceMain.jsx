@@ -6,6 +6,7 @@ import copyGithub from "../../Img/copyGithub.png";
 import ogu3 from "../../Img/ogu3.png";
 import ogu4 from "../../Img/ogu4.png";
 import { Link } from "react-router-dom";
+import { useIntl } from "react-intl";
 
 const IndroduceContainer = styled.div`
   padding: 60px;
@@ -53,8 +54,16 @@ const ColumSeparation = styled.div`
   height: 300px;
   border-left: 1px solid #d3d3d3;
 `;
-const LinkTitle = styled.div`
+const LinkComponent = styled(Link)`
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+`;
+const LinkTitle = styled.div`
+  font-family: "Poor Story", cursive;
+  font-size: 24px;
+  margin: auto;
 `;
 export function IntroduceMain() {
   const copyClipboard = text => {
@@ -63,9 +72,14 @@ export function IntroduceMain() {
       alert("복사완료");
     });
   };
+  const intl = useIntl();
   return (
     <IndroduceContainer>
-      <Greetings>Hello I am Gyeongtae</Greetings>
+      <Greetings>
+        {intl.formatMessage({
+          id: "Introduce.MainTitle"
+        })}
+      </Greetings>
       <MainImgContainer>
         <MainImg src={ogu} />
       </MainImgContainer>
@@ -89,17 +103,25 @@ export function IntroduceMain() {
       <Separation />
       <MenuLayout>
         <MenuItemContainer>
-          <Link to="/blog">
+          <LinkComponent to="/blog">
             <MainImg src={ogu3} />
-            <LinkTitle>blog</LinkTitle>
-          </Link>
+            <LinkTitle>
+              {intl.formatMessage({
+                id: "Introduce.BlogLink"
+              })}
+            </LinkTitle>
+          </LinkComponent>
         </MenuItemContainer>
         <ColumSeparation />
         <MenuItemContainer>
-          <Link to="/resume">
+          <LinkComponent to="/resume">
             <MainImg src={ogu4} />
-            <LinkTitle>about me</LinkTitle>
-          </Link>
+            <LinkTitle>
+              {intl.formatMessage({
+                id: "Introduce.ResumeLink"
+              })}
+            </LinkTitle>
+          </LinkComponent>
         </MenuItemContainer>
       </MenuLayout>
     </IndroduceContainer>
