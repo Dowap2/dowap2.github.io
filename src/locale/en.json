@@ -13,5 +13,9 @@
   "InputLanguage.English": "English",
   "InputLanguage.Korean": "Korean",
 
-  "searchInputPlaceholder": "search"
+  "searchInputPlaceholder": "search",
+
+  "Introduce.MainTitle": "Hello I am Gyeongtae",
+  "Introduce.BlogLink": "Blog",
+  "Introduce.ResumeLink": "About Me"
 }
