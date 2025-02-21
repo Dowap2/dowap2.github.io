@@ -38,15 +38,40 @@ const H1Component = styled.div`
   margin-bottom: 40px;
 `;
 const HRComponent = styled.hr`
-  color: blue;
+  border: 2px solid e9ecef;
+  margin-top: 50px;
+  margin-bottom: 50px;
 `;
 const SpanComponent = styled.div`
   display: inline;
-  background: #f5f5f5;
-  padding: 4px;
-  padding-left: 6px;
-  padding-right: 6px;
+  background: #e9ecef;
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-radius: 5px;
+`;
+const LiComponent = styled.li`
+  padding-bottom: 10px;
+  line-height: 30px;
+`;
+const TableComponent = styled.table`
+  border: 1px solid #e9ecef;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  th {
+    background: #e9ecef;
+    padding: 10px;
+    border: 1px solid #808080;
+  }
+  tr {
+    border: 1px solid #808080;
+  }
+  td {
+    padding: 10px;
+    border: 1px solid #808080;
+    margin: 0;
+  }
 `;
 
 export function View(props) {
@@ -91,8 +116,12 @@ export function View(props) {
   const Hr = ({ children, ...props }) => (
     <HRComponent {...props}>{children}</HRComponent>
   );
-  const Span = ({ children, ...props }) => (
-    <SpanComponent {...props}>{children}</SpanComponent>
+  const Li = ({ children, ...props }) => (
+    <LiComponent {...props}>{children}</LiComponent>
+  );
+
+  const Table = ({ children, ...props }) => (
+    <TableComponent {...props}>{children}</TableComponent>
   );
 
   function Code({ className, children }) {
@@ -126,11 +155,14 @@ export function View(props) {
             p: {
               component: P
             },
+            li: {
+              component: Li
+            },
             hr: {
               component: Hr
             },
-            span: {
-              component: Span
+            table: {
+              component: Table
             }
           }
         }}
