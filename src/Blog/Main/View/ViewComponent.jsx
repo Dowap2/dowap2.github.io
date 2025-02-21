@@ -18,7 +18,7 @@ export function ViewComponent({ match }) {
       <LayoutComponent>
         <ModalContainer />
         <View match={match} />
-        <Comment match={match} />
+        {/* <Comment match={match} /> */}
       </LayoutComponent>
     </div>
   );

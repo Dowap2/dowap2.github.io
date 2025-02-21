@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Markdown from "markdown-to-jsx";
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useSelector } from "react-redux";
 
 const ViewComponent = styled.div`
@@ -28,6 +30,23 @@ const PComponent = styled.div`
   @media only screen and (max-width: 960px) {
     width: 100%;
   }
+`;
+const H1Component = styled.div`
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 40px;
+`;
+const HRComponent = styled.hr`
+  color: blue;
+`;
+const SpanComponent = styled.div`
+  display: inline;
+  background: #f5f5f5;
+  padding: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 5px;
 `;
 
 export function View(props) {
@@ -63,24 +82,55 @@ export function View(props) {
 
     SetMarkdownUrl();
   }, []);
-
-  const Code = ({ children, ...props }) => (
-    <CodeComponent {...props}>{children}</CodeComponent>
-  );
   const P = ({ children, ...props }) => (
     <PComponent {...props}>{children}</PComponent>
   );
+  const H1 = ({ children, ...props }) => (
+    <H1Component {...props}>{children}</H1Component>
+  );
+  const Hr = ({ children, ...props }) => (
+    <HRComponent {...props}>{children}</HRComponent>
+  );
+  const Span = ({ children, ...props }) => (
+    <SpanComponent {...props}>{children}</SpanComponent>
+  );
+
+  function Code({ className, children }) {
+    if (className === undefined) {
+      return <SpanComponent {...props}>{children}</SpanComponent>;
+    }
+    const language = className.replace("lang-", "");
+    return (
+      <div className="codeBlock">
+        <SyntaxHighlighter
+          language={language.toLowerCase()}
+          style={materialDark}
+        >
+          {children}
+        </SyntaxHighlighter>
+      </div>
+    );
+  }
 
   return (
     <ViewComponent>
       <Markdown
         options={{
           overrides: {
+            h1: {
+              component: H1
+            },
             code: {
               component: Code
             },
             p: {
               component: P
+            },
+            hr: {
+              component: Hr
+            },
+            span: {
+              component: Span
             }
           }
         }}

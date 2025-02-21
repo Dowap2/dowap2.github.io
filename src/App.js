@@ -10,7 +10,7 @@ function App() {
   return (
     <Router className="App" basename="/">
       <Header />
-      <Route exact path="/" component={SlideBanner} />
+      {/* <Route exact path="/" component={SlideBanner} /> */}
       <div>
         <Route exact path="/" component={Layout} />
         <Route path="/view/:index" component={ViewComponent} />

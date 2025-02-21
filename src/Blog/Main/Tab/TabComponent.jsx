@@ -8,11 +8,10 @@ const SearchBar = styled.div`
   float: right;
   background: #ffffff;
   border-radius: 40px;
-  border: 1px solid #2770f5;
+  border: 1px solid #f5f5f5;
   width: ${props => (props.searchState ? "42px" : "400px")};
   transition: width 0.5s;
   padding: 5px;
-  padding-left: ${props => (props.searchState ? "5px" : "20px")};
   height: 42px;
   box-sizing: border-box;
   @media only screen and (max-width: 960px) {
@@ -20,8 +19,8 @@ const SearchBar = styled.div`
   }
 `;
 const SearchIcon = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
 `;
 const SearchInput = styled.input`
   display: ${props => (props.searchState ? "none" : "block")};
@@ -37,20 +36,16 @@ export function TabComponent(props) {
   const intl = useIntl();
   return (
     <div>
-      <SearchBar searchState={searchState}>
+      <SearchBar
+        searchState={searchState}
+        onMouseOver={e => props.onChange(false)}
+        onMouseOut={e => props.onChange(true)}
+      >
         <SearchInput
           type="text"
-          placeholder={intl.formatMessage({
-            id: "searchInputPlaceholder"
-          })}
           onChange={e => props.onChangeWord(e.target.value)}
         />
-        <SearchIcon
-          src={Search}
-          alt="searchIcon"
-          searchState={searchState}
-          onMouseOver={e => props.onChange(!searchState)}
-        />
+        <SearchIcon src={Search} alt="searchIcon" searchState={searchState} />
       </SearchBar>
     </div>
   );
