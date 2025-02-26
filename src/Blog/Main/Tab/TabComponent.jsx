@@ -38,13 +38,8 @@ export function TabComponent(props) {
     <div>
       <SearchBar
         searchState={searchState}
-<<<<<<< HEAD
         onMouseOver={e => props.onChange(false)}
         onMouseOut={e => props.onChange(true)}
-=======
-        onMouseOver={e => props.onChange(!searchState)}
-        onMouseOut={e => props.onChange(!searchState)}
->>>>>>> 899c086434c5d6c0804b33a74e374f36978ac4bd
       >
         <SearchInput
           type="text"
