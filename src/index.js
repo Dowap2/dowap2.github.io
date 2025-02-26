@@ -5,13 +5,11 @@ import { Provider } from "react-redux";
 import SelectedIntlProvider from "./SelectedIntlProvider";
 import store from "./store";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <SelectedIntlProvider>
-        <App />
-      </SelectedIntlProvider>
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <Provider store={store}>
+    <SelectedIntlProvider>
+      <App />
+    </SelectedIntlProvider>
+  </Provider>
 );

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import Markdown from "markdown-to-jsx";
 
 const ListBackground = styled.div`
   background: #f8f9fa;
@@ -44,15 +45,13 @@ export function List(props) {
   const markdownFiles = useSelector(
     state => state.mdFileState.state.markdownFiles
   );
-  const markdownTitle = markdownFiles.map(
-    file => file.default.slice(14).split(".")[0]
-  );
+  const markdownTitle = markdownFiles.map(file => file.slice(14).split(".")[0]);
   const [ListItem, setListItem] = useState([]);
 
   useEffect(() => {
     async function SetMarkdownUrl() {
       const posts = await Promise.all(
-        markdownFiles.map(file => file.default)
+        markdownFiles.map(file => file)
       ).catch(err => console.error(err));
 
       const post = await SetMarkdown(posts);
@@ -83,8 +82,37 @@ export function List(props) {
           const item = (
             <Link to={`/view/${index}`} style={linkStyle} key={index}>
               <ListItemComponent>
-                <ListTitleComponent>{listTitle}</ListTitleComponent>
-                <ListPreview>{postMarkdown[index]}</ListPreview>
+                {console.log("x")}
+                <ListTitleComponent>{}</ListTitleComponent>
+                <Markdown
+                  options={{
+                    overrides: {
+                      h1: {
+                        component: H1
+                      },
+                      // code: {
+                      //   component: Code
+                      // },
+                      p: {
+                        component: P
+                      },
+                      li: {
+                        component: Li
+                      },
+                      hr: {
+                        component: Hr
+                      },
+                      table: {
+                        component: Table
+                      }
+                    }
+                  }}
+                >
+                  {postMarkdown[index] === undefined
+                    ? "글이 존재하지않습니다."
+                    : postMarkdown[index]}
+                </Markdown>
+                {/* <ListPreview>{postMarkdown[index]}</ListPreview> */}
               </ListItemComponent>
             </Link>
           );

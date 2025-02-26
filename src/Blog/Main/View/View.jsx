@@ -86,7 +86,7 @@ export function View(props) {
   useEffect(() => {
     async function SetMarkdownUrl() {
       const posts = await Promise.all(
-        markdownFiles.map(file => file.default)
+        markdownFiles.map(file => file)
       ).catch(err => console.error(err));
 
       const post = await SetMarkdown(posts);
