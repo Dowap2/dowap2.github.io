@@ -9,26 +9,28 @@ const SearchBar = styled.div`
   background: #ffffff;
   border-radius: 40px;
   border: 1px solid #f5f5f5;
-  width: ${props => (props.searchState ? "42px" : "400px")};
+  width: ${props => (props.searchState ? "400px" : "42px")};
   transition: width 0.5s;
   padding: 5px;
   height: 42px;
   box-sizing: border-box;
   @media only screen and (max-width: 960px) {
-    width: ${props => (props.searchState ? "42px" : "100%")};
+    width: ${props => (props.searchState ? "100%" : "42px")};
   }
 `;
 const SearchIcon = styled.img`
   width: 30px;
   height: 30px;
+
+  margin-left: auto;
 `;
 const SearchInput = styled.input`
-  display: ${props => (props.searchState ? "none" : "block")};
-  width: 100%;
-  background: none;
+  margin-left: ${props => (props.searchState ? "10px" : "0")};
+  transition: margin-left 0.5s;
+  width: ${props => (props.searchState ? "100%" : "0px")};
   border: 0;
   outline: none;
-  padding: 0;
+  padding: 0px;
 `;
 
 export function TabComponent(props) {
@@ -38,12 +40,15 @@ export function TabComponent(props) {
     <div>
       <SearchBar
         searchState={searchState}
-        onMouseOver={e => props.onChange(false)}
-        onMouseOut={e => props.onChange(true)}
+        onMouseOver={e => props.onChange(true)}
+        onMouseOut={e => props.onChange(false)}
       >
         <SearchInput
+          searchState={searchState}
           type="text"
-          onChange={e => props.onChangeWord(e.target.value)}
+          onChange={e => {
+            props.onChangeWord(e.target.value);
+          }}
         />
         <SearchIcon src={Search} alt="searchIcon" searchState={searchState} />
       </SearchBar>

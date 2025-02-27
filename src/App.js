@@ -18,8 +18,8 @@ function App() {
       </Routes>
       <div>
         <Routes>
-          <Route exact path="/" element={<IntroduceMain />} />
-          <Route exact path="/blog" element={<Layout />} />
+          {/* <Route exact path="/" element={<IntroduceMain />} /> */}
+          <Route exact path="/" element={<Layout />} />
           <Route path="/view/:index" element={<ViewComponent />} />
           <Route path="/resume" element={<Resume />} />
         </Routes>

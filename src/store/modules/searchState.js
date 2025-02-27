@@ -8,7 +8,7 @@ export const ChangeSearchKeyword = createAction(SEARCHKEYWORD);
 
 const initalState = {
   state: {
-    searchState: true,
+    searchState: false,
     searchKeyword: ""
   }
 };
@@ -16,8 +16,11 @@ const initalState = {
 export default function reducer(state = initalState, action) {
   switch (action.type) {
     case SEARCHSTATE: {
+      console.log(state.state.searchKeyword.length === 0, state);
       return {
-        state: Object.assign(state.state, { searchState: action.payload })
+        state: Object.assign(state.state, {
+          searchState: state.state.searchKeyword.length ? true : action.payload
+        })
       };
     }
     case SEARCHKEYWORD: {
