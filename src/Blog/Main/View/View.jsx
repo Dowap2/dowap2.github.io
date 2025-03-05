@@ -74,7 +74,9 @@ const TableComponent = styled.table`
     margin: 0;
   }
 `;
-
+const HiddenComponent = styled.div`
+  display: none;
+`;
 export function View(props) {
   const markdownFiles = useSelector(
     state => state.mdFileState.state.markdownFiles
@@ -125,6 +127,9 @@ export function View(props) {
   const Table = ({ children, ...props }) => (
     <TableComponent {...props}>{children}</TableComponent>
   );
+  const Hidden = ({ children, ...props }) => (
+    <HiddenComponent {...props}>{children}</HiddenComponent>
+  );
 
   function Code({ className, children }) {
     if (className === undefined) {
@@ -150,6 +155,9 @@ export function View(props) {
           overrides: {
             h1: {
               component: H1
+            },
+            h6: {
+              component: Hidden
             },
             code: {
               component: Code

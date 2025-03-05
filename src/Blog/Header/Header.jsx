@@ -8,11 +8,7 @@ const HeaderComponent = styled.div`
   height: 60px;
   display: flex;
   background: #ffffff;
-<<<<<<< HEAD
-  border-bottom: 1px solid #f5f5f5;
-=======
   border-bottom: 1px solid #d3d3d3;
->>>>>>> 899c086434c5d6c0804b33a74e374f36978ac4bd
 `;
 const Wrapper = styled.div`
   width: 980px;

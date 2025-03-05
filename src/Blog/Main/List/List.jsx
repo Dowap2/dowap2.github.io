@@ -22,45 +22,32 @@ const ListComponent = styled.ul`
     width: 100%;
   }
 `;
-const CardItemSpace = styled.div`
-  width: 320px;
-  height: 420px;
-  display: flex;
-  @media only screen and (max-width: 960px) {
-    width: 100%;
-  }
-`;
 const CardItemComponent = styled.div`
-  margin: 20px;
-  width: 300px;
-  height: 400px;
-  border-radius: 5px;
-  box-shadow: rgb(0 0 0 / 4%) 0px 4px 16px 0px;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  transition: 0.25s ease-in 0s, transform 0.25s ease-in 0s;
-  &:hover {
-    margin-top: 10px;
-    box-shadow: rgb(0 0 0 / 16%) 0px 4px 16px 0px;
-  }
+  margin-top: 24px;
+  margin-bottom: 24px;
   @media only screen and (max-width: 960px) {
     width: calc(100vw - 40px);
     margin: 0;
     margin-top: 20px;
   }
 `;
-const CardTitleComponent = styled.p`
-  box-sizing: border-box;
-  width: 300px;
+const CardMainCompnent = styled.div`
+  width: 650px;
+  height: auto;
+  border-radius: 5px;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+`;
+const CardTitleComponent = styled.div`
+  width: auto;
   height: 20px;
-  padding: 0px 15px;
   margin: 0px;
-  margin-top: 10px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: 700;
   @media only screen and (max-width: 960px) {
-    width: 100%;
+    width: auto;
   }
 `;
 const ListTitleComponent = styled.p`
@@ -80,50 +67,57 @@ const ListTitleComponent = styled.p`
 const CardPreview = styled.p`
   box-sizing: border-box;
   padding: 15px;
-  height: 150px;
+  padding-top: 0px;
+  height: auto;
   margin: 0;
-  font-weight: lighter;
-  font-size: 14px;
+  color: #4e5968;
+  font-weight: 500;
+  font-size: 15px;
   box-sizing: border-box;
   @media only screen and (max-width: 960px) {
     width: 100%;
   }
 `;
-const Thumbnail = styled.img`
-  box-sizing: border-box;
+const CardTextComponent = styled.div`
   width: 100%;
-  height: 150px;
-  background: #f5f5f5;
 `;
+const CardImageComponent = styled.div`
+  width: 140px;
+`;
+const Thumbnail = styled.img`
+  margin-top: 20px;
+  width: 100%;
+  height: 60px;
+  background: #f5f5f5;
+  border: 0;
+`;
+
 const StyledLink = styled(Link)`
   width: 100%;
 `;
-
-const ViewComponent = styled.div`
-  width: 980px;
-  margin: auto;
-  box-sizing: border-box;
-  @media only screen and (max-width: 960px) {
-    width: 100%;
-  }
-`;
-
-const CodeComponent = styled.div`
-  background: #f5f5f5;
-  padding: 10px;
-  box-sizing: border-box;
-  overflow: scroll;
-  @media only screen and (max-width: 960px) {
-    width: 100%;
-  }
-`;
-const H1Component = styled.div`
+const PreviewComponent = styled.div`
   font-size: 10px;
   display: inline;
-  font-weight: normal;
 `;
 const HiddenComponent = styled.div`
   display: none;
+`;
+const CardTagComponent = styled.div`
+  padding-left: 15px;
+  width: 100%;
+  height: 30px;
+`;
+const TagComponent = styled.div`
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #212342;
+  width: 50px;
+  height: 20px;
+  background: #e3f2fd;
 `;
 
 export function List() {
@@ -162,8 +156,8 @@ export function List() {
       return postArray;
     }
 
-    const H1 = ({ children, ...props }) => (
-      <H1Component {...props}>{children}</H1Component>
+    const Preview = ({ children, ...props }) => (
+      <PreviewComponent {...props}>{children}</PreviewComponent>
     );
     const HiddenText = ({ children, ...props }) => (
       <HiddenComponent {...props}>{children}</HiddenComponent>
@@ -178,53 +172,61 @@ export function List() {
             markdownTitle.map(listTitle => {
               const item = (
                 <Link to={`/view/${index}`} style={linkStyle} key={index}>
-                  <CardItemSpace>
-                    <CardItemComponent>
-                      {postMarkdown.ThumbnailImg === undefined ? null : (
-                        <Thumbnail url={postMarkdown.ThumbnailImg} />
-                      )}
-                      <CardTitleComponent>{listTitle}</CardTitleComponent>
-                      <CardPreview>
-                        <Markdown
-                          options={{
-                            overrides: {
-                              h1: {
-                                component: HiddenText
-                              },
-                              h2: {
-                                component: HiddenText
-                              },
-                              h3: {
-                                component: HiddenText
-                              },
-                              h4: {
-                                component: HiddenText
-                              },
-                              p: {
-                                component: H1
-                              },
-                              code: {
-                                component: H1
-                              },
-                              hr: {
-                                component: HiddenText
-                              },
-                              li: {
-                                component: HiddenText
-                              },
-                              table: {
-                                component: HiddenText
+                  <CardItemComponent>
+                    <CardMainCompnent>
+                      <CardTextComponent>
+                        <CardTitleComponent>{listTitle}</CardTitleComponent>
+                        <CardPreview>
+                          <Markdown
+                            options={{
+                              overrides: {
+                                h1: {
+                                  component: HiddenText
+                                },
+                                h6: {
+                                  component: Preview
+                                },
+                                h2: {
+                                  component: HiddenText
+                                },
+                                h3: {
+                                  component: HiddenText
+                                },
+                                h4: {
+                                  component: HiddenText
+                                },
+                                p: {
+                                  component: HiddenText
+                                },
+                                code: {
+                                  component: HiddenText
+                                },
+                                hr: {
+                                  component: HiddenText
+                                },
+                                li: {
+                                  component: HiddenText
+                                },
+                                table: {
+                                  component: HiddenText
+                                }
                               }
-                            }
-                          }}
-                        >
-                          {postMarkdown[index] === undefined
-                            ? "글이 존재하지않습니다."
-                            : postMarkdown[index]}
-                        </Markdown>
-                      </CardPreview>
-                    </CardItemComponent>
-                  </CardItemSpace>
+                            }}
+                          >
+                            {postMarkdown[index] === undefined
+                              ? "글이 존재하지않습니다."
+                              : postMarkdown[index]}
+                          </Markdown>
+                        </CardPreview>
+                      </CardTextComponent>
+                      <CardImageComponent>
+                        <Thumbnail url={postMarkdown.ThumbnailImg} />
+                      </CardImageComponent>
+                    </CardMainCompnent>
+                    <CardTagComponent>
+                      <TagComponent>#개발</TagComponent>
+                    </CardTagComponent>
+                  </CardItemComponent>
                 </Link>
               );
               index++;
@@ -239,7 +241,9 @@ export function List() {
             markdownTitle.map(listTitle => {
               const item = (
                 <StyledLink to={`/view/${index}`} style={linkStyle} key={index}>
-                  <ListTitleComponent>{listTitle}</ListTitleComponent>
+                  <ListTitleComponent>
+                    {index + 1}. {listTitle}
+                  </ListTitleComponent>
                 </StyledLink>
               );
               index++;

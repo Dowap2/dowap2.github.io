@@ -8,7 +8,7 @@ const SearchBar = styled.div`
   float: right;
   background: #ffffff;
   border-radius: 40px;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #d3d3d3;
   width: ${props => (props.searchState ? "400px" : "42px")};
   transition: width 0.5s;
   padding: 5px;
