@@ -1,3 +1,5 @@
+###### TypeScript는 JavaScript에 정적 타입을 추가하여 코드 안정성과 생산성을 향상시키는 프로그래밍 언어입니다. 특히 대규모 프로젝트에서 유지보수성과 안정성을 높이는 데 강력한 도구로 사용됩니다.
+
 ## TypeScript란 무엇인가?
 
 TypeScript는 JavaScript의 슈퍼셋(Superset)으로, JavaScript에 정적 타입(static type)을 추가한 프로그래밍 언어입니다. Microsoft에서 개발하였으며, 대규모 애플리케이션 개발을 용이하게 하기 위해 설계되었습니다.
