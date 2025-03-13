@@ -142,7 +142,6 @@ export function List() {
 
       const post = await SetMarkdown(posts);
       const ThumbnailArray = await RandomThumbnail();
-      console.log("위", ThumbnailArray);
       CreateListItem(post, ThumbnailArray);
     }
 
@@ -159,7 +158,6 @@ export function List() {
             }
           }
         );
-        console.log(response);
         return response.data;
       } catch (e) {
         console.log(e);
@@ -192,7 +190,6 @@ export function List() {
 
     const CreateListItem = (postMarkdown, Thumbnail) => {
       if (Thumbnail.length === 0) return;
-      console.log(Thumbnail);
       let index = 0;
       viewMode === "card"
         ? setListItem(
@@ -247,7 +244,6 @@ export function List() {
                         </CardPreview>
                       </CardTextComponent>
                       <CardImageComponent>
-                        {console.log(Thumbnail[index]?.urls?.thumb)}
                         <ThumbnailComponent
                           src={Thumbnail[index]?.urls?.thumb}
                         />
