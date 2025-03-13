@@ -5,6 +5,8 @@ import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { axios } from "axios";
+import { ACCESS_KEY } from "../../../key.js";
 
 const ViewComponent = styled.div`
   width: 980px;
@@ -77,11 +79,14 @@ const TableComponent = styled.table`
 const HiddenComponent = styled.div`
   display: none;
 `;
+const ImgComponent = styled.img`
+  width: ${props => props.width};
+`;
 export function View(props) {
   const markdownFiles = useSelector(
     state => state.mdFileState.state.markdownFiles
   );
-  console.log(props);
+  const axios = require("axios");
   const { index } = useParams();
   const [postMarkdown, setPostMarkdown] = useState([]);
 
@@ -111,6 +116,7 @@ export function View(props) {
 
     SetMarkdownUrl();
   }, []);
+
   const P = ({ children, ...props }) => (
     <PComponent {...props}>{children}</PComponent>
   );
@@ -129,6 +135,9 @@ export function View(props) {
   );
   const Hidden = ({ children, ...props }) => (
     <HiddenComponent {...props}>{children}</HiddenComponent>
+  );
+  const ImgFile = ({ children, ...props }) => (
+    <ImgComponent {...props} src={props.src}></ImgComponent>
   );
 
   function Code({ className, children }) {
@@ -173,6 +182,9 @@ export function View(props) {
             },
             table: {
               component: Table
+            },
+            img: {
+              component: ImgFile
             }
           }
         }}

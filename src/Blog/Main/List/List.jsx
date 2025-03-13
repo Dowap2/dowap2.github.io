@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import ChangeViewModeContainer from "./ChangeViewModeContainer";
 import Markdown from "markdown-to-jsx";
+import axios from "axios";
+import { ACCESS_KEY } from "../../../key.js";
 
 const ListBackground = styled.div`
   width: 100%;
@@ -84,12 +86,13 @@ const CardTextComponent = styled.div`
 const CardImageComponent = styled.div`
   width: 140px;
 `;
-const Thumbnail = styled.img`
+const ThumbnailComponent = styled.img`
   margin-top: 20px;
   width: 100%;
   height: 60px;
   background: #f5f5f5;
   border: 0;
+  object-fit: cover;
 `;
 
 const StyledLink = styled(Link)`
@@ -138,7 +141,29 @@ export function List() {
       ).catch(err => console.error(err));
 
       const post = await SetMarkdown(posts);
-      CreateListItem(post);
+      const ThumbnailArray = await RandomThumbnail();
+      console.log("위", ThumbnailArray);
+      CreateListItem(post, ThumbnailArray);
+    }
+
+    async function RandomThumbnail() {
+      try {
+        const response = await axios.get(
+          "https://api.unsplash.com/photos/random",
+          {
+            params: {
+              client_id: ACCESS_KEY,
+              query: "technology",
+              count: 20,
+              orientation: "landscape"
+            }
+          }
+        );
+        console.log(response);
+        return response.data;
+      } catch (e) {
+        console.log(e);
+      }
     }
 
     async function SetMarkdown(url) {
@@ -165,7 +190,9 @@ export function List() {
 
     SetMarkdownUrl();
 
-    const CreateListItem = postMarkdown => {
+    const CreateListItem = (postMarkdown, Thumbnail) => {
+      if (Thumbnail.length === 0) return;
+      console.log(Thumbnail);
       let index = 0;
       viewMode === "card"
         ? setListItem(
@@ -220,7 +247,10 @@ export function List() {
                         </CardPreview>
                       </CardTextComponent>
                       <CardImageComponent>
-                        <Thumbnail url={postMarkdown.ThumbnailImg} />
+                        {console.log(Thumbnail[index]?.urls?.thumb)}
+                        <ThumbnailComponent
+                          src={Thumbnail[index]?.urls?.thumb}
+                        />
                       </CardImageComponent>
                     </CardMainCompnent>
                     <CardTagComponent>

@@ -48,7 +48,7 @@ export default function ChangeViewMode(props) {
           <IconComponent>
             <GridView fill={viewMode === "card" ? "#000000" : "#808080"} />
           </IconComponent>
-          <GridButtonText viewMode={viewMode}>그리드 뷰</GridButtonText>
+          <GridButtonText viewMode={viewMode}>카드 뷰</GridButtonText>
         </ChangeViewModeButtonContainer>
         <ChangeViewModeButtonContainer onClick={e => props.onChange("list")}>
           <IconComponent>
