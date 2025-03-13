@@ -84,14 +84,16 @@ const CardTextComponent = styled.div`
   width: 100%;
 `;
 const CardImageComponent = styled.div`
+  margin-left: 10px;
   width: 140px;
 `;
 const ThumbnailComponent = styled.img`
-  margin-top: 20px;
+  margin-top: 15px;
   width: 100%;
-  height: 60px;
+  height: 80px;
   background: #f5f5f5;
   border: 0;
+  border-radius: 10px;
   object-fit: cover;
 `;
 
@@ -99,7 +101,9 @@ const StyledLink = styled(Link)`
   width: 100%;
 `;
 const PreviewComponent = styled.div`
-  font-size: 10px;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 150%;
   display: inline;
 `;
 const HiddenComponent = styled.div`
@@ -188,8 +192,7 @@ export function List() {
 
     SetMarkdownUrl();
 
-    const CreateListItem = (postMarkdown, Thumbnail) => {
-      if (Thumbnail.length === 0) return;
+    const CreateListItem = (postMarkdown, Thumbnail = []) => {
       let index = 0;
       viewMode === "card"
         ? setListItem(
@@ -245,7 +248,10 @@ export function List() {
                       </CardTextComponent>
                       <CardImageComponent>
                         <ThumbnailComponent
-                          src={Thumbnail[index]?.urls?.thumb}
+                          src={
+                            Thumbnail[index]?.urls?.thumb ||
+                            "/default-image.jpg"
+                          }
                         />
                       </CardImageComponent>
                     </CardMainCompnent>
