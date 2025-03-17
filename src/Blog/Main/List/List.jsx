@@ -201,6 +201,10 @@ export function List() {
 
     const CreateListItem = (postMarkdown, Thumbnail = []) => {
       let index = 0;
+      let ThumbnailArr = Thumbnail;
+      if (Thumbnail == undefined) {
+        ThumbnailArr = [];
+      }
       viewMode === "card"
         ? setListItem(
             markdownTitle.map(listTitle => {
@@ -256,7 +260,7 @@ export function List() {
                       <CardImageComponent>
                         <ThumbnailComponent
                           src={
-                            Thumbnail[index]?.urls?.thumb ||
+                            ThumbnailArr[index]?.urls?.thumb ||
                             "/default-image.jpg"
                           }
                         />
