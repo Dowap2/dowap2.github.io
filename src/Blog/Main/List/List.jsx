@@ -127,6 +127,22 @@ const TagComponent = styled.div`
   background: #e3f2fd;
 `;
 
+async function RandomThumbnail() {
+  try {
+    const response = await axios.get("https://api.unsplash.com/photos/random", {
+      params: {
+        client_id: ACCESS_KEY,
+        query: "technology",
+        count: 20,
+        orientation: "landscape"
+      }
+    });
+    return response.data;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export function List() {
   const markdownFiles = useSelector(
     state => state.mdFileState.state.markdownFiles
@@ -137,35 +153,26 @@ export function List() {
     state => state.searchState.state.searchKeyword
   );
   const viewMode = useSelector(state => state.viewState.state.viewMode);
+  const [ThumbnailList, setThumbnailList] = useState([]);
+
+  useEffect(() => {
+    async function setThumbnail() {
+      const ThumbnailArray = await RandomThumbnail();
+      console.log("1");
+      setThumbnailList(ThumbnailArray);
+    }
+
+    setThumbnail();
+  }, [searchWord]);
 
   useEffect(() => {
     async function SetMarkdownUrl() {
       const posts = await Promise.all(
         markdownFiles.map(file => file)
       ).catch(err => console.error(err));
-
       const post = await SetMarkdown(posts);
-      const ThumbnailArray = await RandomThumbnail();
-      CreateListItem(post, ThumbnailArray);
-    }
-
-    async function RandomThumbnail() {
-      try {
-        const response = await axios.get(
-          "https://api.unsplash.com/photos/random",
-          {
-            params: {
-              client_id: ACCESS_KEY,
-              query: "technology",
-              count: 20,
-              orientation: "landscape"
-            }
-          }
-        );
-        return response.data;
-      } catch (e) {
-        console.log(e);
-      }
+      console.log("2", ThumbnailList);
+      CreateListItem(post, ThumbnailList);
     }
 
     async function SetMarkdown(url) {
@@ -287,7 +294,7 @@ export function List() {
             })
           );
     };
-  }, [searchWord, viewMode]);
+  }, [searchWord, viewMode, ThumbnailList]);
   return (
     <ListBackground>
       <ChangeViewModeContainer />
