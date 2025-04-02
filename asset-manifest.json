@@ -1,10 +1,9 @@
 {
   "files": {
-    "main.js": "/static/js/main.a83dd68b.js",
+    "main.js": "/static/js/main.c38dbde7.js",
     "static/media/Ohgyeongtae.jpeg": "/static/media/Ohgyeongtae.7e326ae6dd82711ba5fd.jpeg",
     "static/media/PortfolioFile.pdf": "/static/media/PortfolioFile.5e8a2d6e1e83368dc251.pdf",
     "static/media/ResumeFile.pdf": "/static/media/ResumeFile.beaff42b5d65c7afe68c.pdf",
-    "static/media/axios.cjs": "/static/media/axios.2e08fc95e59bdef62452.cjs",
     "static/media/Github.png": "/static/media/Github.9e094d235b4caa7c31fc.png",
     "static/media/ogu2.png": "/static/media/ogu2.70b3b43925f4e5f1e872.png",
     "static/media/copyGithub.png": "/static/media/copyGithub.22cfdd1cba253783ce51.png",
@@ -17,7 +16,7 @@
     "static/media/react hook에 대하여.md": "/static/media/react hook에 대하여.ec5a3fe4dd3b33dfee05.md",
     "static/media/고차컴포넌트.md": "/static/media/고차컴포넌트.655807b795c6e0d5ebf6.md",
     "static/media/Key.md": "/static/media/Key.8d515d49a9cc5ab88ce6.md",
-    "static/media/useMemo.md": "/static/media/useMemo.0bfca3265a9fb72b4dca.md",
+    "static/media/useMemo.md": "/static/media/useMemo.d99cbf618e67a14873da.md",
     "static/media/Blog에 애니메이션을 추가하며 생각한 것.md": "/static/media/Blog에 애니메이션을 추가하며 생각한 것.3019ee71a4e75559a865.md",
     "static/media/moment.js 사용법.md": "/static/media/moment.js 사용법.ac7aa7554bac67be0af8.md",
     "static/media/너비우선탐색(BFS).md": "/static/media/너비우선탐색(BFS).fda6bc28b884db9b7b3e.md",
@@ -32,9 +31,9 @@
     "index.html": "/index.html",
     "static/media/ListViewIcon.svg": "/static/media/ListViewIcon.e0a631c0bb90ad9766d041c9754baa56.svg",
     "static/media/GridViewIcon.svg": "/static/media/GridViewIcon.75ce6be65e174bd3493fc0eafe709bd6.svg",
-    "main.a83dd68b.js.map": "/static/js/main.a83dd68b.js.map"
+    "main.c38dbde7.js.map": "/static/js/main.c38dbde7.js.map"
   },
   "entrypoints": [
-    "static/js/main.a83dd68b.js"
+    "static/js/main.c38dbde7.js"
   ]
 }

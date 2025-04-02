@@ -1,5 +1,4 @@
 ###### useMemo는 연산 비용이 높은 값을 캐싱하고, useCallback은 불필요한 함수 재생성을 방지하는 메모이제이션 기법입니다. 두 Hook 모두 성능 최적화에 도움을 주지만, 과도하게 사용하면 오히려 성능 저하를 초래할 수 있습니다.
-
 ### **🔹 useMemo와 useCallback의 차이점과 사용법**
 
 React의 `useMemo`와 `useCallback`은 **렌더링 최적화**를 위해 사용되는 Hook입니다.  
