@@ -158,12 +158,11 @@ export function List() {
   useEffect(() => {
     async function setThumbnail() {
       const ThumbnailArray = await RandomThumbnail();
-      console.log("1");
       setThumbnailList(ThumbnailArray);
     }
 
     setThumbnail();
-  }, [searchWord]);
+  }, []);
 
   useEffect(() => {
     async function SetMarkdownUrl() {

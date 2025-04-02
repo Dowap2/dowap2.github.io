@@ -5,8 +5,7 @@ import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { axios } from "axios";
-import { ACCESS_KEY } from "../../../key.js";
+
 
 const ViewComponent = styled.div`
   width: 980px;
@@ -86,7 +85,6 @@ export function View(props) {
   const markdownFiles = useSelector(
     state => state.mdFileState.state.markdownFiles
   );
-  const axios = require("axios");
   const { index } = useParams();
   const [postMarkdown, setPostMarkdown] = useState([]);
 
