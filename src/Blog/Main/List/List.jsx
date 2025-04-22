@@ -11,6 +11,7 @@ import Hangul from "hangul-js";
 const ListBackground = styled.div`
   width: 100%;
   padding-bottom: 40px;
+  display: flex;
 `;
 const linkStyle = {
   color: "black",
@@ -206,14 +207,24 @@ export function List() {
       if (Thumbnail == undefined) {
         ThumbnailArr = [];
       }
+
       viewMode === "card"
         ? setListItem(
             markdownTitle.map(listTitle => {
-              let searcher = new Hangul.Searcher(listTitle);
-              // console.log(Hangul.search(listTitle, searchWord));
-              // listTitle.toLowerCase().includes(searchWord.toLowerCase()) === true ||
-              let isTrueSearch = Hangul.search(listTitle, searchWord) !== -1;
-              console.log(listTitle, isTrueSearch, searchWord);
+              const disassembled = Hangul.disassemble(listTitle, true);
+
+              const noJong = disassembled.map(char => {
+                if (char.length > 2) {
+                  return Hangul.assemble(
+                    char.slice(0, Hangul.isVowel(char[2]) ? 3 : 2)
+                  );
+                }
+                return Hangul.assemble(char);
+              });
+
+              let isTrueSearch =
+                listTitle.toLowerCase().indexOf(searchWord.toLowerCase()) !==
+                  -1 || Hangul.search(noJong, searchWord) !== -1;
 
               const item = (
                 <Link to={`/view/${index}`} style={linkStyle} key={index}>
@@ -280,15 +291,15 @@ export function List() {
                 </Link>
               );
               index++;
-              return listTitle
-                .toLowerCase()
-                .indexOf(searchWord.toLowerCase()) === -1
-                ? null
-                : item;
+              return isTrueSearch ? item : null;
             })
           )
         : setListItem(
             markdownTitle.map(listTitle => {
+              let isTrueSearch =
+                listTitle.toLowerCase().indexOf(searchWord.toLowerCase()) !==
+                  -1 || Hangul.search(listTitle, searchWord) !== -1;
+              console.log(listTitle, isTrueSearch, searchWord);
               const item = (
                 <StyledLink to={`/view/${index}`} style={linkStyle} key={index}>
                   <ListTitleComponent>
@@ -297,19 +308,21 @@ export function List() {
                 </StyledLink>
               );
               index++;
-              return listTitle
-                .toLowerCase()
-                .indexOf(searchWord.toLowerCase()) === -1
-                ? null
-                : item;
+              return isTrueSearch ? item : null;
             })
           );
     };
   }, [searchWord, viewMode, ThumbnailList]);
+
   return (
     <ListBackground>
       {/* <ChangeViewModeContainer /> */}
-      <ListComponent>{ListItem}</ListComponent>
+      <ListComponent>
+        {ListItem.findIndex(arr => arr !== null) === -1
+          ? "검색 결과가 없습니다"
+          : ListItem}
+      </ListComponent>
+      asfasd
     </ListBackground>
   );
 }
