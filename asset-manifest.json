@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/static/js/main.c38dbde7.js",
+    "main.js": "/static/js/main.8a79a1f2.js",
     "static/media/Ohgyeongtae.jpeg": "/static/media/Ohgyeongtae.7e326ae6dd82711ba5fd.jpeg",
+    "static/media/blog_logo.png": "/static/media/blog_logo.229d439f46b4d9a2b0bf.png",
     "static/media/PortfolioFile.pdf": "/static/media/PortfolioFile.5e8a2d6e1e83368dc251.pdf",
     "static/media/ResumeFile.pdf": "/static/media/ResumeFile.beaff42b5d65c7afe68c.pdf",
     "static/media/Github.png": "/static/media/Github.9e094d235b4caa7c31fc.png",
     "static/media/ogu2.png": "/static/media/ogu2.70b3b43925f4e5f1e872.png",
     "static/media/copyGithub.png": "/static/media/copyGithub.22cfdd1cba253783ce51.png",
     "static/media/ogu4.png": "/static/media/ogu4.95776cc935d9c8632c33.png",
-    "static/media/ogu.jpeg": "/static/media/ogu.13633be93d02ffb0413b.jpeg",
     "static/media/copyEmail.png": "/static/media/copyEmail.51b08bcbb5af7a861c31.png",
     "static/media/좋은 웹 퍼포먼스를 내는방법.md": "/static/media/좋은 웹 퍼포먼스를 내는방법.2b84d52e66516e5a90e1.md",
     "static/media/비동기처리에관하여.md": "/static/media/비동기처리에관하여.b12a8cadee0156c0b76b.md",
@@ -31,9 +31,9 @@
     "index.html": "/index.html",
     "static/media/ListViewIcon.svg": "/static/media/ListViewIcon.e0a631c0bb90ad9766d041c9754baa56.svg",
     "static/media/GridViewIcon.svg": "/static/media/GridViewIcon.75ce6be65e174bd3493fc0eafe709bd6.svg",
-    "main.c38dbde7.js.map": "/static/js/main.c38dbde7.js.map"
+    "main.8a79a1f2.js.map": "/static/js/main.8a79a1f2.js.map"
   },
   "entrypoints": [
-    "static/js/main.c38dbde7.js"
+    "static/js/main.8a79a1f2.js"
   ]
 }
