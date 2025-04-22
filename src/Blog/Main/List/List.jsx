@@ -6,6 +6,7 @@ import ChangeViewModeContainer from "./ChangeViewModeContainer";
 import Markdown from "markdown-to-jsx";
 import axios from "axios";
 import { ACCESS_KEY } from "../../../key.js";
+import Hangul from "hangul-js";
 
 const ListBackground = styled.div`
   width: 100%;
@@ -201,12 +202,19 @@ export function List() {
     const CreateListItem = (postMarkdown, Thumbnail = []) => {
       let index = 0;
       let ThumbnailArr = Thumbnail;
+
       if (Thumbnail == undefined) {
         ThumbnailArr = [];
       }
       viewMode === "card"
         ? setListItem(
             markdownTitle.map(listTitle => {
+              let searcher = new Hangul.Searcher(listTitle);
+              // console.log(Hangul.search(listTitle, searchWord));
+              // listTitle.toLowerCase().includes(searchWord.toLowerCase()) === true ||
+              let isTrueSearch = Hangul.search(listTitle, searchWord) !== -1;
+              console.log(listTitle, isTrueSearch, searchWord);
+
               const item = (
                 <Link to={`/view/${index}`} style={linkStyle} key={index}>
                   <CardItemComponent>
@@ -300,7 +308,7 @@ export function List() {
   }, [searchWord, viewMode, ThumbnailList]);
   return (
     <ListBackground>
-      <ChangeViewModeContainer />
+      {/* <ChangeViewModeContainer /> */}
       <ListComponent>{ListItem}</ListComponent>
     </ListBackground>
   );

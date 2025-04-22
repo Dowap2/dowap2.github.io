@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import ogu from "../../Img/ogu.jpeg";
+import logo from "../../Img/blog_logo.png";
 import Github from "../../Img/Github.png";
 
 const HeaderComponent = styled.div`
@@ -8,10 +8,11 @@ const HeaderComponent = styled.div`
   height: 60px;
   display: flex;
   background: #ffffff;
-  border-bottom: 1px solid #d3d3d3;
+  margin-top: 20px;
+  margin-bottom: 40px;
 `;
 const Wrapper = styled.div`
-  width: 980px;
+  width: 90%;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -35,7 +36,7 @@ export function Header() {
       <HeaderComponent>
         <Wrapper>
           <Link to="/">
-            <LogoImg src={ogu} alt="logo" />
+            <LogoImg src={logo} />
           </Link>
           <a
             href="https://github.com/Dowap2"

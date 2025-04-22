@@ -11,7 +11,10 @@ import styled from "styled-components";
 
 function App() {
   const MainComponent = styled.div`
-    font-family: "Spoqa Han Sans Neo", "Spoqa Han Sans JP", sans-serif;
+    font-family: "Pretendard Variable", Pretendard, -apple-system,
+      BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+      "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   `;
   return (
     <Router className="App" basename="/">

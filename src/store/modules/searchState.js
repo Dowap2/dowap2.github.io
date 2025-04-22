@@ -8,7 +8,7 @@ export const ChangeSearchKeyword = createAction(SEARCHKEYWORD);
 
 const initalState = {
   state: {
-    searchState: false,
+    searchState: true,
     searchKeyword: ""
   }
 };

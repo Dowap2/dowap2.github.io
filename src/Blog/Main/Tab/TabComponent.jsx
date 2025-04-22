@@ -5,11 +5,10 @@ import { useIntl } from "react-intl";
 
 const SearchBar = styled.div`
   display: flex;
-  float: right;
   background: #ffffff;
   border-radius: 40px;
   border: 1px solid #d3d3d3;
-  width: ${props => (props.searchState ? "400px" : "42px")};
+  width: ${props => (props.searchState ? "650px" : "42px")};
   transition: width 0.5s;
   padding: 5px;
   height: 42px;
@@ -40,8 +39,7 @@ export function TabComponent(props) {
     <div>
       <SearchBar
         searchState={searchState}
-        onMouseOver={e => props.onChange(true)}
-        onMouseOut={e => props.onChange(false)}
+        // onClick={e => props.onChange(!searchState)}
       >
         <SearchInput
           searchState={searchState}
