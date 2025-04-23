@@ -1,11 +1,14 @@
 {
   "files": {
-    "main.js": "/static/js/main.a0ec6b2c.js",
+    "main.js": "/static/js/main.23621c98.js",
     "static/media/Ohgyeongtae.jpeg": "/static/media/Ohgyeongtae.7e326ae6dd82711ba5fd.jpeg",
-    "static/media/blog_logo.png": "/static/media/blog_logo.229d439f46b4d9a2b0bf.png",
+    "static/media/LogoDay.png": "/static/media/LogoDay.229d439f46b4d9a2b0bf.png",
     "static/media/PortfolioFile.pdf": "/static/media/PortfolioFile.5e8a2d6e1e83368dc251.pdf",
+    "static/media/LogoNight.png": "/static/media/LogoNight.2857e879f44e69bcc363.png",
     "static/media/ResumeFile.pdf": "/static/media/ResumeFile.beaff42b5d65c7afe68c.pdf",
-    "static/media/Github.png": "/static/media/Github.9e094d235b4caa7c31fc.png",
+    "static/media/GithubNight.png": "/static/media/GithubNight.fe872693feb9fb070a4d.png",
+    "static/media/GithubDay.png": "/static/media/GithubDay.9e094d235b4caa7c31fc.png",
+    "static/media/Night.png": "/static/media/Night.7050c1541886186e2b02.png",
     "static/media/ogu2.png": "/static/media/ogu2.70b3b43925f4e5f1e872.png",
     "static/media/copyGithub.png": "/static/media/copyGithub.22cfdd1cba253783ce51.png",
     "static/media/ogu4.png": "/static/media/ogu4.95776cc935d9c8632c33.png",
@@ -29,11 +32,9 @@
     "static/media/시간복잡도와 공간복잡도.md": "/static/media/시간복잡도와 공간복잡도.d0b6541e1caee16cee5b.md",
     "static/media/퀵소트.md": "/static/media/퀵소트.b8ccea0b4b4624fa4485.md",
     "index.html": "/index.html",
-    "static/media/ListViewIcon.svg": "/static/media/ListViewIcon.e0a631c0bb90ad9766d041c9754baa56.svg",
-    "static/media/GridViewIcon.svg": "/static/media/GridViewIcon.75ce6be65e174bd3493fc0eafe709bd6.svg",
-    "main.a0ec6b2c.js.map": "/static/js/main.a0ec6b2c.js.map"
+    "main.23621c98.js.map": "/static/js/main.23621c98.js.map"
   },
   "entrypoints": [
-    "static/js/main.a0ec6b2c.js"
+    "static/js/main.23621c98.js"
   ]
 }
