@@ -26,7 +26,12 @@ const blue = {
   700: "#4b89dc"
 };
 
+const point = {
+  skyBlue: "#1f5fff"
+};
+
 export const colors = {
   gray,
-  blue
+  blue,
+  point
 };

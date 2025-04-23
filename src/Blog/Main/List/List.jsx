@@ -85,13 +85,13 @@ const TagComponent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 10px;
-  font-weight: 700;
-  color: ${colors.blue[100]};
-  width: 50px;
-  height: 20px;
-  border-radius: 5px;
-  background: ${colors.blue[600]};
+  font-size: 11px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.pointText};
+  width: 60px;
+  height: 24px;
+  border-radius: 3px;
+  background: ${({ theme }) => theme.pointBackground};
 `;
 
 const SideBar = styled.div`
@@ -174,6 +174,7 @@ function ListComponent() {
   }, []);
 
   const renderList = useMemo(() => {
+    console.log(postPreviews);
     // 테마로 인한 리렌더 방지
     if (dataCache.renderList.length !== 0) {
       return dataCache.renderList;
@@ -184,6 +185,11 @@ function ListComponent() {
     const Hidden = ({ children, ...props }) => (
       <HiddenComponent {...props}>{children}</HiddenComponent>
     );
+    const Tag = ({ children, ...props }) => {
+      <TagComponent {...props}>{children}</TagComponent>;
+    };
+
+    console.log(Tag);
 
     return titles.map((title, index) => {
       const disassembled = Hangul.disassemble(title, true);
@@ -217,6 +223,7 @@ function ListComponent() {
                         h2: { component: Hidden },
                         h3: { component: Hidden },
                         h4: { component: Hidden },
+                        h5: { component: Hidden },
                         h6: { component: Preview },
                         p: { component: Hidden },
                         code: { component: Hidden },
@@ -237,7 +244,26 @@ function ListComponent() {
               </CardImageComponent>
             </CardMainComponent>
             <CardTagComponent>
-              <TagComponent>#개발</TagComponent>
+              <Markdown
+                options={{
+                  overrides: {
+                    h1: { component: Hidden },
+                    h2: { component: Hidden },
+                    h3: { component: Hidden },
+                    h4: { component: Hidden },
+                    h5: { component: Tag },
+                    h6: { component: Hidden },
+                    p: { component: Hidden },
+                    code: { component: Hidden },
+                    hr: { component: Hidden },
+                    li: { component: Hidden },
+                    table: { component: Hidden }
+                  }
+                }}
+              >
+                {postPreviews[index]}
+              </Markdown>
+              tag
             </CardTagComponent>
           </CardItemComponent>
         </Link>

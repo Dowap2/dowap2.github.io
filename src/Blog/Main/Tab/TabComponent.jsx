@@ -6,8 +6,9 @@ import { useIntl } from "react-intl";
 const SearchBar = styled.div`
   display: flex;
   background: ${({ theme }) => theme.subBackground};
-  border-radius: 40px;
+  border-radius: 10px;
   border: 1px solid ${({ theme }) => theme.subBackground};
+
   width: ${props => (props.searchState ? "650px" : "42px")};
   transition: width 0.5s;
   padding: 5px;
@@ -28,6 +29,7 @@ const SearchInput = styled.input`
   transition: margin-left 0.5s;
   width: ${props => (props.searchState ? "100%" : "0px")};
   border: 0;
+  color: ${({ theme }) => theme.text};
   background: ${({ theme }) => theme.subBackground};
   outline: none;
   padding: 0px;
@@ -45,8 +47,8 @@ export function TabComponent(props) {
           onChange={e => {
             props.onChangeWord(e.target.value);
           }}
+          placeholder={"검색어를 입력하세요"}
         />
-        <SearchIcon src={Search} alt="searchIcon" searchState={searchState} />
       </SearchBar>
     </div>
   );
