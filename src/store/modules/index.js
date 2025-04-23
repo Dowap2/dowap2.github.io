@@ -5,6 +5,7 @@ import searchState from "./searchState";
 import commentState from "./commentState";
 import modalState from "./modalState";
 import viewState from "./viewState";
+import pageState from "./pageState";
 
 export default combineReducers({
   languageState,
@@ -12,5 +13,6 @@ export default combineReducers({
   searchState,
   commentState,
   modalState,
-  viewState
+  viewState,
+  pageState
 });

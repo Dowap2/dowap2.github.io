@@ -14,7 +14,7 @@ export default function reducer(state = initalState, action) {
   switch (action.type) {
     case CHANGEVIEWMODE: {
       return {
-        state: { viewMode: action.payload }
+        viewMode: action.payload
       };
     }
     default: {

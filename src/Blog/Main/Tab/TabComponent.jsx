@@ -5,9 +5,9 @@ import { useIntl } from "react-intl";
 
 const SearchBar = styled.div`
   display: flex;
-  background: #ffffff;
+  background: ${({ theme }) => theme.subBackground};
   border-radius: 40px;
-  border: 1px solid #d3d3d3;
+  border: 1px solid ${({ theme }) => theme.subBackground};
   width: ${props => (props.searchState ? "650px" : "42px")};
   transition: width 0.5s;
   padding: 5px;
@@ -28,6 +28,7 @@ const SearchInput = styled.input`
   transition: margin-left 0.5s;
   width: ${props => (props.searchState ? "100%" : "0px")};
   border: 0;
+  background: ${({ theme }) => theme.subBackground};
   outline: none;
   padding: 0px;
 `;
@@ -37,10 +38,7 @@ export function TabComponent(props) {
   const intl = useIntl();
   return (
     <div>
-      <SearchBar
-        searchState={searchState}
-        // onClick={e => props.onChange(!searchState)}
-      >
+      <SearchBar searchState={searchState}>
         <SearchInput
           searchState={searchState}
           type="text"

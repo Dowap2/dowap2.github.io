@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
   changeViewMode: mode => dispatch(viewState.ChangeViewMode(mode))
 });
 
-export default connect(
+export const ConnectedChangeViewMode = connect(
   mapStateToProps,
   mapDispatchToProps
 )(ChangeViewModeContainer);
