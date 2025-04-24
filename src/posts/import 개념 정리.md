@@ -1,5 +1,7 @@
 ###### export 방식에 따라 import 방식이 달라지며, export default는 중괄호 없이 import하고, export {}는 중괄호를 사용하여 import합니다. 여러 개의 named export는 import \* as로 한 번에 가져오거나 alias를 사용하여 다른 이름으로 import할 수 있습니다.
 
+##### JavaScript
+
 # React에서 import 에러와 export/import 개념 정리
 
 React 프로젝트를 진행하다 보면 `Attempted import error:` 라는 에러를 마주할 수 있습니다. 최근 개인 프로젝트에서 다음과 같은 상황을 경험했습니다.

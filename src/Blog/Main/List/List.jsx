@@ -10,6 +10,7 @@ import { ACCESS_KEY } from "../../../key.js";
 import Hangul from "hangul-js";
 import { colors } from "../../../palette.ts";
 import { dataCache } from "../../../fetchCache";
+import { SideBarComponent } from "../SideBar/SideBarComponent";
 
 // Styled Components
 const ListBackground = styled.div`
@@ -82,22 +83,20 @@ const CardTagComponent = styled.div`
 `;
 
 const TagComponent = styled.div`
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  white-space: nowrap;
   font-size: 11px;
   font-weight: 500;
   color: ${({ theme }) => theme.pointText};
-  width: 60px;
+  width: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
   height: 24px;
   border-radius: 3px;
   background: ${({ theme }) => theme.pointBackground};
-`;
-
-const SideBar = styled.div`
-  margin: 0 60px;
-  width: 100%;
-  border-left: 1px solid ${({ theme }) => theme.subBackground};
 `;
 
 const HiddenComponent = styled.div`
@@ -109,6 +108,17 @@ const PreviewComponent = styled.div`
   font-weight: 300;
   line-height: 150%;
   display: inline;
+`;
+
+const NoResultComponent = styled.div`
+  width: 100%;
+  height: 500px;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.text};
 `;
 
 // API call to Unsplash
@@ -134,6 +144,7 @@ async function fetchRandomThumbnails() {
 function ListComponent() {
   const [postPreviews, setPostPreviews] = useState(dataCache.previews);
   const [thumbnails, setThumbnails] = useState(dataCache.thumbnails);
+  const Tags = [];
 
   const markdownFiles = useSelector(
     state => state.mdFileState.state.markdownFiles
@@ -146,6 +157,7 @@ function ListComponent() {
     () => markdownFiles.map(file => file.slice(14).split(".")[0]),
     [markdownFiles]
   );
+  const NoResult = <NoResultComponent>검색 결과가 없습니다</NoResultComponent>;
 
   useEffect(() => {
     // 테마로 인한 리렌더 방지
@@ -185,12 +197,16 @@ function ListComponent() {
     const Hidden = ({ children, ...props }) => (
       <HiddenComponent {...props}>{children}</HiddenComponent>
     );
-    const Tag = ({ children, ...props }) => {
-      <TagComponent {...props}>{children}</TagComponent>;
-    };
-
-    console.log(Tag);
-
+    const Tag = ({ children, ...props }) => (
+      console.log(children),
+      (
+        <CardTagComponent {...props}>
+          {children[0]
+            .split(",")
+            .map(tag => (Tags.push(tag), (<TagComponent>{tag}</TagComponent>)))}
+        </CardTagComponent>
+      )
+    );
     return titles.map((title, index) => {
       const disassembled = Hangul.disassemble(title, true);
       const noJong = disassembled.map(char =>
@@ -223,7 +239,7 @@ function ListComponent() {
                         h2: { component: Hidden },
                         h3: { component: Hidden },
                         h4: { component: Hidden },
-                        h5: { component: Hidden },
+                        h5: { component: Preview },
                         h6: { component: Preview },
                         p: { component: Hidden },
                         code: { component: Hidden },
@@ -243,43 +259,38 @@ function ListComponent() {
                 />
               </CardImageComponent>
             </CardMainComponent>
-            <CardTagComponent>
-              <Markdown
-                options={{
-                  overrides: {
-                    h1: { component: Hidden },
-                    h2: { component: Hidden },
-                    h3: { component: Hidden },
-                    h4: { component: Hidden },
-                    h5: { component: Tag },
-                    h6: { component: Hidden },
-                    p: { component: Hidden },
-                    code: { component: Hidden },
-                    hr: { component: Hidden },
-                    li: { component: Hidden },
-                    table: { component: Hidden }
-                  }
-                }}
-              >
-                {postPreviews[index]}
-              </Markdown>
-              tag
-            </CardTagComponent>
+            <Markdown
+              options={{
+                overrides: {
+                  h1: { component: Hidden },
+                  h2: { component: Hidden },
+                  h3: { component: Hidden },
+                  h4: { component: Hidden },
+                  h5: { component: Tag },
+                  h6: { component: Hidden },
+                  p: { component: Hidden },
+                  code: { component: Hidden },
+                  hr: { component: Hidden },
+                  li: { component: Hidden },
+                  table: { component: Hidden }
+                }
+              }}
+            >
+              {postPreviews[index]}
+            </Markdown>
           </CardItemComponent>
         </Link>
       );
     });
   }, [titles, searchWord, thumbnails, postPreviews]);
-
+  console.log("vv", Tags);
   return (
     <ListBackground>
       <ListContainer>
         <TabContainer />
-        {renderList.every(item => item === null)
-          ? "검색 결과가 없습니다"
-          : renderList}
+        {renderList.every(item => item === null) ? NoResult : renderList}
       </ListContainer>
-      <SideBar />
+      <SideBarComponent TagList={Tags} />
     </ListBackground>
   );
 }

@@ -1,5 +1,7 @@
 ###### React에서 리스트를 렌더링할 때는 각 항목에 고유한 key 값을 지정해야 하며, map() 함수에서 컴포넌트에 key를 추가해야 합니다. key 값은 항목의 고유한 값으로 설정하고, index를 key로 사용하는 것은 권장되지 않습니다.
 
+##### React,JavaScript
+
 # 📌 React에서 Lists와 Keys
 
 ## 📖 개요
