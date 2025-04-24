@@ -1,5 +1,7 @@
 ###### props는 컴포넌트 외부에서 전달되며, state는 컴포넌트 내부에서 관리됩니다. React Hook은 최상위에서만 호출해야 하며, 사용자 정의 Hook을 사용해 컴포넌트 로직을 재사용할 수 있고, useEffect로 렌더링 후 비동기 작업을 처리할 수 있습니다.
 
+##### React
+
 # React
 
 ## Props VS State
