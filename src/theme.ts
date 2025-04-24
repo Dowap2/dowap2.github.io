@@ -16,6 +16,6 @@ export const darkTheme = {
   subBackground: "#282e3a",
   text: "#bcc0cf",
   subText: "#ffffff",
-  pointBackground: "#1f5fff",
+  pointBackground: "#0081ff",
   pointText: "#ffffff"
 };

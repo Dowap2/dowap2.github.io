@@ -6,7 +6,6 @@ import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-
 const ViewComponent = styled.div`
   width: 980px;
   margin: auto;
@@ -14,6 +13,7 @@ const ViewComponent = styled.div`
   @media only screen and (max-width: 960px) {
     width: 100%;
   }
+  color: ${({ theme }) => theme.text};
 `;
 
 const CodeComponent = styled.div`
@@ -29,6 +29,7 @@ const PComponent = styled.div`
   font-size: 18px;
   line-height: 30px;
   box-sizing: border-box;
+  color: ${({ theme }) => theme.text};
   @media only screen and (max-width: 960px) {
     width: 100%;
   }
@@ -38,31 +39,40 @@ const H1Component = styled.div`
   font-weight: bold;
   margin-top: 40px;
   margin-bottom: 40px;
+  color: ${({ theme }) => theme.text};
 `;
 const HRComponent = styled.hr`
   border: 2px solid e9ecef;
   margin-top: 50px;
   margin-bottom: 50px;
+  color: ${({ theme }) => theme.text};
 `;
 const SpanComponent = styled.div`
-  display: inline;
-  background: #e9ecef;
-  padding: 3px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: ${({ theme }) => theme.pointBackground};
+  margin: 3px;
   padding-left: 5px;
   padding-right: 5px;
   border-radius: 5px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.pointText};
 `;
 const LiComponent = styled.li`
   padding-bottom: 10px;
   line-height: 30px;
+  color: ${({ theme }) => theme.text};
 `;
 const TableComponent = styled.table`
   border: 1px solid #e9ecef;
   width: 100%;
   text-align: left;
   border-collapse: collapse;
+  color: ${({ theme }) => theme.text};
   th {
-    background: #e9ecef;
+    background: ${({ theme }) => theme.pointBackground};
+    color: ${({ theme }) => theme.pointText};
     padding: 10px;
     border: 1px solid #808080;
   }
@@ -162,6 +172,9 @@ export function View(props) {
           overrides: {
             h1: {
               component: H1
+            },
+            h5: {
+              component: Hidden
             },
             h6: {
               component: Hidden
