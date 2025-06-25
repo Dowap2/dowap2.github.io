@@ -7,9 +7,8 @@ const CommentComponent = styled.div`
   margin-top: 50px;
 `;
 
-export function Comment(props) {
+export function Comment() {
   const { index } = useParams();
-  console.log(index);
   return (
     <CommentComponent>
       <CommentInputContainer index={index} />

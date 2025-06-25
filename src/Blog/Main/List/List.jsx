@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useEffect, useState, useMemo, useRef } from "react";
+import { useMemo } from "react";
 import TabContainer from "../Tab/TabContainer";
 import Markdown from "markdown-to-jsx";
-import axios from "axios";
-import { ACCESS_KEY } from "../../../key.js";
+// import axios from "axios";
+// import { ACCESS_KEY } from "../../../key.js";
 import Hangul from "hangul-js";
 import { colors } from "../../../palette.ts";
 import { dataCache } from "../../../fetchCache";
@@ -122,94 +122,87 @@ const NoResultComponent = styled.div`
 `;
 
 // API call to Unsplash
-async function fetchRandomThumbnails() {
-  try {
-    const { data } = await axios.get("https://api.unsplash.com/photos/random", {
-      params: {
-        client_id: ACCESS_KEY,
-        query: "technology",
-        count: 20,
-        orientation: "landscape"
-      }
-    });
-    dataCache.thumbnails = data;
-    return data;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-}
+// async function fetchRandomThumbnails() {
+//   try {
+//     const { data } = await axios.get("https://api.unsplash.com/photos/random", {
+//       params: {
+//         client_id: ACCESS_KEY,
+//         query: "technology",
+//         count: 20,
+//         orientation: "landscape",
+//       },
+//     });
+//     dataCache.thumbnails = data;
+//     return data;
+//   } catch (error) {
+//     console.error(error);
+//     return [];
+//   }
+// }
 
 // Component
-function ListComponent() {
-  const [postPreviews, setPostPreviews] = useState(dataCache.previews);
-  const [thumbnails, setThumbnails] = useState(dataCache.thumbnails);
-  const Tags = [];
-
+const ListComponent = () => {
   const markdownFiles = useSelector(
-    state => state.mdFileState.state.markdownFiles
-  );
-  const searchWord = useSelector(
-    state => state.searchState.state.searchKeyword
+    (state) => state.mdFileState.state.markdownFiles
   );
 
-  const titles = useMemo(
-    () => markdownFiles.map(file => file.slice(14).split(".")[0]),
-    [markdownFiles]
-  );
-  const NoResult = <NoResultComponent>검색 결과가 없습니다</NoResultComponent>;
+  const [postPreviews, setPostPreviews] = useState([]);
 
   useEffect(() => {
-    // 테마로 인한 리렌더 방지
-    if (dataCache.previews.length !== 0) {
+    if (dataCache.previews.length > 0) {
       setPostPreviews(dataCache.previews);
-      setThumbnails(dataCache.thumbnails);
       return;
     }
 
-    console.log("effect");
-
-    fetchRandomThumbnails().then(setThumbnails);
-
-    async function fetchPreviews() {
-      const texts = await Promise.all(
-        markdownFiles.map(url =>
-          fetch(url)
-            .then(res => res.text())
-            .then(data => data.slice(0, 250))
-        )
-      );
-      setPostPreviews(texts);
+    Promise.all(
+      markdownFiles.map((url) =>
+        fetch(url)
+          .then((res) => res.text())
+          .then((text) => text.slice(0, 250))
+      )
+    ).then((texts) => {
       dataCache.previews = texts;
-    }
-    fetchPreviews();
+      setPostPreviews(texts);
+    });
   }, []);
 
-  const renderList = useMemo(() => {
-    console.log(postPreviews);
-    // 테마로 인한 리렌더 방지
-    if (dataCache.renderList.length !== 0) {
-      return dataCache.renderList;
-    }
-    const Preview = ({ children, ...props }) => (
-      <PreviewComponent {...props}>{children}</PreviewComponent>
-    );
+  const searchWord = useSelector(
+    (state) => state.searchState.state.searchKeyword
+  );
+
+  const titles = useMemo(
+    () => markdownFiles.map((file) => file.slice(14).split(".")[0]),
+    [markdownFiles]
+  );
+
+  const thumbnails = dataCache.thumbnails;
+
+  const { renderList, tags } = useMemo(() => {
+    const TagsSet = new Set();
+
     const Hidden = ({ children, ...props }) => (
       <HiddenComponent {...props}>{children}</HiddenComponent>
     );
-    const Tag = ({ children, ...props }) => (
-      console.log(children),
-      (
-        <CardTagComponent {...props}>
-          {children[0]
-            .split(",")
-            .map(tag => (Tags.push(tag), (<TagComponent>{tag}</TagComponent>)))}
-        </CardTagComponent>
-      )
+    const Preview = ({ children, ...props }) => (
+      <PreviewComponent {...props}>{children}</PreviewComponent>
     );
-    return titles.map((title, index) => {
+
+    const Tag = ({ children, ...props }) => {
+      const tagList = children[0].split(",");
+      tagList.forEach((tag) => TagsSet.add(tag.trim()));
+      console.log(1);
+      return (
+        <CardTagComponent {...props}>
+          {tagList.map((tag) => (
+            <TagComponent key={tag}>{tag}</TagComponent>
+          ))}
+        </CardTagComponent>
+      );
+    };
+
+    const result = titles.map((title, index) => {
       const disassembled = Hangul.disassemble(title, true);
-      const noJong = disassembled.map(char =>
+      const noJong = disassembled.map((char) =>
         char.length > 2
           ? Hangul.assemble(char.slice(0, Hangul.isVowel(char[2]) ? 3 : 2))
           : Hangul.assemble(char)
@@ -245,8 +238,9 @@ function ListComponent() {
                         code: { component: Hidden },
                         hr: { component: Hidden },
                         li: { component: Hidden },
-                        table: { component: Hidden }
-                      }
+                        table: { component: Hidden },
+                        pre: { component: Hidden },
+                      },
                     }}
                   >
                     {postPreviews[index]}
@@ -262,18 +256,19 @@ function ListComponent() {
             <Markdown
               options={{
                 overrides: {
+                  h5: { component: Tag },
                   h1: { component: Hidden },
                   h2: { component: Hidden },
                   h3: { component: Hidden },
                   h4: { component: Hidden },
-                  h5: { component: Tag },
                   h6: { component: Hidden },
                   p: { component: Hidden },
                   code: { component: Hidden },
                   hr: { component: Hidden },
                   li: { component: Hidden },
-                  table: { component: Hidden }
-                }
+                  table: { component: Hidden },
+                  pre: { component: Hidden },
+                },
               }}
             >
               {postPreviews[index]}
@@ -282,17 +277,23 @@ function ListComponent() {
         </Link>
       );
     });
+
+    return {
+      renderList: result,
+      tags: Array.from(TagsSet),
+    };
   }, [titles, searchWord, thumbnails, postPreviews]);
-  console.log("vv", Tags);
+
+  const NoResult = <NoResultComponent>검색 결과가 없습니다</NoResultComponent>;
   return (
     <ListBackground>
       <ListContainer>
         <TabContainer />
-        {renderList.every(item => item === null) ? NoResult : renderList}
+        {renderList.every((item) => item === null) ? NoResult : renderList}
       </ListContainer>
-      <SideBarComponent TagList={Tags} />
+      <SideBarComponent TagList={tags} />
     </ListBackground>
   );
-}
+};
 
 export const List = React.memo(ListComponent);
