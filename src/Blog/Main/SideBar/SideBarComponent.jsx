@@ -44,9 +44,9 @@ export function SideBarComponent({ TagList }) {
     <SideBar>
       <TagTitle>Tag</TagTitle>
       <TagComponent>
-        {TagList.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
-        ))}
+        {TagList !== undefined
+          ? TagList.map((tag) => <Tag key={tag}>{tag}</Tag>)
+          : null}
       </TagComponent>
     </SideBar>
   );
