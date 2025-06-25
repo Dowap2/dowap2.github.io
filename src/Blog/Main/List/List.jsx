@@ -162,6 +162,17 @@ const ListComponent = () => {
       )
     ).then((texts) => {
       dataCache.previews = texts;
+      const tagSet = new Set();
+      texts.forEach((text) => {
+        const h5Matches = text.match(/^##### (.+)$/gm);
+        if (h5Matches) {
+          h5Matches.forEach((line) => {
+            const tags = line.replace(/^##### /, "").split(",");
+            tags.forEach((tag) => tagSet.add(tag.trim()));
+          });
+        }
+      });
+      dataCache.tags = Array.from(tagSet);
       setPostPreviews(texts);
     });
   }, []);
@@ -177,7 +188,7 @@ const ListComponent = () => {
 
   const thumbnails = dataCache.thumbnails;
 
-  const { renderList, tags } = useMemo(() => {
+  const { renderList } = useMemo(() => {
     const TagsSet = new Set();
 
     const Hidden = ({ children, ...props }) => (
@@ -189,8 +200,6 @@ const ListComponent = () => {
 
     const Tag = ({ children, ...props }) => {
       const tagList = children[0].split(",");
-      tagList.forEach((tag) => TagsSet.add(tag.trim()));
-      console.log(1);
       return (
         <CardTagComponent {...props}>
           {tagList.map((tag) => (
@@ -280,7 +289,6 @@ const ListComponent = () => {
 
     return {
       renderList: result,
-      tags: Array.from(TagsSet),
     };
   }, [titles, searchWord, thumbnails, postPreviews]);
 
@@ -291,7 +299,7 @@ const ListComponent = () => {
         <TabContainer />
         {renderList.every((item) => item === null) ? NoResult : renderList}
       </ListContainer>
-      <SideBarComponent TagList={tags} />
+      <SideBarComponent TagList={dataCache.tags} />
     </ListBackground>
   );
 };
