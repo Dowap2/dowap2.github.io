@@ -175,7 +175,7 @@ const ListComponent = () => {
       dataCache.tags = Array.from(tagSet);
       setPostPreviews(texts);
     });
-  }, []);
+  }, [markdownFiles]);
 
   const searchWord = useSelector(
     (state) => state.searchState.state.searchKeyword
@@ -189,8 +189,6 @@ const ListComponent = () => {
   const thumbnails = dataCache.thumbnails;
 
   const { renderList } = useMemo(() => {
-    const TagsSet = new Set();
-
     const Hidden = ({ children, ...props }) => (
       <HiddenComponent {...props}>{children}</HiddenComponent>
     );

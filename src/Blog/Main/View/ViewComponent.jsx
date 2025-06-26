@@ -1,5 +1,5 @@
 import { View } from "./View";
-import { Comment } from "./Comment/Comment";
+// import { Comment } from "./Comment/Comment";
 import styled from "styled-components";
 import ModalContainer from "./modal/ModalContainer";
 
@@ -17,7 +17,7 @@ export function ViewComponent({ match }) {
     <div>
       <LayoutComponent>
         <ModalContainer />
-        <View match={match} />
+        <View />
         {/* <Comment match={match} /> */}
       </LayoutComponent>
     </div>
