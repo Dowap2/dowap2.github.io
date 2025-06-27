@@ -6,6 +6,7 @@ import { Footer } from "./Blog/Footer/Footer";
 import { Layout } from "./Blog/Layout";
 import { IntroduceMain } from "./Blog/Introduce/IntroduceMain";
 import { Resume } from "./Blog/Resume/Resume";
+import { Outlet } from "react-router-dom";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import { lightTheme, darkTheme } from "./theme.ts";
 import { useSelector, useDispatch } from "react-redux";
@@ -60,26 +61,21 @@ function App() {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.pageState.darkMode);
 
-  // 테마 메모이제이션 - darkMode가 변경될 때만 재계산
   const theme = useMemo(() => (darkMode ? darkTheme : lightTheme), [darkMode]);
 
-  // 다크모드 토글 함수
   const toggleDarkMode = useCallback(() => {
     dispatch({ type: "TOGGLE_DARK_MODE" });
   }, [dispatch]);
 
-  // Layout 컴포넌트 메모이제이션
   const layoutElement = useMemo(
-    () => <Layout toggleDarkMode={toggleDarkMode} />,
+    () => <Layout toggleDarkMode={toggleDarkMode}></Layout>,
     [toggleDarkMode]
   );
 
-  // 시스템 다크모드 감지 및 동기화 (선택사항)
   React.useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     const handleChange = (e) => {
-      // 사용자가 수동으로 설정하지 않은 경우에만 시스템 설정을 따름
       const userPreference = localStorage.getItem("darkMode");
       if (userPreference === null) {
         dispatch({
@@ -113,13 +109,13 @@ function App() {
       <GlobalStyle />
       <MainComponent>
         <Router>
+          <Header />
           <Routes>
-            <Route path="/" element={layoutElement}>
-              <Route index element={<ViewComponent />} />
-              <Route path="introduce" element={<IntroduceMain />} />
-              <Route path="resume" element={<Resume />} />
-            </Route>
+            <Route path="/" element={layoutElement} />
+            <Route path="view/:index" element={<ViewComponent />} />
+            <Route path="resume" element={<Resume />} />
           </Routes>
+          <Footer />
         </Router>
       </MainComponent>
     </ThemeProvider>

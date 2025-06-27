@@ -107,7 +107,6 @@ function Code({ className, children }) {
 }
 
 export function ViewContent(props) {
-  console.log(props);
   return (
     <Markdown
       options={{

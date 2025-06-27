@@ -15,17 +15,17 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SEARCHSTATE: {
       const { searchKeyword } = state.state;
-      const newSearchState = searchKeyword.length === 0 ? action.payload : true;
+      const newSearchState = searchKeyword.length === 0 ? true : false;
 
       return {
-        ...state.state,
+        ...state,
         searchState: newSearchState,
       };
     }
 
     case SEARCHKEYWORD: {
       return {
-        ...state.state,
+        ...state,
         searchKeyword: action.payload,
       };
     }

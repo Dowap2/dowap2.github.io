@@ -36,8 +36,8 @@ const SearchInput = styled.input`
 `;
 
 export function TabComponent(props) {
-  const searchState = useSelector((state) => state.searchState?.searchState);
-  const intl = useIntl();
+  const searchState = useSelector((state) => state.searchState);
+  // const intl = useIntl();
   return (
     <div>
       <SearchBar searchState={searchState}>

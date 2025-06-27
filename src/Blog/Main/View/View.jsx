@@ -16,9 +16,9 @@ const ViewComponent = styled.div`
 
 export function View() {
   const { index } = useParams();
-  const url = useSelector(
-    (state) => state.mdFileState.state.markdownFiles[index]
-  );
+  const url = useSelector((state) => state.mdFileState?.markdownFiles[index]);
+  console.log(url);
+  console.log(index);
   const [postMarkdown, setPostMarkdown] = useState([]);
 
   useEffect(() => {
