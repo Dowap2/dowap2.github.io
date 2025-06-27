@@ -4,16 +4,14 @@ const MODALSTATE = "MODALSTATE";
 
 export const ChangeModalState = createAction(MODALSTATE);
 
-const initalState = {
-  state: {
-    modalState: false
-  }
+const initialState = {
+  modalState: false,
 };
 
-export default function reducer(state = initalState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case MODALSTATE: {
-      return { state: { modalState: action.payload } };
+      return { modalState: action.payload };
     }
     default: {
       return state;

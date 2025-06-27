@@ -5,7 +5,9 @@ import en from "./locale/en";
 import ko from "./locale/ko";
 
 export default function SelectedIntlProvider({ children }) {
-  const language = useSelector(state => state.languageState.state.language);
+  const language = useSelector(
+    (state) => state.languageState?.language || "en"
+  );
   const message = language === "en" ? en : ko;
 
   return (

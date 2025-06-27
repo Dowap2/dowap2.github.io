@@ -1,18 +1,36 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAction } from "redux-actions";
+
+export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
+export const changeDarkMode = createAction(TOGGLE_DARK_MODE);
 
 const initialState = {
-  darkMode: false
+  darkMode: (() => {
+    const saved = localStorage.getItem("darkMode");
+    if (saved !== null) {
+      return JSON.parse(saved);
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  })(),
 };
 
-const pageStateSlice = createSlice({
-  name: "pageState",
-  initialState,
-  reducers: {
-    changeDarkMode: (state, action) => {
-      state.darkMode = action.payload;
-    }
-  }
-});
+export default function reducer(state = initialState, action) {
+  switch (action.type) {
+    case "TOGGLE_DARK_MODE":
+      const newDarkMode = !state.darkMode;
+      localStorage.setItem("darkMode", JSON.stringify(newDarkMode));
+      return {
+        ...state,
+        darkMode: newDarkMode,
+      };
 
-export const { changeDarkMode } = pageStateSlice.actions;
-export default pageStateSlice.reducer;
+    case "SET_DARK_MODE":
+      localStorage.setItem("darkMode", JSON.stringify(action.payload));
+      return {
+        ...state,
+        darkMode: action.payload,
+      };
+
+    default:
+      return state;
+  }
+}

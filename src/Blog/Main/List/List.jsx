@@ -143,7 +143,7 @@ const NoResultComponent = styled.div`
 // Component
 const ListComponent = () => {
   const markdownFiles = useSelector(
-    (state) => state.mdFileState.state.markdownFiles
+    (state) => state.mdFileState?.markdownFiles
   );
 
   const [postPreviews, setPostPreviews] = useState([]);
@@ -177,9 +177,7 @@ const ListComponent = () => {
     });
   }, [markdownFiles]);
 
-  const searchWord = useSelector(
-    (state) => state.searchState.state.searchKeyword
-  );
+  const searchWord = useSelector((state) => state.searchState?.searchKeyword);
 
   const titles = useMemo(
     () => markdownFiles.map((file) => file.slice(14).split(".")[0]),

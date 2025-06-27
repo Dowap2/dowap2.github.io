@@ -1,18 +1,8 @@
 import styled from "styled-components";
-import { useState, useEffect, useRef } from "react";
 import Markdown from "markdown-to-jsx";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const CodeComponent = styled.div`
-  background: #f5f5f5;
-  padding: 10px;
-  box-sizing: border-box;
-  overflow: scroll;
-  @media only screen and (max-width: 960px) {
-    width: 100%;
-  }
-`;
 const PComponent = styled.div`
   font-size: 18px;
   line-height: 30px;
@@ -92,7 +82,6 @@ const Hr = ({ children, ...props }) => (
 const Li = ({ children, ...props }) => (
   <LiComponent {...props}>{children}</LiComponent>
 );
-
 const Table = ({ children, ...props }) => (
   <TableComponent {...props}>{children}</TableComponent>
 );
@@ -118,8 +107,7 @@ function Code({ className, children }) {
 }
 
 export function ViewContent(props) {
-  const cacheRef = useRef({});
-
+  console.log(props);
   return (
     <Markdown
       options={{

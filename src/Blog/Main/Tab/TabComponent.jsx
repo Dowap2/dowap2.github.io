@@ -9,13 +9,13 @@ const SearchBar = styled.div`
   border-radius: 10px;
   border: 1px solid ${({ theme }) => theme.subBackground};
 
-  width: ${props => (props.searchState ? "650px" : "42px")};
+  width: ${(props) => (props.searchState ? "650px" : "42px")};
   transition: width 0.5s;
   padding: 5px;
   height: 42px;
   box-sizing: border-box;
   @media only screen and (max-width: 960px) {
-    width: ${props => (props.searchState ? "100%" : "42px")};
+    width: ${(props) => (props.searchState ? "100%" : "42px")};
   }
 `;
 const SearchIcon = styled.img`
@@ -25,9 +25,9 @@ const SearchIcon = styled.img`
   margin-left: auto;
 `;
 const SearchInput = styled.input`
-  margin-left: ${props => (props.searchState ? "10px" : "0")};
+  margin-left: ${(props) => (props.searchState ? "10px" : "0")};
   transition: margin-left 0.5s;
-  width: ${props => (props.searchState ? "100%" : "0px")};
+  width: ${(props) => (props.searchState ? "100%" : "0px")};
   border: 0;
   color: ${({ theme }) => theme.text};
   background: ${({ theme }) => theme.subBackground};
@@ -36,7 +36,7 @@ const SearchInput = styled.input`
 `;
 
 export function TabComponent(props) {
-  const searchState = useSelector(state => state.searchState.state.searchState);
+  const searchState = useSelector((state) => state.searchState?.searchState);
   const intl = useIntl();
   return (
     <div>
@@ -44,7 +44,7 @@ export function TabComponent(props) {
         <SearchInput
           searchState={searchState}
           type="text"
-          onChange={e => {
+          onChange={(e) => {
             props.onChangeWord(e.target.value);
           }}
           placeholder={"검색어를 입력하세요"}

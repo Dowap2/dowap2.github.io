@@ -7,7 +7,7 @@ export const lightTheme = {
   text: "#1b1d25",
   subText: "#1b1d25",
   pointBackground: "#4896ec",
-  pointText: "#e5f5fd"
+  pointText: "#e5f5fd",
 };
 
 export const darkTheme = {
@@ -17,5 +17,5 @@ export const darkTheme = {
   text: "#bcc0cf",
   subText: "#ffffff",
   pointBackground: "#0081ff",
-  pointText: "#ffffff"
+  pointText: "#ffffff",
 };
