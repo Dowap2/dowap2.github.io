@@ -145,7 +145,6 @@ const ListComponent = () => {
   const markdownFiles = useSelector(
     (state) => state.mdFileState?.markdownFiles
   );
-  console.log(markdownFiles);
   const [postPreviews, setPostPreviews] = useState([]);
 
   useEffect(() => {
