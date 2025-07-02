@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.ba0f725b.js",
+    "main.js": "/static/js/main.94134f78.js",
     "static/media/Ohgyeongtae.jpeg": "/static/media/Ohgyeongtae.7e326ae6dd82711ba5fd.jpeg",
     "static/media/LogoDay.png": "/static/media/LogoDay.229d439f46b4d9a2b0bf.png",
     "static/media/PortfolioFile.pdf": "/static/media/PortfolioFile.5e8a2d6e1e83368dc251.pdf",
@@ -30,13 +30,14 @@
     "static/media/Object를 비교하는 방법.md": "/static/media/Object를 비교하는 방법.5df6c90bcbb53db2fd52.md",
     "static/media/사용자 Hook.md": "/static/media/사용자 Hook.bbb59d83bfdd2b2fccd5.md",
     "static/media/import 개념 정리.md": "/static/media/import 개념 정리.0ddf68ead558352777b8.md",
+    "static/media/eventLog.md": "/static/media/eventLog.2bbee273a98be27429c4.md",
     "static/media/React.md": "/static/media/React.129a002e76f9e7e86e72.md",
     "static/media/시간복잡도와 공간복잡도.md": "/static/media/시간복잡도와 공간복잡도.d3b6dfd0f086dffdaa31.md",
     "static/media/퀵소트.md": "/static/media/퀵소트.4516f5a7ef70acef6fdb.md",
     "index.html": "/index.html",
-    "main.ba0f725b.js.map": "/static/js/main.ba0f725b.js.map"
+    "main.94134f78.js.map": "/static/js/main.94134f78.js.map"
   },
   "entrypoints": [
-    "static/js/main.ba0f725b.js"
+    "static/js/main.94134f78.js"
   ]
 }
