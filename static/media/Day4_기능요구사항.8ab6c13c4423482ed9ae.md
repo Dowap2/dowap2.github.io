@@ -1,5 +1,7 @@
 # 🧠 Custom HashMap Implementation in JavaScript
 
+##### 알고리즘, CS
+
 ## 📌 프로젝트 개요
 
 이 프로젝트는 JavaScript로 문자열 기반의 해시맵(HashMap) 자료구조를 직접 구현하는 과제입니다.  
