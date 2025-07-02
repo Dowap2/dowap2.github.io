@@ -98,7 +98,7 @@ JavaScriptCore는 다음과 같은 JIT 단계를 가지고 있습니다:
 
 AST 구조는 다음과 같이 트리 형태로 구성할 수 있습니다:
 
-```
+```js
 VariableDeclaration
 ├── kind: "var"
 └── declarations:
