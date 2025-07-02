@@ -10,17 +10,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { changeDarkMode } from "../../store/modules/pageState";
 
 const HeaderComponent = styled.header`
+  box-sizing: border-box;
   width: 100%;
   height: 60px;
   display: flex;
   background: ${({ darkMode }) => (darkMode ? "#121319" : "#fff")};
-  padding: 20px 0 40px;
-`;
-
-const Wrapper = styled.div`
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
+  margin: 20px 0;
+  padding: 0 40px;
   justify-content: space-between;
   align-items: center;
 `;
@@ -65,35 +61,30 @@ export function Header() {
 
   return (
     <HeaderComponent darkMode={darkMode}>
-      <Wrapper>
-        <Link to="/">
-          <LogoImg src={darkMode ? LogoNight : LogoDay} alt="Logo" />
-        </Link>
-        <ButtonComponent>
-          <ChangeNightMode
-            onClick={handleDarkModeChange}
-            aria-label="Toggle dark mode"
-          >
-            <ButtonImg
-              src={darkMode ? Night : Day}
-              alt={darkMode ? "Night mode" : "Day mode"}
-            />
-          </ChangeNightMode>
-          <a
-            href="https://github.com/Dowap2"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub Link"
-          >
-            <IconWrapper>
-              <ButtonImg
-                src={darkMode ? GithubNight : GithubDay}
-                alt="GitHub"
-              />
-            </IconWrapper>
-          </a>
-        </ButtonComponent>
-      </Wrapper>
+      <Link to="/">
+        <LogoImg src={darkMode ? LogoNight : LogoDay} alt="Logo" />
+      </Link>
+      <ButtonComponent>
+        <ChangeNightMode
+          onClick={handleDarkModeChange}
+          aria-label="Toggle dark mode"
+        >
+          <ButtonImg
+            src={darkMode ? Night : Day}
+            alt={darkMode ? "Night mode" : "Day mode"}
+          />
+        </ChangeNightMode>
+        <a
+          href="https://github.com/Dowap2"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub Link"
+        >
+          <IconWrapper>
+            <ButtonImg src={darkMode ? GithubNight : GithubDay} alt="GitHub" />
+          </IconWrapper>
+        </a>
+      </ButtonComponent>
     </HeaderComponent>
   );
 }

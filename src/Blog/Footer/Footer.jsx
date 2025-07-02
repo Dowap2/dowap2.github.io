@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import InputLanguageContainer from "./InputLanguageContainer";
+// import InputLanguageContainer from "./InputLanguageContainer";
+import { useSelector } from "react-redux";
 
 const FooterComponent = styled.div`
   width: 100%;
   height: 80px;
-  background: #ffffff;
-  border-top: 1px solid #f5f5f5;
 `;
 const Wrapper = styled.div`
   width: 960px;
@@ -18,8 +17,10 @@ const Wrapper = styled.div`
 `;
 
 export function Footer() {
+  const darkMode = useSelector((state) => state.pageState.darkMode);
+  console.log("footer", darkMode);
   return (
-    <FooterComponent>
+    <FooterComponent darkmode={darkMode}>
       <Wrapper>{/* <InputLanguageContainer /> */}</Wrapper>
     </FooterComponent>
   );

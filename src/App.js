@@ -6,12 +6,10 @@ import { Footer } from "./Blog/Footer/Footer";
 import { Layout } from "./Blog/Layout";
 import { IntroduceMain } from "./Blog/Introduce/IntroduceMain";
 import { Resume } from "./Blog/Resume/Resume";
-import { Outlet } from "react-router-dom";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import { lightTheme, darkTheme } from "./theme.ts";
 import { useSelector, useDispatch } from "react-redux";
 
-// 스타일드 컴포넌트를 외부로 분리하여 리렌더링 최적화
 const MainComponent = styled.div`
   font-family: "Pretendard Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",

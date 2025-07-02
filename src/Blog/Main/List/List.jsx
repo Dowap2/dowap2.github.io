@@ -11,20 +11,23 @@ import Hangul from "hangul-js";
 import { colors } from "../../../palette.ts";
 import { dataCache } from "../../../fetchCache";
 import { SideBarComponent } from "../SideBar/SideBarComponent";
+import defaultImage from "../../../Img/default-image.jpg";
 
 // Styled Components
 const ListBackground = styled.div`
   display: flex;
   width: 100%;
-  padding-bottom: 40px;
 `;
 
 const ListContainer = styled.ul`
+  box-sizing: border-box;
   display: flex;
   width: 960px;
+  margin: 0;
   padding: 0;
   flex-wrap: wrap;
   @media only screen and (max-width: 960px) {
+    margin: 0 40px;
     width: 100%;
   }
 `;
@@ -32,8 +35,7 @@ const ListContainer = styled.ul`
 const CardItemComponent = styled.div`
   margin: 24px 0;
   @media only screen and (max-width: 960px) {
-    width: calc(100vw - 40px);
-    margin: 20px 0 0;
+    width: 650px;
   }
 `;
 
@@ -45,16 +47,21 @@ const CardMainComponent = styled.div`
 `;
 
 const CardTitleComponent = styled.div`
-  padding: 15px;
   font-size: 20px;
   font-weight: 700;
   color: ${({ theme }) => theme.text};
 `;
 
 const CardPreview = styled.p`
-  padding: 0 15px 15px;
   font-size: 15px;
   font-weight: 500;
+  line-height: 1.6; /* 꼭 명시하세요 */
+  width: 500px;
+  height: calc(1.6em * 3); /* 줄 높이 * 줄 수 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   color: ${({ theme }) => theme.text};
 `;
 
@@ -77,7 +84,6 @@ const ThumbnailComponent = styled.img`
 `;
 
 const CardTagComponent = styled.div`
-  padding-left: 15px;
   width: 100%;
   height: 30px;
 `;
@@ -103,12 +109,12 @@ const HiddenComponent = styled.div`
   display: none;
 `;
 
-const PreviewComponent = styled.div`
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 150%;
-  display: inline;
-`;
+// const PreviewComponent = styled.div`
+//   font-size: 15px;
+//   font-weight: 300;
+//   line-height: 150%;
+//   display: inline;
+// `;
 
 const NoResultComponent = styled.div`
   width: 100%;
@@ -190,7 +196,7 @@ const ListComponent = () => {
       <HiddenComponent {...props}>{children}</HiddenComponent>
     );
     const Preview = ({ children, ...props }) => (
-      <PreviewComponent {...props}>{children}</PreviewComponent>
+      <CardPreview {...props}>{children}</CardPreview>
     );
 
     const Tag = ({ children, ...props }) => {
@@ -228,32 +234,30 @@ const ListComponent = () => {
             <CardMainComponent>
               <CardTextComponent>
                 <CardTitleComponent>{title}</CardTitleComponent>
-                <CardPreview>
-                  <Markdown
-                    options={{
-                      overrides: {
-                        h1: { component: Hidden },
-                        h2: { component: Hidden },
-                        h3: { component: Hidden },
-                        h4: { component: Hidden },
-                        h5: { component: Preview },
-                        h6: { component: Preview },
-                        p: { component: Hidden },
-                        code: { component: Hidden },
-                        hr: { component: Hidden },
-                        li: { component: Hidden },
-                        table: { component: Hidden },
-                        pre: { component: Hidden },
-                      },
-                    }}
-                  >
-                    {postPreviews[index]}
-                  </Markdown>
-                </CardPreview>
+                <Markdown
+                  options={{
+                    overrides: {
+                      h1: { component: Hidden },
+                      h2: { component: Hidden },
+                      h3: { component: Hidden },
+                      h4: { component: Hidden },
+                      h5: { component: Hidden },
+                      h6: { component: Preview },
+                      p: { component: Hidden },
+                      code: { component: Hidden },
+                      hr: { component: Hidden },
+                      li: { component: Hidden },
+                      table: { component: Hidden },
+                      pre: { component: Hidden },
+                    },
+                  }}
+                >
+                  {postPreviews[index]}
+                </Markdown>
               </CardTextComponent>
               <CardImageComponent>
                 <ThumbnailComponent
-                  src={thumbnails[index]?.urls?.thumb || "/default-image.jpg"}
+                  src={thumbnails[index]?.urls?.thumb || defaultImage}
                 />
               </CardImageComponent>
             </CardMainComponent>
